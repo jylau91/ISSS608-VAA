@@ -2,8 +2,34 @@
 title: "ISSS608-VAA"
 ---
 
-This is a Quarto website.
+---
+title: "Welcome"
+format:
+  html:
+    toc: false
+    page-layout: full
+---
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+![](images/ChatGPT Image Apr 24, 2025, 11_58_04 PM.png)
 
-1+1
+## 🎯 Why Visual Analytics?
+
+In today’s data-saturated world, the ability to communicate insights visually is just as important as performing the analysis itself. I’m passionate about using data visualisation not just for dashboards, but to solve real-world problems, inform public policy, and shape digital transformation initiatives.
+
+This course will deepen my ability to: - Explore and model complex datasets using R and `tidyverse`. - Apply design principles to create meaningful, interactive visuals. - Build end-to-end visual analytics applications that support decision-making.
+
+------------------------------------------------------------------------
+
+## 💡 What You’ll Find Here
+
+This site hosts my coursework, exercises, and take-home projects for ISSS608.
+
+You’ll find:
+
+\- 🔧 Hands-on R projects and dashboards
+
+\- 🧪 In-class projects with visual design
+
+\- 🏠 Take-home exercises with exploratory storytelling
+
+\- 🚀 A final project built with Shiny to demonstrate practical application

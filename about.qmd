@@ -2,4 +2,18 @@
 title: "About"
 ---
 
-About this site
+# 👋 Hello, I'm Lau Jia Yi
+
+Welcome to my Visual Analytics learning journey!
+
+I’m currently a **Finance Systems & Digitalisation Manager at SMRT Corporation Ltd**, with over 8 years of experience in finance, audit, and enterprise transformation.
+
+My professional background includes:
+
+\- 5 years as a Finance Business Partner with a focus on public transport operations and data-driven planning.
+
+\- 3 years as an auditor at Ernst & Young, specializing in financial compliance and controls.
+
+\- An accountancy graduate with strong grounding in strategic finance and process improvement.
+
+As part of my Master of IT in Business journey at Singapore Management University, I’m enrolled in ISSS608 – Visual Analytics and Applications, a course designed to harness the power of data storytelling, exploratory analysis, and interactive design using tools like R, Tableau, and Shiny.
