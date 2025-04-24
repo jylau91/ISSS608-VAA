@@ -5,59 +5,59 @@ website:
   title: "ISSS608-VAA"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.html
         text: Home
-      - href: about.qmd
+      - href: about.html
         text: About
       - text: Hands-on Exercises
         menu:
-          - href: L1/handson_ex01.qmd
+          - href: L1/handson_ex01.html
             text: Hands-on Exercise 1
           - href: L2/handson_ex02.html
             text: Hands-on Exercise 2
-          - href: L3/handson_ex03.qmd
+          - href: L3/handson_ex03.html
             text: Hands-on Exercise 3
-          - href: L4/handson_ex04.qmd
+          - href: L4/handson_ex04.html
             text: Hands-on Exercise 4
-          - href: L5/handson_ex05.qmd
+          - href: L5/handson_ex05.html
             text: Hands-on Exercise 5
-          - href: L6/handson_ex06.qmd
+          - href: L6/handson_ex06.html
             text: Hands-on Exercise 6
-          - href: L7/handson_ex07.qmd
+          - href: L7/handson_ex07.html
             text: Hands-on Exercise 7
-          - href: L8/handson_ex08.qmd
+          - href: L8/handson_ex08.html
             text: Hands-on Exercise 8
-          - href: L9/handson_ex09.qmd
+          - href: L9/handson_ex09.html
             text: Hands-on Exercise 9
-          - href: L10/handson_ex10.qmd
+          - href: L10/handson_ex10.html
             text: Hands-on Exercise 10
       - text: In-class Exercises
         menu:
-          - href: L2/inclass_ex02.qmd
+          - href: L2/inclass_ex02.html
             text: In-class Exercise 2
-          - href: L3/inclass_ex03.qmd
+          - href: L3/inclass_ex03.html
             text: In-class Exercise 3
-          - href: L4/inclass_ex04.qmd
+          - href: L4/inclass_ex04.html
             text: In-class Exercise 4
-          - href: L5/inclass_ex05.qmd
+          - href: L5/inclass_ex05.html
             text: In-class Exercise 5
-          - href: L6/inclass_ex06.qmd
+          - href: L6/inclass_ex06.html
             text: In-class Exercise 6
-          - href: L7/inclass_ex07.qmd
+          - href: L7/inclass_ex07.html
             text: In-class Exercise 7
-          - href: L8/inclass_ex08.qmd
+          - href: L8/inclass_ex08.html
             text: In-class Exercise 8
-          - href: L9/inclass_ex09.qmd
+          - href: L9/inclass_ex09.html
             text: In-class Exercise 9
-          - href: L10/inclass_ex10.qmd
+          - href: L10/inclass_ex10.html
             text: In-class Exercise 10
       - text: Take-home Exercises
         menu:
-          - href: T1/takehome_ex01.qmd
+          - href: T1/takehome_ex01.html
             text: Take-home Exercise 1
-          - href: T2/takehome_ex02.qmd
+          - href: T2/takehome_ex02.html
             text: Take-home Exercise 2
-          - href: T3/takehome_ex03.qmd
+          - href: T3/takehome_ex03.html
             text: Take-home Exercise 3
 
 format:
