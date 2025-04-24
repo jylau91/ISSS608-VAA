@@ -13,7 +13,7 @@ website:
         menu:
           - href: L1/handson_ex01.qmd
             text: Hands-on Exercise 1
-          - href: L2/handson_ex02.qmd
+          - href: L2/handson_ex02.html
             text: Hands-on Exercise 2
           - href: L3/handson_ex03.qmd
             text: Hands-on Exercise 3
