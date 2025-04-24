@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Lau Jia Yi">
+<meta name="dcterms.date" content="2024-04-19">
 
-<title>ISSS608-VAA</title>
+<title>Hands-on-Exercise-01 – ISSS608-VAA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -89,122 +125,13 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Hands-on Exercises</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercises">    
-        <li>
-    <a class="dropdown-item" href="./L1/handson_ex01.html">
- <span class="dropdown-text">Hands-on Exercise 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L2/handson_ex02.qmd">
- <span class="dropdown-text">Hands-on Exercise 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L3/handson_ex03.qmd">
- <span class="dropdown-text">Hands-on Exercise 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L4/handson_ex04.qmd">
- <span class="dropdown-text">Hands-on Exercise 4</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L5/handson_ex05.qmd">
- <span class="dropdown-text">Hands-on Exercise 5</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L6/handson_ex06.qmd">
- <span class="dropdown-text">Hands-on Exercise 6</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L7/handson_ex07.qmd">
- <span class="dropdown-text">Hands-on Exercise 7</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L8/handson_ex08.qmd">
- <span class="dropdown-text">Hands-on Exercise 8</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L9/handson_ex09.qmd">
- <span class="dropdown-text">Hands-on Exercise 9</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L10/handson_ex10.qmd">
- <span class="dropdown-text">Hands-on Exercise 10</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">In-class Exercises</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercises">    
-        <li>
-    <a class="dropdown-item" href="./L2/inclass_ex02.qmd">
- <span class="dropdown-text">In-class Exercise 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L3/inclass_ex03.qmd">
- <span class="dropdown-text">In-class Exercise 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L4/inclass_ex04.qmd">
- <span class="dropdown-text">In-class Exercise 4</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L5/inclass_ex05.qmd">
- <span class="dropdown-text">In-class Exercise 5</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L6/inclass_ex06.qmd">
- <span class="dropdown-text">In-class Exercise 6</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L7/inclass_ex07.qmd">
- <span class="dropdown-text">In-class Exercise 7</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L8/inclass_ex08.qmd">
- <span class="dropdown-text">In-class Exercise 8</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L9/inclass_ex09.qmd">
- <span class="dropdown-text">In-class Exercise 9</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./L10/inclass_ex10.qmd">
- <span class="dropdown-text">In-class Exercise 10</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Take-home Exercises</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercises">    
-        <li>
-    <a class="dropdown-item" href="./T1/takehome_ex01.qmd">
- <span class="dropdown-text">Take-home Exercise 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./T2/takehome_ex02.qmd">
- <span class="dropdown-text">Take-home Exercise 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./T3/takehome_ex03.qmd">
- <span class="dropdown-text">Take-home Exercise 3</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -216,22 +143,47 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a-layered-grammar-of-graphics-ggplot2-methods" id="toc-a-layered-grammar-of-graphics-ggplot2-methods" class="nav-link active" data-scroll-target="#a-layered-grammar-of-graphics-ggplot2-methods">1 A Layered Grammar of Graphics: ggplot2 methods</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcome" id="toc-learning-outcome" class="nav-link" data-scroll-target="#learning-outcome">1.1 Learning Outcome</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">1.2 Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#installing-libraries" id="toc-installing-libraries" class="nav-link" data-scroll-target="#installing-libraries">1.2.1 Installing Libraries</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ISSS608-VAA</h1>
+<h1 class="title">Hands-on-Exercise-01</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lau Jia Yi </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 19, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -241,11 +193,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<p>1+1</p>
+<section id="a-layered-grammar-of-graphics-ggplot2-methods" class="level1">
+<h1>1 A Layered Grammar of Graphics: ggplot2 methods</h1>
+<section id="learning-outcome" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcome">1.1 Learning Outcome</h2>
+<p>In this first chapter of ISSS608 of Visual Analytics &amp; Applications, I would explore the basic principles and essential components of ggplot2 by hands-on experience on using these components to plot statistical graphics. The principle of Layered Grammar of Graphics will be applied to create elegant and yet functional statistical graphics.</p>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">1.2 Getting Started</h2>
+<section id="installing-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="installing-libraries">1.2.1 Installing Libraries</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
