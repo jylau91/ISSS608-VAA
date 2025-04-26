@@ -2,7 +2,14 @@
 title: "Hands-on-Exercise-02"
 author: "Lau Jia Yi"
 date: 25 April 2024
-date-modified: today
+date-modified: "last-modified"
+format: html
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
 ---
 
 # 2 Beyond ggplot2 Fundamentals
