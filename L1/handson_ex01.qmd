@@ -2,7 +2,14 @@
 title: "Hands-on-Exercise-01"
 author: "Lau Jia Yi"
 date: 19 April 2024
-modified: today
+date-modified: "last-modified"
+format: html
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
 ---
 
 # 1 A Layered Grammar of Graphics: ggplot2 methods

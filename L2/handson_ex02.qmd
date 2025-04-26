@@ -2,7 +2,7 @@
 title: "Hands-on-Exercise-02"
 author: "Lau Jia Yi"
 date: 25 April 2024
-modified: today
+date-modified: today
 ---
 
 # 2 Beyond ggplot2 Fundamentals
@@ -380,6 +380,7 @@ We can plot more complex composite by using appropriate operators. For example, 
 -   “()” operator the define the sequence of the plotting.
 
 ```{r}
+#| fig-width: 10
 (p1 / p2) | p3
 ```
 
@@ -411,6 +412,7 @@ p3 + inset_element(p2,
 Figure below is created by combining patchwork and theme_economist() of ggthemes package discussed earlier.
 
 ```{r}
+#| fig-width: 10
 patchwork <- (p1 / p2) | p3
 patchwork & theme_economist()
 ```
