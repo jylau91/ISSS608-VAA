@@ -1,0 +1,443 @@
+---
+title: "Take Home Exercise 1"
+author: "Lau Jia Yi"
+date: 3 May 2024
+date-modified: "last-modified"
+format: html
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Singapore in 2024: A Visual Guide to our Population Landscape.
+
+## 1.0 Introduction
+
+Singapore’s population structure reveals a dynamic interplay between urban development, ageing, and youth distribution. Let's explore the demographic breakdown of 2024 through interactive charts.
+
+------------------------------------------------------------------------
+
+## 2.0 Loading R Packages and Dataset
+
+### 2.1 Libraries Required
+
+The following R packages were used via `pacman::p_load()` to support data wrangling, visualization, and mapping for Singapore’s 2024 population data.
+
+| Package | Description | Official Link |
+|------------------------|------------------------|------------------------|
+| **`tidyverse`** | A collection of R packages (including `ggplot2`, `dplyr`, `readr`, etc.) for data manipulation, exploration, and visualization. It forms the foundation of modern R workflows. | [tidyverse.org](https://www.tidyverse.org/) |
+| **`ggthemes`** | Provides additional themes, color palettes, and formatting options for `ggplot2` charts, such as Economist, Wall Street Journal, and Tufte styles. | CRAN – ggthemes |
+| **`gghighlight`** | Simplifies highlighting specific data in `ggplot2` visualizations without manual filtering. Great for emphasizing trends. | [GitHub – gghighlight](https://github.com/yutannihilation/gghighlight) |
+| **`patchwork`** | Enables easy composition of multiple `ggplot2` plots into complex layouts. Very useful for dashboards or comparative plots. | patchwork.data-imaginist.com |
+| **`sf`** | Provides tools for handling and analyzing geospatial vector data using a `data.frame`-like structure. Compatible with the `tidyverse`. | R-Spatial – sf |
+| **`tmap`** | A flexible mapping package for creating static and interactive thematic maps from spatial data, built to work well with `sf`. | r-tmap.github.io |
+
+```{r}
+pacman::p_load(tidyverse, ggthemes, gghighlight, ggrepel, patchwork,  sf, tmap, knitr, scales)
+```
+
+### 2.1 Loading the dataset
+
+The dataset used is "Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex, June 2024", it is shared by the Department of Statistics, Singapore (DOS).
+
+We begin by loading the required libraries and reading the dataset using `readr::read_csv()` from the `tidyverse` collection:
+
+```{r}
+df <- read_csv("data/respopagesex2024.csv")
+```
+
+This dataset provides a snapshot of the resident population in Singapore as of June 2024, broken down by planning areas, subzones, age, and sex.
+
+#### **2.1.1 Column Descriptions**
+
+| Column | Description                                        |
+|--------|----------------------------------------------------|
+| `PA`   | Planning Area – As defined by URA Master Plan 2019 |
+| `SZ`   | Subzone – Subdivision within a planning area       |
+| `Age`  | Single Year of Age – From 0 to 100+                |
+| `Sex`  | Sex – "Males" or "Females"                         |
+| `Pop`  | Resident Count – Rounded to the nearest 10         |
+| `Time` | Reference Period                                   |
+
+#### 2.1.2 Notes from Source
+
+-   Residents who have been away from Singapore for more than **12 continuous months** are excluded.
+-   All population counts are **rounded to the nearest 10**, which may result in totals that do not sum exactly.
+-   The reference period for this dataset is **June 2024**.
+
+#### 2.1.3 Understanding the data
+
+Before we proceed with visualisation, a few inspection and validation of the dataset will be performed.
+
+::: panel-tabset
+## Preview of Loaded dataset (Header)
+
+```{r, echo=FALSE}
+head(df)
+```
+
+## Preview of Loaded dataset (Glimpse)
+
+```{r, echo=FALSE}
+glimpse(df)
+```
+:::
+
+There are 60,424 rows noted with the 6 columns as stated in the source notes stated in earlier section 2.1.
+
+However the column Age has been loaded as a character type instead of double (numeric) variable as it includes a categorical label for the age group 90+ as "90_and_Over". This could be handled by converting this label into "90"together with an additional categorical label for this project.
+
+```{r}
+df <- read_csv("data/respopagesex2024.csv",
+  col_types = cols(
+    Age = col_character(),
+  )
+) %>%
+  rename(
+    Planning_Area = PA,
+    Subzone = SZ,
+    Population = Pop
+  ) %>%
+  mutate(
+    Age_Num = if_else(Age == "90_and_Over", 90L, as.integer(Age)),
+    AgeGroup = case_when(
+      Age_Num <= 14 ~ "Children (0–14)",
+      Age_Num <= 24 ~ "Youth (15–24)",
+      Age_Num <= 64 ~ "Adults (25–64)",
+      TRUE ~ "Elderly (65+)"
+    ),
+    AgeGroup = factor(
+      AgeGroup,
+      levels = c("Children (0–14)", "Youth (15–24)", "Adults (25–64)", "Elderly (65+)")
+    )
+  )
+```
+
+::: panel-tabset
+## Preview of Updated Dataset (Header)
+
+```{r, echo=FALSE}
+head(df)
+```
+
+## Preview of Updated Dataset (Glimpse)
+
+```{r, echo=FALSE}
+glimpse(df)
+```
+:::
+
+Now that the age variable has been cleaned up, we will proceed with the visualisations to describe the Singapore Population Landscape.
+
+## 3.0 Visualising the Singapore Population Landscape
+
+This article would focus on the top n% of Singapore
+
+```{r}
+population_summary <- df %>%
+  group_by(Planning_Area) %>%
+  summarise(
+    Population = sum(Population),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    Percent = round(Population / sum(Population) * 100, 2)
+  ) %>%
+  arrange(desc(Population)) %>%
+  mutate(
+    CumulativePercent = round(cumsum(Percent), 2),
+    `S/N` = row_number()
+  ) %>%
+  select(`S/N`, Planning_Area, Population, Percent, CumulativePercent)
+
+kable(population_summary, 
+      caption = "Population and Cumulative Percentage by Planning Area")
+```
+
+### 3.1 Overview of the Population Distribution
+
+Top 30 Planning Areas by Age Group Distribution
+
+```{r, fig.width = 16, fig.height = 6}
+
+top_n <- 30
+
+top_areas <- df %>%
+  group_by(Planning_Area) %>%
+  summarise(Total = sum(Population), .groups = "drop") %>%
+  slice_max(Total, n = top_n) %>%
+  pull(Planning_Area)
+
+df %>%
+  filter(Planning_Area %in% top_areas) %>%
+  group_by(Planning_Area, AgeGroup) %>%
+  summarise(Population = sum(Population), .groups = "drop") %>%
+  ggplot(aes(x = reorder(Planning_Area, -Population), y = Population, fill = AgeGroup)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::label_comma()) +
+  labs(title = paste("Top", top_n, "Planning Areas by Age Group Distribution"),
+       x = "Planning Area", y = "Population") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
+    plot.title = element_text(size = 14, face = "bold")
+  )
+
+```
+
+Loading the Master Plan 2014 Planning Area Boundary [shapefile obtained from data.gov.sg](https://data.gov.sg/datasets?query=planning+area&page=1&formats=SHP&resultId=d_6d6fd6505f23d7fb90dec567afd555bb).
+
+```{r}
+planning_sf <- st_read("data/MP14/MP14_PLNG_AREA_WEB_PL.shp")
+```
+
+Summarise population by Planning Area variabe
+
+```{r}
+pop_summary <- df %>%
+  group_by(Planning_Area) %>%
+  summarise(Population = sum(Population), .groups = "drop")
+
+```
+
+Join population data with shapefile, converting planning area in the population dataset to upper case to match the shapefile's planning area naming convention
+
+```{r}
+unique(planning_sf$PLN_AREA_N)
+unique(df$Planning_Area)
+```
+
+```{r}
+planning_sf <- planning_sf %>%
+  mutate(Area_km2 = as.numeric(st_area(geometry)) / 1e6)  # from m² to km²
+```
+
+```{r}
+planning_map <- planning_sf %>%
+  mutate(PLN_AREA_N = toupper(PLN_AREA_N)) %>%
+  left_join(
+    pop_summary %>% mutate(Planning_Area = toupper(Planning_Area)),
+    by = c("PLN_AREA_N" = "Planning_Area")
+  )
+```
+
+```{r}
+pop_by_area_age <- df %>%
+  group_by(Planning_Area, AgeGroup) %>%
+  summarise(Population = sum(Population), .groups = "drop") %>%
+  mutate(Planning_Area = toupper(Planning_Area))  # Match shapefile casing
+```
+
+```{r}
+map_data <- planning_sf %>%
+  select(PLN_AREA_N, geometry, Area_km2) %>%
+  right_join(pop_by_area_age, by = c("PLN_AREA_N" = "Planning_Area")) %>%
+  mutate(
+    PopDensity = Population / Area_km2
+  )
+```
+
+Maximum population density by planning area is Choa Chu Kang at 18,349 / kmsq.
+
+```{r}
+max_density_area <- map_data %>%
+  filter(PopDensity == max(PopDensity, na.rm = TRUE)) %>%
+  select(PLN_AREA_N, PopDensity) %>%
+  distinct()
+
+max_density_area
+```
+
+For proper scaling, we are limitting the population density at 20,000.
+
+```{r}
+map_data <- map_data %>%
+  mutate(PopDensity_Capped = pmin(PopDensity, 20000))
+```
+
+Pop density and average age calculation
+
+Calculate average age by Planning Area
+
+```{r}
+avg_age <- df %>%
+  group_by(Planning_Area) %>%
+  summarise(Avg_Age = weighted.mean(Age_Num, w = Population), .groups = "drop") %>%
+  mutate(Planning_Area = toupper(Planning_Area))
+
+```
+
+Join with map data and create scaled metric
+
+```{r}
+map_data <- map_data %>%
+  left_join(avg_age, by = c("PLN_AREA_N" = "Planning_Area")) %>%
+  mutate(
+    # Scale both to 0–1
+    PopDensity_Scaled = PopDensity_Capped / max(PopDensity_Capped, na.rm = TRUE),
+    Avg_Age_Scaled = Avg_Age / max(Avg_Age, na.rm = TRUE),
+    
+    # Composite score: equal weight to both
+    DensityAgeIndex = (PopDensity_Scaled + Avg_Age_Scaled) / 2
+  )
+
+```
+
+```{r}
+map_index <- map_data %>%
+  group_by(PLN_AREA_N) %>%
+  summarise(
+    DensityAgeIndex = mean(DensityAgeIndex, na.rm = TRUE),
+    geometry = st_union(geometry)
+  )
+```
+
+```{r, fig.width = 14, fig.height = 8}
+# Get centroids and extract coordinates
+top5_labels <- map_index %>%
+  slice_max(DensityAgeIndex, n = 5) %>%
+  mutate(centroid = st_centroid(geometry)) %>%
+  mutate(
+    lon = st_coordinates(centroid)[, 1],
+    lat = st_coordinates(centroid)[, 2]
+  )
+
+# Plot with improved label layout
+ggplot(map_index) +
+  geom_sf(aes(fill = DensityAgeIndex), color = "black", size = 0.2) +
+  geom_label_repel(
+    data = top5_labels,
+    aes(
+      x = lon,
+      y = lat,
+      label = paste0(PLN_AREA_N, "\n", scales::percent(DensityAgeIndex, accuracy = 1))
+    ),
+    size = 3,
+    fontface = "bold",
+    nudge_x = 2000,  # nudging right
+    nudge_y = 2000,  # nudging up
+    hjust = 0,       # align left
+    vjust = 1,       # align top
+    box.padding = 0.6,
+    point.padding = 0.5,
+    segment.color = "black",
+    segment.size = 0.3,
+    min.segment.length = 0
+  ) +
+  scale_fill_gradientn(
+    colours = c("#4575b4", "#ffffbf", "#d73027"),
+    limits = c(0, 1),
+    breaks = seq(0, 1, by = 0.1),
+    labels = scales::label_percent(accuracy = 1)
+  ) +
+  labs(
+    title = "Composite Density-Age Index by Planning Area (2024)",
+    fill = "Density-Age Index"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 8)
+  )
+```
+
+Document: - top 5, back by facts - possible policy / implications / healthcare / accessibility - note areas in grey - why 0 etc.
+
+### Building pyramid demographic
+
+```{r, fig.height=8, fig.width=8}
+# Find the maximum age
+max_age <- max(df$Age_Num)
+
+# Prepare the data for ggplot2
+plot_df <- df %>%
+  # Group ages by 5-year intervals
+  mutate(AgeGroup = cut(Age_Num,
+                       breaks = if(max_age > 90) {c(seq(0, 85, by = 5), 90, max_age + 1)}  # added 1 to max age
+                                  else {c(seq(0, 85, by = 5), max_age + 1)},
+                       right = FALSE,
+                       labels = if(max_age > 90) {c(paste0(seq(0, 80, by = 5), "-", seq(4, 84, by = 5)), "Beyond 90")}
+                                  else {c(paste0(seq(0, 80, by = 5), "-", seq(4, 84, by = 5)), "Beyond 90")})) %>%
+  group_by(AgeGroup, Sex) %>%
+  summarise(Population = sum(Population)) %>%
+  ungroup() %>%
+  mutate(Population = ifelse(Sex == "Males", -Population, Population)) %>%
+  mutate(PopulationAbs = abs(Population))  # Create absolute value for labels
+
+# Create the population pyramid using ggplot2
+ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
+  geom_bar(stat = "identity", width = 0.95, color = "black") +
+  coord_flip() +
+  labs(
+    title = "Population Pyramid for Singapore (2024) by 5-Year Age Groups",
+    x = "Age Group",
+    y = "Population Size"
+  ) +
+  scale_y_continuous(labels = function(x) format(abs(x), big.mark = ",", scientific = FALSE)) +
+  scale_fill_manual(values = c("Females" = "#FFB6C1", "Males" = "#87CEFA")) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "bottom",
+    axis.text.y = element_text(hjust = 0)
+  )
+
+```
+### 3.4 Singapore's Population Structure: A Detailed Look
+
+Finally, we examine Singapore's overall population structure using a population pyramid.
+
+```{r, fig.height=8, fig.width=8}
+# Find the maximum age
+max_age <- max(df$Age_Num)
+
+# Prepare the data for ggplot2
+plot_df <- df %>%
+  # Group ages by 5-year intervals
+  mutate(AgeGroup = cut(Age_Num,
+                       breaks = if (max_age > 90) {
+                         c(seq(0, 85, by = 5), 90, max_age + 1)
+                       } else {
+                         c(seq(0, 85, by = 5), max_age + 1)
+                       },
+                       right = FALSE,
+                       labels = if (max_age > 90) {
+                         c(
+                           paste0(seq(0, 80, by = 5), "-", seq(4, 84, by = 5)),
+                           "Beyond 90"
+                         )
+                       } else {
+                         c(
+                           paste0(seq(0, 80, by = 5), "-", seq(4, 84, by = 5)),
+                           "Beyond 90"
+                         )
+                       })) %>%
+  group_by(AgeGroup, Sex) %>%
+  summarise(Population = sum(Population)) %>%
+  ungroup() %>%
+  mutate(Population = ifelse(Sex == "Males", -Population, Population)) %>%
+  mutate(PopulationAbs = abs(Population)) # Create absolute value for labels
+
+# Create the population pyramid using ggplot2
+ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
+  geom_bar(stat = "identity", width = 0.8, color = "black") +
+  coord_flip() +
+  labs(
+    title = "Singapore's Population Pyramid (2024) by 5-Year Age Groups",
+    x = "Age Group",
+    y = "Population Size"
+  ) +
+  scale_y_continuous(labels = function(x)
+    format(abs(x), big.mark = ",", scientific = FALSE)) +
+  scale_fill_manual(values = c("Females" = "#FFB6C1", "Males" = "#87CEFA")) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "bottom",
+    axis.text.y = element_text(hjust = 0)
+  )
+```
