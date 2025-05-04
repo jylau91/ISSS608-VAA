@@ -81,13 +81,13 @@ This dataset provides a snapshot of the resident population in Singapore as of J
 Before we proceed with visualisation, a few inspection and validation of the dataset will be performed.
 
 ::: panel-tabset
-**Preview of Loaded dataset (Header)**
+## Preview of Loaded dataset(Header)
 
 ```{r, echo=FALSE}
 head(df)
 ```
 
-**Preview of Loaded dataset (Glimpse)**
+## Preview of Loaded dataset(Glimpse)
 
 ```{r, echo=FALSE}
 glimpse(df)
@@ -151,13 +151,13 @@ df <- read_csv("data/respopagesex2024.csv",
 ```
 
 ::: panel-tabset
-**Preview of Updated Dataset (Header)**
+## **Preview of Updated Dataset (Header)**
 
 ```{r, echo=FALSE}
 head(df)
 ```
 
-**Preview of Updated Dataset (Glimpse)**
+## **Preview of Updated Dataset (Glimpse)**
 
 ```{r, echo=FALSE}
 glimpse(df)
