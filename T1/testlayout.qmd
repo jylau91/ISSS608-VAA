@@ -1,0 +1,66 @@
+---
+title: "Take Home Exercise 1"
+author: "Lau Jia Yi"
+date: 3 May 2024
+date-modified: "last-modified"
+format:
+  html:
+    page-layout: full
+    width: "100%"
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Singapore in 2024: A Visual Guide to our Population Landscape.
+
+## 1.0 Introduction
+
+Singapore’s population structure reveals a dynamic interplay between urban development, ageing, and youth distribution. Let's explore the demographic breakdown of 2024 through interactive charts.
+
+------------------------------------------------------------------------
+
+## 2.0 Loading R Packages and Dataset
+
+### 2.1 Libraries Required
+
+The following R packages were used via `pacman::p_load()` to support data wrangling, visualization, and mapping for Singapore’s 2024 population data.
+
+| Package | Description | Official Link |
+|----|----|----|
+| **`tidyverse`** | A collection of R packages (including `ggplot2`, `dplyr`, `readr`, etc.) for data manipulation, exploration, and visualization. It forms the foundation of modern R workflows. | [tidyverse.org](https://www.tidyverse.org/) |
+| **`ggthemes`** | Provides additional themes, color palettes, and formatting options for `ggplot2` charts, such as Economist, Wall Street Journal, and Tufte styles. | CRAN – ggthemes |
+| **`gghighlight`** | Simplifies highlighting specific data in `ggplot2` visualizations without manual filtering. Great for emphasizing trends. | [GitHub – gghighlight](https://github.com/yutannihilation/gghighlight) |
+| **`patchwork`** | Enables easy composition of multiple `ggplot2` plots into complex layouts. Very useful for dashboards or comparative plots. | patchwork.data-imaginist.com |
+| **`sf`** | Provides tools for handling and analyzing geospatial vector data using a `data.frame`-like structure. Compatible with the `tidyverse`. | R-Spatial – sf |
+| **`tmap`** | A flexible mapping package for creating static and interactive thematic maps from spatial data, built to work well with `sf`. | r-tmap.github.io |
+
+```{r}
+pacman::p_load(tidyverse, ggthemes, gghighlight, ggrepel, patchwork,  sf, tmap, knitr, scales, colorspaces, ggh4x, RColorBrewer, ggdist)
+```
+
+### 2.1 Loading the dataset
+
+The dataset used is "Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex, June 2024", it is shared by the Department of Statistics, Singapore (DOS).
+
+We begin by loading the required libraries and reading the dataset using `readr::read_csv()` from the `tidyverse` collection:
+
+```{r}
+df <- read_csv("data/respopagesex2024.csv")
+```
+
+This dataset provides a snapshot of the resident population in Singapore as of June 2024, broken down by planning areas, subzones, age, and sex.
+
+#### **2.1.1 Column Descriptions**
+
+| Column | Description                                        |
+|--------|----------------------------------------------------|
+| `PA`   | Planning Area – As defined by URA Master Plan 2019 |
+| `SZ`   | Subzone – Subdivision within a planning area       |
+| `Age`  | Single Year of Age – From 0 to 100+                |
+| `Sex`  | Sex – "Males" or "Females"                         |
+| `Pop`  | Resident Count – Rounded to the nearest 10         |
+| `Time` | Reference Period                                   |

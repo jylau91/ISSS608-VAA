@@ -3,7 +3,10 @@ title: "Take Home Exercise 1"
 author: "Lau Jia Yi"
 date: 3 May 2024
 date-modified: "last-modified"
-format: html
+format:
+  html:
+    page-layout: full
+    width: "100%"
 editor: visual
 execute:
   eval: true
@@ -158,11 +161,14 @@ glimpse(df)
 
 ### 3.1 Population Pyramid
 
-```{r}
-# Find the maximum age
+```{r, fig.height = 7, fig.width = 12}
+# === STEP 1: Load Required Libraries ===
+pacman::p_load(tidyverse)
+
+# === STEP 2: Find the Maximum Age ===
 max_age <- max(df$Age_Num, na.rm = TRUE)
 
-# Prepare the data
+# === STEP 3: Prepare the Data ===
 plot_df <- df %>%
   mutate(
     AgeGroup = cut(
@@ -187,16 +193,14 @@ plot_df <- df %>%
     PopulationAbs = abs(Population)
   )
 
-# Plot
+# === STEP 4: Plot ===
 ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
   geom_bar(stat = "identity", width = 0.90, color = "black") +
-  geom_text_repel(
+  geom_text(
     aes(label = format(PopulationAbs, big.mark = ",")),
-    size = 3,
-    direction = "y",
-    nudge_y = 15000 * sign(plot_df$Population),
-    hjust = 0.5,
-    segment.color = NA,
+    size = 4.5,
+    color = "black",
+    hjust = ifelse(plot_df$Sex == "Males", -0.05, 1.05),
     show.legend = FALSE
   ) +
   coord_flip() +
@@ -223,20 +227,24 @@ ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
     panel.grid.minor.x = element_line(color = "grey85", size = 0.3)
   )
 ```
+::: {.callout-important appearance="minimal"}
+## Insights
+:::
 
-## 3.x Population Density - Overall and by Region
+## 3.2 Population Density by Region
 
-```{r, fig.height = 25, fig.width = 16}
-# === STEP 1: OVERALL PLOT ===
+```{r, fig.height = 10, fig.width = 16}
+# === STEP 1: Load Required Libraries ===
+pacman::p_load(tidyverse, ggrepel, RColorBrewer)
 
-# Prepare overall dataset
+# === STEP 2: Prepare Overall Population-weighted Data ===
 overall_df <- df %>%
   filter(!is.na(Age_Num)) %>%
   group_by(Region, Age_Num) %>%
   summarise(Population = sum(Population), .groups = "drop") %>%
   uncount(weights = Population)
 
-# Compute peak by Region
+# === STEP 3: Compute Peak Age by Region ===
 overall_peaks <- overall_df %>%
   group_by(Region) %>%
   summarise(
@@ -246,14 +254,14 @@ overall_peaks <- overall_df %>%
   rowwise() %>%
   mutate(
     peak_x = d$x[which.max(d$y)],
-    label = paste0(Region, ": Age ", round(peak_x))
+    label = paste0(Region, " - Peak Age: ", round(peak_x))
   ) %>%
   ungroup()
 
-# Combine labels
+# === STEP 4: Combine Labels for Annotation ===
 overall_annotation <- paste(overall_peaks$label, collapse = "\n")
 
-# Overall plot
+# === STEP 5: Create Overall Density Plot ===
 overall_plot <- ggplot(overall_df, aes(x = Age_Num, fill = Region)) +
   geom_density(alpha = 0.6, color = "black", linewidth = 0.7) +
   annotate("text", x = 5, y = Inf, vjust = 1.2,
@@ -267,107 +275,20 @@ overall_plot <- ggplot(overall_df, aes(x = Age_Num, fill = Region)) +
   ) +
   theme_minimal() +
   theme(
-    plot.title = element_text(face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(hjust = 0.5),
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+    plot.subtitle = element_text(hjust = 0.5, size = 16),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x  = element_text(size = 14),
+    axis.text.y  = element_text(size = 14),
     panel.border = element_rect(color = "grey50", fill = NA),
     legend.position = "right"
   )
 
-# === STEP 2: REGION FUNCTION ===
-
-compute_top3_peaks <- function(region_df) {
-  region_df %>%
-    group_by(Planning_Area) %>%
-    summarise(d = list(density(Age_Num)), .groups = "drop") %>%
-    rowwise() %>%
-    mutate(
-      peak_x = d$x[which.max(d$y)],
-      peak_y = max(d$y)
-    ) %>%
-    ungroup() %>%
-    slice_max(order_by = peak_y, n = 3) %>%
-    mutate(label = Planning_Area) %>%
-    select(Planning_Area, peak_x, peak_y, label)
-}
-
-make_region_plot <- function(region_name, palette_name = "Set2") {
-  region_df <- df %>%
-    filter(Region == region_name, !is.na(Age_Num)) %>%
-    group_by(Planning_Area, Age_Num) %>%
-    summarise(Population = sum(Population), .groups = "drop") %>%
-    uncount(weights = Population) %>%
-    mutate(Planning_Area = factor(Planning_Area))
-
-  # Colors
-  n_colors <- length(levels(region_df$Planning_Area))
-  base_colors <- if (n_colors <= 8) {
-    brewer.pal(8, palette_name)[1:n_colors]
-  } else {
-    colorRampPalette(brewer.pal(8, palette_name))(n_colors)
-  }
-  names(base_colors) <- levels(region_df$Planning_Area)
-
-  # Top 3 peak labels
-  peak_labels <- compute_top3_peaks(region_df)
-
-  ggplot(region_df, aes(x = Age_Num, fill = Planning_Area, color = Planning_Area)) +
-    geom_density(alpha = 0.5, linewidth = 0.7) +
-    ggrepel::geom_label_repel(
-      data = peak_labels,
-      aes(x = peak_x, y = peak_y, label = label, fill = Planning_Area),
-      color = "black", size = 3,
-      box.padding = 0.3, segment.color = "grey50", show.legend = FALSE
-    ) +
-    scale_fill_manual(values = base_colors, guide = guide_legend(override.aes = list(alpha = 1))) +
-    scale_color_manual(values = base_colors, guide = "none") +
-    scale_x_continuous(breaks = seq(0, 90, 10)) +
-    labs(
-      title = paste("Age Distribution –", region_name),
-      x = "Age", y = "Relative Density", fill = "Planning Area"
-    ) +
-    theme_minimal() +
-    theme(
-      plot.title = element_text(face = "bold", hjust = 0.5),
-      panel.border = element_rect(color = "grey50", fill = NA),
-      legend.position = "right"
-    )
-}
-
-# === STEP 3: Region Plots ===
-
-central_plot     <- make_region_plot("Central", "Set2")
-east_plot        <- make_region_plot("East", "Pastel1")
-north_plot       <- make_region_plot("North", "Accent")
-north_east_plot  <- make_region_plot("North-East", "Dark2")
-west_plot        <- make_region_plot("West", "Set3")
-
-# === STEP 4: Assemble Layout ===
-
-final_plot <- 
-  overall_plot /
-  (central_plot | east_plot) /
-  (north_plot | north_east_plot) /
-  (west_plot + patchwork::plot_spacer()) +
-  plot_layout(heights = c(1, 1, 1, 1)) +
-  plot_annotation(
-    title = "Age Distribution (2024): Overall and by Region",
-    subtitle = "Top: Overall with regional overlay | Below: Each region shows its planning areas (Top 3 labelled)\nY-axis scales independently per chart",
-    theme = theme(
-      plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-      plot.subtitle = element_text(size = 11, hjust = 0.5)
-    )
-  )
-
-# === STEP 5: Render ===
-final_plot
+# === STEP 6: Render ===
+overall_plot
 
 ```
-
-::: {.callout-caution appearance="minimal"}
-## Y-Axes are not unified across the charts
-
-Y-Axes are not unified across the charts to maintain relative comparison of regions and planning areas within a chart, please do not compare across charts. The intent of individual facets are to provide more context within each region.
-:::
 
 ::: {.callout-important appearance="minimal"}
 ## Insights
@@ -375,90 +296,8 @@ Y-Axes are not unified across the charts to maintain relative comparison of regi
 
 ## 3.3
 
-```{r, fig.height = 25, fig.width = 25}
+```{r, fig.height = 50, fig.width = 25}
 
-# === STEP 1: Prepare Population-weighted Data ===
-violin_df <- df %>%
-  filter(!is.na(Region), !is.na(Age_Num)) %>%
-  uncount(weights = Population) %>%
-  mutate(Planning_Area = factor(Planning_Area))
-
-# === STEP 2: Overall Violin + Boxplot ===
-overall_violin <- ggplot(violin_df, aes(x = Region, y = Age_Num, fill = Region)) +
-  geom_violin(trim = FALSE, scale = "area", color = "black", alpha = 0.6) +
-  geom_boxplot(width = 0.15, outlier.shape = NA, alpha = 0.8) +
-  scale_fill_brewer(palette = "Set2") +
-  labs(
-    title = "Violin + Boxplot – Age Distribution (2024): Overall",
-    subtitle = "Population-weighted by Region",
-    x = "Region", y = "Age", fill = "Region"
-  ) +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(hjust = 0.5),
-    panel.border = element_rect(color = "grey50", fill = NA),
-    legend.position = "none"
-  )
-
-# === STEP 3: Region Function – Violin + Boxplot ===
-make_violin_region <- function(region_name, palette_name = "Set2") {
-  region_df <- violin_df %>%
-    filter(Region == region_name)
-
-  n_colors <- length(levels(region_df$Planning_Area))
-  colors <- if (n_colors <= 8) {
-    brewer.pal(8, palette_name)[1:n_colors]
-  } else {
-    colorRampPalette(brewer.pal(8, palette_name))(n_colors)
-  }
-  names(colors) <- levels(region_df$Planning_Area)
-
-  ggplot(region_df, aes(x = Planning_Area, y = Age_Num, fill = Planning_Area)) +
-    geom_violin(trim = FALSE, scale = "area", color = "black", alpha = 0.5) +
-    geom_boxplot(width = 0.15, outlier.shape = NA, alpha = 0.8) +
-    scale_fill_manual(values = colors) +
-    labs(
-      title = paste("Violin + Boxplot –", region_name),
-      x = "Planning Area", y = "Age", fill = "Planning Area"
-    ) +
-    theme_minimal() +
-    theme(
-      plot.title = element_text(face = "bold", hjust = 0.5),
-      axis.text.x = element_text(angle = 90, hjust = 1),
-      panel.border = element_rect(color = "grey50", fill = NA),
-      legend.position = "none"
-    )
-}
-
-# === STEP 4: Region Plots ===
-central_violin     <- make_violin_region("Central", "Set2")
-east_violin        <- make_violin_region("East", "Pastel1")
-north_violin       <- make_violin_region("North", "Accent")
-north_east_violin  <- make_violin_region("North-East", "Dark2")
-west_violin        <- make_violin_region("West", "Set3")
-
-# === STEP 5: Layout ===
-violin_boxplot_grid <- 
-  overall_violin /
-  (central_violin | east_violin) /
-  (north_violin | north_east_violin) /
-  (west_violin + patchwork::plot_spacer()) +
-  plot_layout(heights = c(1, 1, 1, 1)) +
-  plot_annotation(
-    title = "Violin + Boxplot of Age Distribution (2024)",
-    subtitle = "Top: Overall by Region | Below: By Planning Area in each Region (Population-weighted)",
-    theme = theme(
-      plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-      plot.subtitle = element_text(size = 11, hjust = 0.5)
-    )
-  )
-
-# === STEP 6: Render ===
-violin_boxplot_grid
-```
-
-```{r, fig.height = 25, fig.width = 25}
 # === STEP 1: Load Required Libraries ===
 pacman::p_load(tidyverse, patchwork, ggrepel, RColorBrewer)
 
@@ -485,33 +324,7 @@ get_median_labels <- function(data, group_col) {
     mutate(label = round(median_age, 1))
 }
 
-# === STEP 5: Overall Violin + Boxplot ===
-region_medians <- get_median_labels(violin_df, "Region")
-
-overall_violin <- ggplot(violin_df, aes(x = Region, y = Age_Num, fill = Region)) +
-  geom_violin(trim = FALSE, scale = "area", color = "black", alpha = 0.6) +
-  geom_boxplot(width = 0.15, outlier.shape = NA, alpha = 0.85, color = "black") +
-  geom_text(
-    data = region_medians,
-    aes(x = Region, y = median_age, label = label),
-    inherit.aes = FALSE,
-    size = 4, fontface = "italic", vjust = -0.8
-  ) +
-  scale_fill_manual(values = region_base_colors) +
-  labs(
-    title = "Violin + Boxplot – Age Distribution (2024): Overall",
-    subtitle = "Population-weighted by Region (Median age labeled)",
-    x = "Region", y = "Age", fill = "Region"
-  ) +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(hjust = 0.5),
-    panel.border = element_rect(color = "grey50", fill = NA),
-    legend.position = "none"
-  )
-
-# === STEP 6: Region Function – Violin + Boxplot by Planning Area ===
+# === STEP 5: Region Function – Violin + Boxplot by Planning Area ===
 make_violin_region <- function(region_name, base_color) {
   region_df <- violin_df %>% filter(Region == region_name)
 
@@ -528,55 +341,68 @@ make_violin_region <- function(region_name, base_color) {
   # Reverse gradient (darkest color left)
   n_colors <- length(levels(region_df$Planning_Area))
   color_shades <- colorRampPalette(c(base_color, "white"))(n_colors)
-  color_shades <- rev(color_shades)  # Darkest on the left
   names(color_shades) <- levels(region_df$Planning_Area)
 
   ggplot(region_df, aes(x = Planning_Area, y = Age_Num, fill = Planning_Area)) +
     geom_violin(trim = FALSE, scale = "area", color = "black", alpha = 0.5) +
     geom_boxplot(width = 0.15, outlier.shape = NA, alpha = 0.8, color = "black") +
-    geom_text(
+    ggrepel::geom_text_repel(
       data = pa_medians,
       aes(x = Planning_Area, y = median_age, label = label),
-      inherit.aes = FALSE, size = 3.5, vjust = -0.8, fontface = "italic"
+      inherit.aes = FALSE,
+      size = 3.5, fontface = "italic",
+      max.overlaps = Inf,
+      min.segment.length = 0,
+      nudge_y = 0.5
     ) +
     scale_fill_manual(values = color_shades) +
     labs(
-      title = paste("Violin + Boxplot –", region_name),
-      x = "Planning Area", y = "Age", fill = "Planning Area"
+      title = paste("Age Distribution by Planning Area: ", region_name),
+      x = NULL,
+      y ="Age"
     ) +
     theme_minimal() +
     theme(
-      plot.title = element_text(face = "bold", hjust = 0.5),
-      axis.text.x = element_text(angle = 90, hjust = 1, size = 7),
+      plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+      axis.title.y = element_text(size = 16),
+      axis.text.x  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size = 14),
+      axis.text.y  = element_text(size = 14),
       panel.border = element_rect(color = "grey50", fill = NA),
       legend.position = "none"
     )
 }
 
-# === STEP 7: Region Violin Plots ===
+# === STEP 6: Region Violin Plots ===
 central_violin     <- make_violin_region("Central", region_base_colors["Central"])
 east_violin        <- make_violin_region("East", region_base_colors["East"])
 north_violin       <- make_violin_region("North", region_base_colors["North"])
 north_east_violin  <- make_violin_region("North-East", region_base_colors["North-East"])
 west_violin        <- make_violin_region("West", region_base_colors["West"])
 
-# === STEP 8: Assemble Layout ===
+# === STEP 7: Assemble Vertical Layout ===
 violin_boxplot_grid <- 
-  overall_violin /
-  (central_violin | east_violin) /
-  (north_violin | north_east_violin) /
-  (west_violin + patchwork::plot_spacer()) +
-  plot_layout(heights = c(1.2, 1, 1, 1)) +
+  central_violin /
+  east_violin /
+  north_violin /
+  north_east_violin /
+  west_violin +
+  plot_layout(ncol = 1) +
   plot_annotation(
     title = "Violin + Boxplot of Age Distribution (2024)",
-    subtitle = "Top: Overall by Region | Below: Planning Areas sorted by Median Age (Descending)\nColor fades left to right by age rank",
+    subtitle = "Regional breakdown by Planning Areas sorted by Median Age (Descending)\nColor fades left to right by age rank",
     theme = theme(
       plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
       plot.subtitle = element_text(size = 11, hjust = 0.5)
     )
   )
 
-# === STEP 9: Render ===
+# === STEP 8: Render ===
 violin_boxplot_grid
 
+
 ```
+## My Chart Output
+![](takehome_ex01_files/figure-html/unnamed-chunk-10-1.png){.lightbox width="100%"}
+
+
+
