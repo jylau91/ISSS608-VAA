@@ -299,7 +299,7 @@ overall_plot
 
 ## 3.3 Violin and Boxplot - Age Distribution by Planning Area per Region
 
-```{r, fig.height = 50, fig.width = 12, fig.show='hide'}
+```{r, fig.height = 50, fig.width = 20, fig.show='hide'}
 
 # === STEP 1: Load Required Libraries ===
 pacman::p_load(tidyverse, patchwork, ggrepel, RColorBrewer)
