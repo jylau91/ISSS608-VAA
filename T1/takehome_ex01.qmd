@@ -20,7 +20,7 @@ execute:
 
 ## 1.0 Introduction
 
-Singapore’s population structure reveals a dynamic interplay between urban development, ageing, and youth distribution. Let's explore the demographic breakdown of 2024 through interactive charts.
+Singapore’s population structure reveals a dynamic interplay between urban development, ageing, and youth distribution. Let's explore the demographic breakdown of through ggplot2 charts.
 
 ------------------------------------------------------------------------
 
@@ -28,19 +28,23 @@ Singapore’s population structure reveals a dynamic interplay between urban dev
 
 ### 2.1 Libraries Required
 
-The following R packages were used via `pacman::p_load()` to support data wrangling, visualization, and mapping for Singapore’s 2024 population data.
+The following R packages were used via `pacman::p_load()` to support data wrangling, visualization, and mapping for the population dataset.
 
 | Package | Description | Official Link |
 |------------------------|------------------------|------------------------|
 | **`tidyverse`** | A collection of R packages (including `ggplot2`, `dplyr`, `readr`, etc.) for data manipulation, exploration, and visualization. It forms the foundation of modern R workflows. | [tidyverse.org](https://www.tidyverse.org/) |
-| **`ggthemes`** | Provides additional themes, color palettes, and formatting options for `ggplot2` charts, such as Economist, Wall Street Journal, and Tufte styles. | CRAN – ggthemes |
-| **`gghighlight`** | Simplifies highlighting specific data in `ggplot2` visualizations without manual filtering. Great for emphasizing trends. | [GitHub – gghighlight](https://github.com/yutannihilation/gghighlight) |
-| **`patchwork`** | Enables easy composition of multiple `ggplot2` plots into complex layouts. Very useful for dashboards or comparative plots. | patchwork.data-imaginist.com |
-| **`sf`** | Provides tools for handling and analyzing geospatial vector data using a `data.frame`-like structure. Compatible with the `tidyverse`. | R-Spatial – sf |
-| **`tmap`** | A flexible mapping package for creating static and interactive thematic maps from spatial data, built to work well with `sf`. | r-tmap.github.io |
+| **`ggthemes`** | Provides additional themes, color palettes, and formatting options for `ggplot2` charts. | [CRAN – ggthemes](https://cran.r-project.org/package=ggthemes) |
+| **`patchwork`** | Enables easy composition of multiple `ggplot2` plots into complex layouts. | [patchwork.data-imaginist.com](https://patchwork.data-imaginist.com) |
+| **`ggrepel`** | Automatically adjusts text labels in ggplots to reduce overlap and improve clarity. | [CRAN – ggrepel](https://cran.r-project.org/package=ggrepel) |
+| **`RColorBrewer`** | Provides color palettes for visually appealing plots, useful for categorical coloring. | [CRAN – RColorBrewer](https://cran.r-project.org/package=RColorBrewer) |
+| **`scales`** | Provides formatting functions for axis labels, colors, etc., including comma separators and percentages. | [CRAN – scales](https://cran.r-project.org/package=scales) |
+| **`colorspaces`** | Offers perceptually uniform color palettes and tools for color manipulation, useful for accessible and professional visualizations. | [colorspace on CRAN](https://cran.r-project.org/package=colorspace) |
+| **`gghighlight`** | Simplifies the process of highlighting key data series or subsets in `ggplot2`, especially useful for comparative visuals. | [GitHub – gghighlight](https://github.com/yutannihilation/gghighlight) |
+| **`ggh4x`** | Adds extensions to `ggplot2`, such as nested facets, flexible axis ticks, and advanced guides. Useful for advanced faceting or layout control. | [GitHub – ggh4x](https://github.com/teunbrand/ggh4x) |
+| **`sf`** | Tools for working with geospatial vector data in a tidy format. Required for spatial operations. | [R-Spatial – sf](https://r-spatial.github.io/sf/) |
 
 ```{r}
-pacman::p_load(tidyverse, ggthemes, gghighlight, ggrepel, patchwork,  sf, tmap, knitr, scales, colorspaces, ggh4x, RColorBrewer, ggdist)
+pacman::p_load(tidyverse, ggthemes, gghighlight, ggrepel, patchwork, knitr, scales, colorspaces, ggh4x, RColorBrewer, ggdist)
 ```
 
 ### 2.1 Loading the dataset
@@ -68,22 +72,22 @@ This dataset provides a snapshot of the resident population in Singapore as of J
 
 #### 2.1.2 Notes from Source
 
--   Residents who have been away from Singapore for more than **12 continuous months** are excluded.
--   All population counts are **rounded to the nearest 10**, which may result in totals that do not sum exactly.
--   The reference period for this dataset is **June 2024**.
+-   Residents who have been away from Singapore for more than 12 continuous months are excluded.
+-   All population counts are rounded to the nearest 10, which may result in totals that do not sum exactly.
+-   The reference period for this dataset is June 2024.
 
 #### 2.1.3 Understanding the data
 
 Before we proceed with visualisation, a few inspection and validation of the dataset will be performed.
 
 ::: panel-tabset
-## Preview of Loaded dataset (Header)
+**Preview of Loaded dataset (Header)**
 
 ```{r, echo=FALSE}
 head(df)
 ```
 
-## Preview of Loaded dataset (Glimpse)
+**Preview of Loaded dataset (Glimpse)**
 
 ```{r, echo=FALSE}
 glimpse(df)
@@ -93,6 +97,8 @@ glimpse(df)
 There are 60,424 rows noted with the 6 columns as stated in the source notes stated in earlier section 2.1.
 
 However the column Age has been loaded as a character type instead of double (numeric) variable as it includes a categorical label for the age group 90+ as "90_and_Over". This could be handled by converting this label into "90"together with an additional categorical label for this project.
+
+Note: AgeGroup was eventually not used in the below visualisations and is only remained for future use cases.
 
 ```{r}
 df <- read_csv("data/respopagesex2024.csv",
@@ -145,13 +151,13 @@ df <- read_csv("data/respopagesex2024.csv",
 ```
 
 ::: panel-tabset
-## Preview of Updated Dataset (Header)
+**Preview of Updated Dataset (Header)**
 
 ```{r, echo=FALSE}
 head(df)
 ```
 
-## Preview of Updated Dataset (Glimpse)
+**Preview of Updated Dataset (Glimpse)**
 
 ```{r, echo=FALSE}
 glimpse(df)
@@ -160,16 +166,15 @@ glimpse(df)
 
 ## 3.0 Visualisations
 
-### 3.1 Population Pyramid
+### 3.1 Age Distribution - Age and Gender Distribution
+
+To begin our exploration of Singapore’s demographic structure, we start with a population pyramid, a classic visualization that provides a high-level summary of age and gender distribution. This visualization helps establish an overview of the national population balance across life stages and reveals immediate trends—such as ageing, fertility shifts, and gender imbalances at older ages. It serves as a foundational snapshot to ground our subsequent spatial exploration.
 
 ```{r, fig.height = 7, fig.width = 12}
-# === STEP 1: Load Required Libraries ===
-pacman::p_load(tidyverse)
-
-# === STEP 2: Find the Maximum Age ===
+# === STEP 1: Find the Maximum Age ===
 max_age <- max(df$Age_Num, na.rm = TRUE)
 
-# === STEP 3: Prepare the Data ===
+# === STEP 2: Prepare the Data ===
 plot_df <- df %>%
   mutate(
     AgeGroup = cut(
@@ -194,7 +199,7 @@ plot_df <- df %>%
     PopulationAbs = abs(Population)
   )
 
-# === STEP 4: Plot ===
+# === STEP 3: Plot ===
 ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
   geom_bar(stat = "identity", width = 0.90, color = "black") +
   geom_text(
@@ -228,24 +233,28 @@ ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
     panel.grid.minor.x = element_line(color = "grey85", size = 0.3)
   )
 ```
-::: {.callout-important appearance="minimal"}
-## Insights
+
+::: {.callout-note appearance="minimal"}
+**Insights**
+
+-   Singapore’s population pyramid shows a shrinking base and bulging middle, reflecting a rapidly aging society and declining birth rates.
+-   Adults aged 30–54 form the bulk of the population—critical for workforce planning and economic policy.
+-   A gender disparity emerges past age 70, where females significantly outnumber males, consistent with global longevity trends.
 :::
 
-## 3.2 Age Distribution by Region
+### 3.2 Age Distribution by Region
+
+While the population pyramid offers a valuable national overview, it does not reveal where these demographic segments are concentrated within Singapore. To explore this spatial dimension, we now turn to age distribution density plots by region. These plots enable us to compare the relative age profiles across Singapore’s five regions, highlighting differences in median age, spread, and peak density. This step is critical in understanding regional population characteristics that can inform location-specific planning and policy decisions.
 
 ```{r, fig.height = 10, fig.width = 16}
-# === STEP 1: Load Required Libraries ===
-pacman::p_load(tidyverse, ggrepel, RColorBrewer)
-
-# === STEP 2: Prepare Overall Population-weighted Data ===
+# === STEP 1: Prepare Overall Population-weighted Data ===
 overall_df <- df %>%
   filter(!is.na(Age_Num)) %>%
   group_by(Region, Age_Num) %>%
   summarise(Population = sum(Population), .groups = "drop") %>%
   uncount(weights = Population)
 
-# === STEP 3: Compute Peak Age by Region ===
+# === STEP 2: Compute Peak Age by Region ===
 overall_peaks <- overall_df %>%
   group_by(Region) %>%
   summarise(
@@ -259,10 +268,10 @@ overall_peaks <- overall_df %>%
   ) %>%
   ungroup()
 
-# === STEP 4: Combine Labels for Annotation ===
+# === STEP 3: Combine Labels for Annotation ===
 overall_annotation <- paste(overall_peaks$label, collapse = "\n")
 
-# === STEP 5: Create Overall Density Plot ===
+# === STEP 4: Create Overall Density Plot ===
 overall_plot <- ggplot(overall_df, aes(x = Age_Num, fill = Region)) +
   geom_density(alpha = 0.6, color = "black", linewidth = 0.7) +
   annotate("text", x = 5, y = Inf, vjust = 1.2,
@@ -286,31 +295,34 @@ overall_plot <- ggplot(overall_df, aes(x = Age_Num, fill = Region)) +
     legend.position = "right"
   )
 
-# === STEP 6: Render ===
+# === STEP 5: Render ===
 overall_plot
 
 ```
 
-::: {.callout-important appearance="minimal"}
-## Insights
+::: {.callout-note appearance="minimal"}
+**Insights**
+
+-   The North-East region has the highest peak median age (42), indicating a more mature residential population.
+-   East and Central regions peak around age 32–35, possibly due to a higher concentration of young professionals and families.
+-   Uniform density across regions from age 25–45 suggests consistent workforce presence across Singapore, but divergence after age 50 reflects varying residential preferences among older adults.
 :::
 
 :::
 
-## 3.3 Violin and Boxplot - Age Distribution by Planning Area per Region
+### 3.3 Violin and Boxplot - Age Distribution by Planning Area per Region
 
-```{r, fig.height = 50, fig.width = 20, fig.show='hide'}
+Having observed regional patterns, we now dive deeper into planning areas within each region to uncover more localized demographic variation. Using a combination of violin and boxplots, this section visualizes the distribution and central tendency of age at the town level. This finer level of granularity helps uncover subtle but important intra-regional differences—such as the presence of younger families in emerging towns, or older populations in established estates—which are essential for targeted interventions and infrastructure planning.
 
-# === STEP 1: Load Required Libraries ===
-pacman::p_load(tidyverse, patchwork, ggrepel, RColorBrewer)
+```{r, fig.height = 50, fig.width = 22, fig.show='hide', collapse=TRUE}
 
-# === STEP 2: Prepare Population-weighted Data ===
+# === STEP 1: Prepare Population-weighted Data ===
 violin_df <- df %>%
   filter(!is.na(Region), !is.na(Age_Num)) %>%
   uncount(weights = Population) %>%
   mutate(Planning_Area = factor(Planning_Area))
 
-# === STEP 3: Define Region Base Colors ===
+# === STEP 2: Define Region Base Colors ===
 region_base_colors <- c(
   "Central"     = "#66C2A5",  # teal
   "East"        = "#FC8D62",  # orange
@@ -319,7 +331,7 @@ region_base_colors <- c(
   "West"        = "#A6D854"   # green
 )
 
-# === STEP 4: Compute Median Age Helper ===
+# === STEP 3: Compute Median Age Helper ===
 get_median_labels <- function(data, group_col) {
   data %>%
     group_by(across(all_of(group_col))) %>%
@@ -327,7 +339,7 @@ get_median_labels <- function(data, group_col) {
     mutate(label = round(median_age, 1))
 }
 
-# === STEP 5: Region Function – Violin + Boxplot by Planning Area ===
+# === STEP 4: Region Function – Violin + Boxplot by Planning Area ===
 make_violin_region <- function(region_name, base_color) {
   region_df <- violin_df %>% filter(Region == region_name)
 
@@ -375,14 +387,14 @@ make_violin_region <- function(region_name, base_color) {
     )
 }
 
-# === STEP 6: Region Violin Plots ===
+# === STEP 5: Region Violin Plots ===
 central_violin     <- make_violin_region("Central", region_base_colors["Central"])
 east_violin        <- make_violin_region("East", region_base_colors["East"])
 north_violin       <- make_violin_region("North", region_base_colors["North"])
 north_east_violin  <- make_violin_region("North-East", region_base_colors["North-East"])
 west_violin        <- make_violin_region("West", region_base_colors["West"])
 
-# === STEP 7: Assemble Vertical Layout ===
+# === STEP 6: Assemble Vertical Layout ===
 violin_boxplot_grid <- 
   central_violin /
   east_violin /
@@ -399,12 +411,32 @@ violin_boxplot_grid <-
     )
   )
 
-# === STEP 8: Render ===
+# === STEP 7: Render ===
 violin_boxplot_grid
-
-
 ```
+
 ![](takehome_ex01_files/figure-html/unnamed-chunk-10-1.png){.lightbox width="100%"}
 
+::: {.callout-note appearance="minimal"}
+**Insights**
 
+-   Central: Areas like Outram, Bukit Merah, and Kallang show older median ages, consistent with mature estates and older housing stock.
+-   East: Tampines and Pasir Ris have younger populations, reinforcing their roles as newer, family-centric heartlands.
+-   North: Shows balanced distribution, but Sembawang and Yishun tilt younger, possibly due to recent BTO projects.
+-   North-East: Sengkang and Punggol are the youngest, affirming their status as emerging new towns with many young families.
+-   West: Jurong East/West exhibit moderate age profiles, while Tengah and Western Water Catchment skew youngest, reflecting ongoing development.
+:::
 
+## 4.0 Conclusion
+
+Singapore’s 2024 demographic landscape reveals critical shifts in its age structure. The population pyramid offers a clear macro-level view, showing a narrowing base of youth and an expanding older population—a hallmark of an aging society. This broad observation sets the stage for deeper investigation.
+
+To explore regional variations, we transitioned to density plots that highlight how age distribution differs across Singapore’s five regions. These plots uncovered distinct demographic peaks—for instance, younger population clusters in the North-East, and more mature age groups in Central and East regions.
+
+Building on this, we employed violin and boxplots to zoom into each region’s planning areas, allowing for a more granular understanding of intra-regional differences. This visual dissection surfaced insights like the relative youth of areas such as Sengkang and Punggol, contrasted with the aging profiles of mature estates like Queenstown and Bukit Merah.
+
+Together, these visualisations form a layered narrative—from national structure, to regional patterns, to local planning area details. They provide an insightful foundation for urban planners, policymakers, and social services to adapt strategies in line with Singapore’s evolving demographic realities.
+
+## 
+
+📌 The above code chunk and narratives were assisted by ChatGPT with numerous hours of prompting and checking the output.
