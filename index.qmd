@@ -10,7 +10,7 @@ format:
     page-layout: full
 ---
 
-![](images/ChatGPT%20Image%20Apr%2024,%202025,%2011_58_04%20PM.png)
+![](images/clipboard-706745006.png)
 
 ## 🎯 Why Visual Analytics?
 
