@@ -272,9 +272,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#population-pyramid" id="toc-population-pyramid" class="nav-link" data-scroll-target="#population-pyramid">3.1 Population Pyramid</a></li>
   </ul></li>
-  <li><a href="#population-density-by-region" id="toc-population-density-by-region" class="nav-link" data-scroll-target="#population-density-by-region">3.2 Population Density by Region</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">3.3</a></li>
-  <li><a href="#my-chart-output" id="toc-my-chart-output" class="nav-link" data-scroll-target="#my-chart-output">My Chart Output</a></li>
+  <li><a href="#age-distribution-by-region" id="toc-age-distribution-by-region" class="nav-link" data-scroll-target="#age-distribution-by-region">3.2 Age Distribution by Region</a></li>
+  <li><a href="#violin-and-boxplot---age-distribution-by-planning-area-per-region" id="toc-violin-and-boxplot---age-distribution-by-planning-area-per-region" class="nav-link" data-scroll-target="#violin-and-boxplot---age-distribution-by-planning-area-per-region">3.3 Violin and Boxplot - Age Distribution by Planning Area per Region</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -648,8 +647,8 @@ Insights
 </div>
 </section>
 </section>
-<section id="population-density-by-region" class="level2">
-<h2 class="anchored" data-anchor-id="population-density-by-region">3.2 Population Density by Region</h2>
+<section id="age-distribution-by-region" class="level2">
+<h2 class="anchored" data-anchor-id="age-distribution-by-region">3.2 Age Distribution by Region</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 1: Load Required Libraries ===</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, ggrepel, RColorBrewer)</span>
@@ -725,9 +724,10 @@ Insights
 
 </div>
 </div>
+<p>:::</p>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">3.3</h2>
+<section id="violin-and-boxplot---age-distribution-by-planning-area-per-region" class="level2">
+<h2 class="anchored" data-anchor-id="violin-and-boxplot---age-distribution-by-planning-area-per-region">3.3 Violin and Boxplot - Age Distribution by Planning Area per Region</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 1: Load Required Libraries ===</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, patchwork, ggrepel, RColorBrewer)</span>
@@ -829,17 +829,7 @@ Insights
 <span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 8: Render ===</span></span>
 <span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>violin_boxplot_grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="takehome_ex01_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="2400"></p>
-</figure>
 </div>
-</div>
-</div>
-</section>
-<section id="my-chart-output" class="level2">
-<h2 class="anchored" data-anchor-id="my-chart-output">My Chart Output</h2>
 <p><a href="takehome_ex01_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="takehome_ex01_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" style="width:100.0%"></a></p>
 
 
@@ -1268,7 +1258,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

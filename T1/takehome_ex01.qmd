@@ -7,6 +7,7 @@ format:
   html:
     page-layout: full
     width: "100%"
+    css: zoom.css
 editor: visual
 execute:
   eval: true
@@ -231,7 +232,7 @@ ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
 ## Insights
 :::
 
-## 3.2 Population Density by Region
+## 3.2 Age Distribution by Region
 
 ```{r, fig.height = 10, fig.width = 16}
 # === STEP 1: Load Required Libraries ===
@@ -294,9 +295,11 @@ overall_plot
 ## Insights
 :::
 
-## 3.3
+:::
 
-```{r, fig.height = 50, fig.width = 25}
+## 3.3 Violin and Boxplot - Age Distribution by Planning Area per Region
+
+```{r, fig.height = 50, fig.width = 12, fig.show='hide'}
 
 # === STEP 1: Load Required Libraries ===
 pacman::p_load(tidyverse, patchwork, ggrepel, RColorBrewer)
@@ -401,7 +404,6 @@ violin_boxplot_grid
 
 
 ```
-## My Chart Output
 ![](takehome_ex01_files/figure-html/unnamed-chunk-10-1.png){.lightbox width="100%"}
 
 
