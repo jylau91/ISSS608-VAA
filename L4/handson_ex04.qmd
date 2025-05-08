@@ -364,23 +364,26 @@ ggplot(exam,
 Including `calc_ecdf = TRUE` in `stat_density_ridges()` is important when you're working with discrete or binned data or when your dataset is small or skewed, because it ensures that the density estimate respects the actual distribution of your data by basing it on the empirical cumulative distribution function (ECDF).
 
 -   **Preserves data distribution accuracy**:
-    -    By default, `stat_density_ridges()` uses kernel density estimation (KDE), which **smooths** the distribution.
+    -   By default, `stat_density_ridges()` uses kernel density estimation (KDE), which **smooths** the distribution.
 
-    -    If your data is **not continuous** or has **spikes or gaps**, KDE might misrepresent it.
+    -   If your data is **not continuous** or has **spikes or gaps**, KDE might misrepresent it.
 
-    -    `calc_ecdf = TRUE` uses ECDF to **better capture irregularities** in real data (especially in test scores like English grades that often cluster at certain values).
--    **Reduces risk of artificial modes or tails**:
-    -    KDE may **create modes** (peaks) that don’t exist in your raw data.
+    -   `calc_ecdf = TRUE` uses ECDF to **better capture irregularities** in real data (especially in test scores like English grades that often cluster at certain values).
+-   **Reduces risk of artificial modes or tails**: - KDE may **create modes** (peaks) that don’t exist in your raw data.
 
-    -    ECDF-based density avoids this by anchoring the density more directly to actual data points.
+```         
+-    ECDF-based density avoids this by anchoring the density more directly to actual data points.
+```
 
 <!-- -->
 
--    **Improves reliability for smaller samples**:
+-   **Improves reliability for smaller samples**:
 
-    -    In small datasets, KDE often over-smooths.
+```         
+-    In small datasets, KDE often over-smooths.
 
-    -    ECDF helps retain the **discrete nature** and **true spread** of limited data.
+-    ECDF helps retain the **discrete nature** and **true spread** of limited data.
+```
 :::
 
 ### **9.3.4 Ridgeline plots with quantile lines**
@@ -532,8 +535,7 @@ In this hands-on exercise, you will gain hands-on experience on using:
 
 [**ggstatsplot**](https://indrajeetpatil.github.io/ggstatsplot/index.html) ![](https://r4va.netlify.app/chap10/img/image1.jpg){width="43"} is an extension of [**ggplot2**](https://ggplot2.tidyverse.org/) package for creating graphics with details from statistical tests included in the information-rich plots themselves.
 
-\- To provide alternative statistical inference methods by default.
-- To follow best practices for statistical reporting. For all statistical tests reported in the plots, the default template abides by the \[APA\](https://my.ilstu.edu/\~jhkahn/apastats.html) gold standard for statistical reporting. For example, here are results from a robust t-test:
+\- To provide alternative statistical inference methods by default. - To follow best practices for statistical reporting. For all statistical tests reported in the plots, the default template abides by the \[APA\](https://my.ilstu.edu/\~jhkahn/apastats.html) gold standard for statistical reporting. For example, here are results from a robust t-test:
 
 ![](images/clipboard-18459593.png)
 

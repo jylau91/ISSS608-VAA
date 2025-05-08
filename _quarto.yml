@@ -33,9 +33,9 @@ website:
             text: Hands-on Exercise 10
       - text: In-class Exercises
         menu:
-          - href: L2/inclass_ex02.html
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/In-ClassEx2/SuperStoreSalesandProfitReport
             text: In-class Exercise 2
-          - href: L3/inclass_ex03.html
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/In-Class_Ex03_17462578872460/SalesversusProfitDB
             text: In-class Exercise 3
           - href: L4/inclass_ex04.html
             text: In-class Exercise 4
