@@ -1,0 +1,109 @@
+---
+title: "Take Home Exercise 1 - Peer Learning"
+author: "Lau Jia Yi"
+date: 10 May 2024
+date-modified: "last-modified"
+format:
+  html:
+    page-layout: full
+    width: "100%"
+    css: zoom.css
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Take Home Exercise 1A - Peer Learning
+
+## 1.0 Introduction
+
+In continuation of our Take Home Exercise 1 performed earlier, we are required to critique on our peer's Take Home Exercise 1 to learn and improve on their visualisations performed.
+
+For this exercise we are critiquing the [visualisations](https://iss608-vaa.netlify.app/take-home_ex/take-home_ex01/take%20home%20exercise%201a) created by a fellow student [Enrico Sebastian](https://iss608-vaa.netlify.app/).
+
+## 2.0 Replicating of Package and Data Load performed by Peer
+
+### 2.1 Loading of Packages used by student
+
+```{r}
+pacman::p_load(tidyverse, readxl, 
+               janitor, lubridate, 
+               ggplot2, ggthemes, 
+               scales, ggridges, 
+               ggdist, patchwork)
+```
+
+### 2.2 Loading of Data used by student
+
+```{r}
+Resident_Data <- read.csv("data/respopagesexfa2024.csv")
+```
+
+Glimpse
+
+```{r}
+glimpse(Resident_Data)
+```
+
+::: callout-important
+The dataset here is noted to be wrong, but we will only correct this in section 4. The instructions specified for the dataset "Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex, June 2024". However the student here has used the dataset "Singapore Residents by Planning Area / Subzone, Age Group, Sex and Floor Area of Residence, June 2024"\
+\
+The differences in datasets are mainly:
+
+| Aspect | Incorrect Dataset (respopagesexfa2024.csv) | Correct Dataset (respopagesex2024.csv) |
+|------------------|---------------------------|----------------------------|
+| Age Variable | AG (Age Group) | Age |
+| Age Format | Categorical (e.g., '0_to_4', '5_to_9') | Continuous (e.g., '0', '1', ..., '90+') |
+| Granularity | Grouped in 5-year bins | Single-year until 90+ |
+| Extra Variables | Includes FA (Floor Area) | N/A |
+| Population Representation | Aggregated within age groups | Exact population by age |
+:::
+
+## 3.0 Critique of Visualisations
+
+### 3.1 Pyramid Bar chart based on Population Area
+
+```{r}
+pyramid_data <- aggregate(Pop ~ `AG` + Sex, data = Resident_Data, sum)
+
+age_order <- c("0_to_4", "5_to_9", "10_to_14", "15_to_19", "20_to_24", "25_to_29", 
+               "30_to_34", "35_to_39", "40_to_44", "45_to_49", "50_to_54", "55_to_59", 
+               "60_to_64", "65_to_69", "70_to_74", "75_to_79", "80_to_84", "85_to_89", 
+               "90_and_over")
+
+pyramid_data$AG <- factor(pyramid_data$AG, levels = age_order)
+
+pyramid_data$Pop[pyramid_data$Sex == "Males"] <- -pyramid_data$Pop[pyramid_data$Sex == "Males"]
+
+ggplot(data = pyramid_data, aes(x = AG, y = Pop, fill = Sex)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Population Pyramid (2024)", x = "Age Group", y = "Population") +
+  scale_y_continuous(labels = comma) +
+  scale_fill_manual(values = c("skyblue", "salmon")) + 
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 10))  
+```
+
+::: callout-note
+## Critique of student's visualisation #1
+
+Positive notes:
+
+1.  Classic pyramid chart with distinct representation of Females and Males by Age Group.
+
+2.  Age Groups are logically sorted from youngest to oldest, aligns with natural age progression.
+
+3.  Y Axis label and title is clear and interpretable.
+
+Improvement notes:
+
+1.  X-Axis label for Males is at a negative value (-100,000) which is hard to inteprete (i.e. counter intuitive). Title can clearly also describe Population Size as Population may represent score or size per area as the title suggests "Population Area".
+
+2.  Color Legend used to represent Female / Male is confusing as Males are conventially represented by Blue and Females Red/Pink. The legend label is also inverse of the chart representation as readers typically read from left to right, Males should be be presented first followed by Female.
+
+3.  No value labels and x-axis labels are represented too far aapart to tell the differences in values between Females and Males especially in age groups 30 to 64 as the bars on both sides are almost of equal length.
+:::

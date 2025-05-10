@@ -440,3 +440,40 @@ Together, these visualisations form a layered narrative—from national structur
 ## 
 
 📌 The above code chunk and narratives were assisted by ChatGPT with numerous hours of prompting and checking the output.
+
+## 5.0 Self Improvements to Take Home Ex01
+
+After Week 4, the introduction of ggridges extension on examination scores had led me to trying it out for my second visual presented in section 3.2.
+
+```{r}
+pacman::p_load(tidyverse, ggridges)
+```
+
+```{r, fig.height = 10, fig.width = 16}
+# === STEP 1: Prepare Population-weighted Data ===
+ridge_df <- df %>%
+  filter(!is.na(Region), !is.na(Age_Num)) %>%
+  group_by(Region, Age_Num) %>%
+  summarise(Population = sum(Population), .groups = "drop") %>%
+  uncount(weights = Population)
+
+# === STEP 2: Create Ridgeline Plot ===
+ggplot(ridge_df, aes(x = Age_Num, y = Region, fill = Region)) +
+  ggridges::geom_density_ridges(scale = 3, alpha = 0.6, color = "black", rel_min_height = 0.01) +
+  scale_x_continuous(breaks = seq(0, 90, 10)) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    title = "Ridgeline Plot: Age Distribution by Region (2024)",
+    subtitle = "Each ridge shows the relative age distribution of residents in a region",
+    x = "Age", y = "Region", fill = "Region"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+    plot.subtitle = element_text(hjust = 0.5, size = 14),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    axis.text = element_text(size = 12),
+    legend.position = "none"
+  )
+```
