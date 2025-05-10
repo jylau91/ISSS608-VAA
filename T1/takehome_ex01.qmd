@@ -477,3 +477,7 @@ ggplot(ridge_df, aes(x = Age_Num, y = Region, fill = Region)) +
     legend.position = "none"
   )
 ```
+
+::: callout-note
+This has significantly improved the separation of regions, allowing the reader to differentiate peaks of distribution per region.
+:::
