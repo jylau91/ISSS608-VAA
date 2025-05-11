@@ -97,13 +97,13 @@ Positive notes:
 
 2.  Age Groups are logically sorted from youngest to oldest, aligns with natural age progression.
 
-3.  Y Axis label and title is clear and interpretable.
+3.  Y Axis label and title is clear and interpret-able.
 
 Improvement notes:
 
-1.  X-Axis label for Males is at a negative value (-100,000) which is hard to inteprete (i.e. counter intuitive). Title can clearly also describe Population Size as Population may represent score or size per area as the title suggests "Population Area".
+1.  X-Axis label for Males is at a negative value (-100,000) which is hard to interprete (i.e. counter intuitive). Title can clearly also describe Population Size as Population may represent score or size per area as the title suggests "Population Area".
 
-2.  Color Legend used to represent Female / Male is confusing as Males are conventially represented by Blue and Females Red/Pink. The legend label is also inverse of the chart representation as readers typically read from left to right, Males should be be presented first followed by Female.
+2.  Color Legend used to represent Female / Male is confusing as Males are conventionally represented by Blue and Females Red/Pink. The legend label is also inverse of the chart representation as readers typically read from left to right, Males should be be presented first followed by Female.
 
 3.  No value labels and x-axis labels are represented too far apart (100,000 intervals) to tell the differences in values between Females and Males especially in age groups 30 to 64 as the bars on both sides are almost of equal length.
 
@@ -257,7 +257,7 @@ ggplot(plot_df, aes(x = AgeGroup, y = Population, fill = Sex)) +
 
 The improved population pyramid corrects visual errors from the previous version and enhances clarity with clear sex-based colors, labeled bars, and intuitive groupings. It reveals a well-defined working-age bulge, ongoing low birth rates, and gender imbalance in elderly cohorts — all of which are critical for long-term social policy and urban planning.
 
-### 1. 📈 **Largest Cohorts: Ages 30–49**
+### 1. **Largest Cohorts: Ages 30–49**
 
 -   The most populous bands are:
 
@@ -267,19 +267,19 @@ The improved population pyramid corrects visual errors from the previous version
 
 -    This reflects Singapore’s **core working-age population**, critical to economic productivity and tax base.
 
-### 2. 👶 **Declining Birth Trends**
+### 2. **Declining Birth Trends**
 
 -    The **0–4** group is one of the **smallest**, with 87,850 males and 83,550 females.
 
 -   Indicates **low fertility**, consistent with long-term demographic trends and policy concern.
 
-### 3. 👵 **Female Dominance in Older Ages**
+### 3. **Female Dominance in Older Ages**
 
 -    In age groups **65+**, **females consistently outnumber males** (e.g., 90+: 44,740 females vs 24,750 males).
 
 -    Reflects **higher female life expectancy**, important for healthcare and eldercare planning.
 
-### 4. 📉 **Gradual Inversion Begins at Age 55+**
+### 4. **Gradual Inversion Begins at Age 55+**
 
 -    The pyramid narrows beyond 55, showing **population aging**.
 
@@ -450,51 +450,51 @@ ggplot(boxplot_df_pa, aes(x = AgeGroup, y = Population, fill = AgeGroup)) +
 
 The improved chart transforms raw data into an insightful and reader-friendly demographic visualization, enabling planners and analysts to easily spot population peaks, dominant age groups, and anomalous planning areas. The original FA-based plot, by contrast, offers limited clarity and analytical value due to coarse banding, absent labeling, and flat styling.
 
-## 🔍 **Top-Level Insights**
+🔍 **Top-Level Insights**
 
-### 1. 📊 **Young Adults (25–34) Have the Highest Concentration**
+1\. **Young Adults (25–34) Have the Highest Concentration**
 
 -    The **30–34** age group has the **highest mean population** among all 5-year bands, marked by the "Highest mean" label.
 
 -    This suggests a demographic bulge of working-age adults settling in certain planning areas—likely due to employment opportunities, housing preferences, or family formation phase.
 
-### 2. 🧒 **Children and Teen Groups (0–19) Have Lower Populations**
+2\. **Children and Teen Groups (0–19) Have Lower Populations**
 
 -    Age groups from **0–4** to **15–19** have **lower medians (Q2)** and are **below the overall mean**.
 
 -   This may reflect Singapore’s low birth rate or population aging dynamics.
 
-### 3. 👵 **Elderly Population (75+) Shows Sparse but Notable Outliers**
+3\. **Elderly Population (75+) Shows Sparse but Notable Outliers**
 
 -    Median values drop sharply after **70–74**, showing a decreasing elderly concentration per PA.
 
 -    However, **Bedok** is labeled as an outlier in multiple senior age groups (75–79, 80–84, 90+), indicating a **high concentration of elderly residents** in that area.
 
-## 📌 **Outlier Insights**
+📌 **Outlier Insights**
 
-### 🔺 **Sengkang** (Age Group: 5–9)
+**Sengkang** (Age Group: 5–9)
 
 -    Marked as an outlier in the **5–9** age group, suggesting a **relatively younger, family-oriented population cluster** in Sengkang.
 
-### 🔺 **Bedok** (Ages: 75–90+)
+**Bedok** (Ages: 75–90+)
 
 -    Appears multiple times as an outlier across **three senior age brackets**, highlighting it as a **key aging community**.
 
 -    Urban planners and eldercare service providers may need to prioritize resource allocation here.
 
-## 📉 **Decline in Population Beyond Age 70**
+**Decline in Population Beyond Age 70**
 
 -    Population medians drop consistently after the **65–69** age group.
 
 -   This pattern aligns with natural mortality trends and indicates a potential **transition point** in population dependency dynamics.
 
-## 📎 **Statistical Markers Aid Interpretation**
+**Statistical Markers Aid Interpretation**
 
 -    The **overall mean** (\~6,000–7,000) acts as a baseline for comparison across age groups.
 
 -    **Median (Q2)** labels reinforce central tendency per age group and show where distributions are skewed.
 
-## 🧠 **Planning & Policy Implications**
+**Planning & Policy Implications**
 
 -    **Infrastructure needs** for the 30–44 age group (e.g., housing, childcare, transport) should remain a priority.
 
