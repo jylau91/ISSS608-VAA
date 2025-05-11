@@ -31,7 +31,7 @@ Singapore’s population structure reveals a dynamic interplay between urban dev
 The following R packages were used via `pacman::p_load()` to support data wrangling, visualization, and mapping for the population dataset.
 
 | Package | Description | Official Link |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **`tidyverse`** | A collection of R packages (including `ggplot2`, `dplyr`, `readr`, etc.) for data manipulation, exploration, and visualization. It forms the foundation of modern R workflows. | [tidyverse.org](https://www.tidyverse.org/) |
 | **`ggthemes`** | Provides additional themes, color palettes, and formatting options for `ggplot2` charts. | [CRAN – ggthemes](https://cran.r-project.org/package=ggthemes) |
 | **`patchwork`** | Enables easy composition of multiple `ggplot2` plots into complex layouts. | [patchwork.data-imaginist.com](https://patchwork.data-imaginist.com) |

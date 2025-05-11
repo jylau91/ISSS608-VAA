@@ -9,7 +9,7 @@
 <meta name="author" content="Lau Jia Yi">
 <meta name="dcterms.date" content="2024-05-10">
 
-<title>Take Home Exercise 1 - Peer Learning – ISSS608-VAA</title>
+<title>Take Home Exercise 1A - Peer Learning – ISSS608-VAA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -233,6 +233,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Take-home Exercise 1</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../T1/takehome_ex01a.html">
+ <span class="dropdown-text">Take-home Exercise 1b</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../T2/takehome_ex02.html">
  <span class="dropdown-text">Take-home Exercise 2</span></a>
   </li>  
@@ -268,7 +272,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#critique-of-visualisations" id="toc-critique-of-visualisations" class="nav-link" data-scroll-target="#critique-of-visualisations">3.0 Critique of Visualisations</a>
   <ul class="collapse">
-  <li><a href="#pyramid-bar-chart-based-on-population-area" id="toc-pyramid-bar-chart-based-on-population-area" class="nav-link" data-scroll-target="#pyramid-bar-chart-based-on-population-area">3.1 Pyramid Bar chart based on Population Area</a></li>
+  <li><a href="#selected-visualisation-1---pyramid-bar-chart-based-on-population-area" id="toc-selected-visualisation-1---pyramid-bar-chart-based-on-population-area" class="nav-link" data-scroll-target="#selected-visualisation-1---pyramid-bar-chart-based-on-population-area">3.1 Selected Visualisation #1 - Pyramid Bar chart based on Population Area</a></li>
+  <li><a href="#selected-visualisation-2---box-plot-based-on-age-range" id="toc-selected-visualisation-2---box-plot-based-on-age-range" class="nav-link" data-scroll-target="#selected-visualisation-2---box-plot-based-on-age-range">3.2 Selected Visualisation #2 - <strong>Box Plot based on Age Range</strong></a></li>
+  </ul></li>
+  <li><a href="#visualisation-makeover" id="toc-visualisation-makeover" class="nav-link" data-scroll-target="#visualisation-makeover">4.0 Visualisation Makeover</a>
+  <ul class="collapse">
+  <li><a href="#loading-the-data" id="toc-loading-the-data" class="nav-link" data-scroll-target="#loading-the-data">4.1 Loading the Data</a></li>
+  <li><a href="#clean-the-dataset" id="toc-clean-the-dataset" class="nav-link" data-scroll-target="#clean-the-dataset">4.2 Clean the dataset</a></li>
+  <li><a href="#fixes-on-visualisation-1" id="toc-fixes-on-visualisation-1" class="nav-link" data-scroll-target="#fixes-on-visualisation-1">4.3 Fixes on Visualisation 1</a></li>
+  <li><a href="#fixes-on-visualisation-2" id="toc-fixes-on-visualisation-2" class="nav-link" data-scroll-target="#fixes-on-visualisation-2">4.4 Fixes on Visualisation 2</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -279,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Take Home Exercise 1 - Peer Learning</h1>
+<h1 class="title">Take Home Exercise 1A - Peer Learning</h1>
 </div>
 
 
@@ -303,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">May 10, 2025</p>
+      <p class="date-modified">May 11, 2025</p>
     </div>
   </div>
     
@@ -368,9 +380,9 @@ Important
 The differences in datasets are mainly:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 24%">
+<col style="width: 26%">
 <col style="width: 36%">
-<col style="width: 38%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -413,8 +425,8 @@ The differences in datasets are mainly:</p>
 </section>
 <section id="critique-of-visualisations" class="level2">
 <h2 class="anchored" data-anchor-id="critique-of-visualisations">3.0 Critique of Visualisations</h2>
-<section id="pyramid-bar-chart-based-on-population-area" class="level3">
-<h3 class="anchored" data-anchor-id="pyramid-bar-chart-based-on-population-area">3.1 Pyramid Bar chart based on Population Area</h3>
+<section id="selected-visualisation-1---pyramid-bar-chart-based-on-population-area" class="level3">
+<h3 class="anchored" data-anchor-id="selected-visualisation-1---pyramid-bar-chart-based-on-population-area">3.1 Selected Visualisation #1 - Pyramid Bar chart based on Population Area</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyramid_data <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Pop <span class="sc">~</span> <span class="st">`</span><span class="at">AG</span><span class="st">`</span> <span class="sc">+</span> Sex, <span class="at">data =</span> Resident_Data, sum)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -463,8 +475,461 @@ Critique of student’s visualisation #1
 <ol type="1">
 <li><p>X-Axis label for Males is at a negative value (-100,000) which is hard to inteprete (i.e.&nbsp;counter intuitive). Title can clearly also describe Population Size as Population may represent score or size per area as the title suggests “Population Area”.</p></li>
 <li><p>Color Legend used to represent Female / Male is confusing as Males are conventially represented by Blue and Females Red/Pink. The legend label is also inverse of the chart representation as readers typically read from left to right, Males should be be presented first followed by Female.</p></li>
-<li><p>No value labels and x-axis labels are represented too far aapart to tell the differences in values between Females and Males especially in age groups 30 to 64 as the bars on both sides are almost of equal length.</p></li>
+<li><p>No value labels and x-axis labels are represented too far apart (100,000 intervals) to tell the differences in values between Females and Males especially in age groups 30 to 64 as the bars on both sides are almost of equal length.</p></li>
 </ol>
+<p>Fixes:</p>
+<ol type="1">
+<li>Correct X-Axis label to positive values and change X-Axis title to Population Size</li>
+<li>Change Color Legend - Male: Blue and Female: Pink. Change Legend position to the bottom to co-incide with the left label for male and right label for female for easy visual reference.</li>
+<li>Add value labels and decrease X-Axis value intervals to 50,000 and Format Y-Axis Labels to remove “_” spacers to improve readability.</li>
+</ol>
+<p>We will perform the Fixes subsequently in section 4, as we will need to re-load the correct dataset to proceed as well.</p>
+</div>
+</div>
+</section>
+<section id="selected-visualisation-2---box-plot-based-on-age-range" class="level3">
+<h3 class="anchored" data-anchor-id="selected-visualisation-2---box-plot-based-on-age-range">3.2 Selected Visualisation #2 - <strong>Box Plot based on Age Range</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>FA_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"&lt;= 60"</span>, <span class="st">"&gt;60 to 80"</span>, <span class="st">"&gt;80 to 100"</span>, <span class="st">"&gt;100 to 120"</span>, <span class="st">"&gt;120"</span>, <span class="st">"Not Available"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Resident_Data<span class="sc">$</span>FA <span class="ot">&lt;-</span> <span class="fu">factor</span>(Resident_Data<span class="sc">$</span>FA, <span class="at">levels =</span> FA_order)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Resident_Data, <span class="fu">aes</span>(<span class="at">x =</span> FA, <span class="at">y =</span> Pop)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Population by Functional Age Range (FA)"</span>, <span class="at">x =</span> <span class="st">"FA Band"</span>, <span class="at">y =</span> <span class="st">"Population"</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex01a_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>x</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Critique of student’s visualisation #2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While the visualisation has significant conceptual flaws, we note the following positive notes:</p>
+<ol type="1">
+<li>Use of categorical data as columns, with logical meaningful order (if interpreted correctly).</li>
+<li>Attempt to use boxplot to show spread of population across different age groups</li>
+<li>Clean theme and layout to show spread of data.</li>
+</ol>
+<p>Improvement notes, in addition to data corrections as mentioned earlier (i.e.&nbsp;misinterpretation of FA):</p>
+<ol type="1">
+<li>Include meaningful categorical labels per age group for representation of the category and ease understanding by the reader.</li>
+<li>Ensure Y-Axis Label is corrected to Population Size to ease interpretation</li>
+<li>Interapability of chart can be improved as the outliers from the boxplot has almost formed a line all the categorical groups, which may be due to either data or the lacking of grouping e.g.&nbsp;by subzone.</li>
+</ol>
+<p>Fixes:</p>
+<ol type="1">
+<li>Age groups to be divided into standard 5 year bins, as the correct data set provides the age in a continous variable.</li>
+<li>Improve on axis title and value labels.</li>
+<li>Group population size data by planning areas, and label outliers for further exploration and investigations.</li>
+</ol>
+<p>We will perform the Fixes subsequently in section 4, as we will need to re-load the correct dataset to proceed as well.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="visualisation-makeover" class="level2">
+<h2 class="anchored" data-anchor-id="visualisation-makeover">4.0 Visualisation Makeover</h2>
+<section id="loading-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="loading-the-data">4.1 Loading the Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/respopagesex2024.csv"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 60,424
+Columns: 6
+$ PA   &lt;chr&gt; "Ang Mo Kio", "Ang Mo Kio", "Ang Mo Kio", "Ang Mo Kio", "Ang Mo K…
+$ SZ   &lt;chr&gt; "Ang Mo Kio Town Centre", "Ang Mo Kio Town Centre", "Ang Mo Kio T…
+$ Age  &lt;chr&gt; "0", "0", "1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", …
+$ Sex  &lt;chr&gt; "Males", "Females", "Males", "Females", "Males", "Females", "Male…
+$ Pop  &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 30, 10, 20, 10, 20, 30, 30, 10, 3…
+$ Time &lt;dbl&gt; 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024,…</code></pre>
+</div>
+</div>
+</section>
+<section id="clean-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="clean-the-dataset">4.2 Clean the dataset</h3>
+<p>Convert the Age90+ to 90 to obtain a continous variable as Age_Num.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/respopagesex2024.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Age_Num =</span> <span class="fu">if_else</span>(Age <span class="sc">==</span> <span class="st">"90_and_Over"</span>, <span class="dv">90</span>, <span class="fu">as.numeric</span>(Age)),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Population =</span> Pop</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fixes-on-visualisation-1" class="level3">
+<h3 class="anchored" data-anchor-id="fixes-on-visualisation-1">4.3 Fixes on Visualisation 1</h3>
+<p>Recap:</p>
+<ol type="1">
+<li>Correct X-Axis label to positive values and change X-Axis title to Population Size</li>
+<li>Change Color Legend - Male: Blue and Female: Pink. Change Legend position to the bottom to co-incide with the left label for male and right label for female for easy visual reference.</li>
+<li>Add value labels and decrease X-Axis value intervals to 50,000 and Format Y-Axis Labels to remove “_” spacers to improve readability.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 2: Find Maximum Age ===</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>max_age <span class="ot">&lt;-</span> <span class="fu">max</span>(df<span class="sc">$</span>Age_Num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 3: Prepare Aggregated Data ===</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">AgeGroup =</span> <span class="fu">cut</span>(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      Age_Num,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="cf">if</span> (max_age <span class="sc">&gt;</span> <span class="dv">90</span>) {</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">85</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="dv">90</span>, max_age <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">85</span>, <span class="at">by =</span> <span class="dv">5</span>), max_age <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      },</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">right =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="cf">if</span> (max_age <span class="sc">&gt;</span> <span class="dv">90</span>) {</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="st">"-"</span>, <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">84</span>, <span class="at">by =</span> <span class="dv">5</span>)), <span class="st">"90+"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="st">"-"</span>, <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">84</span>, <span class="at">by =</span> <span class="dv">5</span>)), <span class="st">"90+"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AgeGroup, Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Population =</span> <span class="fu">sum</span>(Population), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Population =</span> <span class="fu">ifelse</span>(Sex <span class="sc">==</span> <span class="st">"Males"</span>, <span class="sc">-</span>Population, Population),</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">PopulationAbs =</span> <span class="fu">abs</span>(Population)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 4: Plot Population Pyramid ===</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> AgeGroup, <span class="at">y =</span> Population, <span class="at">fill =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.90</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">format</span>(PopulationAbs, <span class="at">big.mark =</span> <span class="st">","</span>)),</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">4.5</span>,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="fu">ifelse</span>(plot_df<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"Males"</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>),</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Singapore's Population Pyramid (June 2024)"</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population Size"</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">format</span>(<span class="fu">abs</span>(x), <span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">200000</span>, <span class="dv">200000</span>),</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">200000</span>, <span class="dv">200000</span>, <span class="at">by =</span> <span class="dv">50000</span>),</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">200000</span>, <span class="dv">200000</span>, <span class="at">by =</span> <span class="dv">25000</span>)</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Males"</span> <span class="ot">=</span> <span class="st">"#87CEFA"</span>, <span class="st">"Females"</span> <span class="ot">=</span> <span class="st">"#FFB6C1"</span>),</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"Males"</span>, <span class="st">"Females"</span>)</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor.x =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"grey85"</span>, <span class="at">size =</span> <span class="fl">0.3</span>)</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex01a_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The improved population pyramid corrects visual errors from the previous version and enhances clarity with clear sex-based colors, labeled bars, and intuitive groupings. It reveals a well-defined working-age bulge, ongoing low birth rates, and gender imbalance in elderly cohorts — all of which are critical for long-term social policy and urban planning.</p>
+<section id="largest-cohorts-ages-3049" class="level3">
+<h3 class="anchored" data-anchor-id="largest-cohorts-ages-3049">1. 📈 <strong>Largest Cohorts: Ages 30–49</strong></h3>
+<ul>
+<li><p>The most populous bands are:</p>
+<ul>
+<li><p><strong>Males</strong>: 30–34 (155,630) and 35–39 (149,340)</p></li>
+<li><p><strong>Females</strong>: 35–39 (166,150), 40–44 (164,120), and 45–49 (158,690)</p></li>
+</ul></li>
+<li><p>This reflects Singapore’s <strong>core working-age population</strong>, critical to economic productivity and tax base.</p></li>
+</ul>
+</section>
+<section id="declining-birth-trends" class="level3">
+<h3 class="anchored" data-anchor-id="declining-birth-trends">2. 👶 <strong>Declining Birth Trends</strong></h3>
+<ul>
+<li><p>The <strong>0–4</strong> group is one of the <strong>smallest</strong>, with 87,850 males and 83,550 females.</p></li>
+<li><p>Indicates <strong>low fertility</strong>, consistent with long-term demographic trends and policy concern.</p></li>
+</ul>
+</section>
+<section id="female-dominance-in-older-ages" class="level3">
+<h3 class="anchored" data-anchor-id="female-dominance-in-older-ages">3. 👵 <strong>Female Dominance in Older Ages</strong></h3>
+<ul>
+<li><p>In age groups <strong>65+</strong>, <strong>females consistently outnumber males</strong> (e.g., 90+: 44,740 females vs 24,750 males).</p></li>
+<li><p>Reflects <strong>higher female life expectancy</strong>, important for healthcare and eldercare planning.</p></li>
+</ul>
+</section>
+<section id="gradual-inversion-begins-at-age-55" class="level3">
+<h3 class="anchored" data-anchor-id="gradual-inversion-begins-at-age-55">4. 📉 <strong>Gradual Inversion Begins at Age 55+</strong></h3>
+<ul>
+<li><p>The pyramid narrows beyond 55, showing <strong>population aging</strong>.</p></li>
+<li><p>Singapore’s demographic is transitioning into an <strong>inverted pyramid</strong>, signaling increased dependency ratios.</p></li>
+</ul>
+</section>
+</div>
+</div>
+</section>
+<section id="fixes-on-visualisation-2" class="level3">
+<h3 class="anchored">4.4 Fixes on Visualisation 2</h3>
+<p>Recap:</p>
+<ol type="1">
+<li>Age groups to be divided into standard 5 year bins, as the correct data set provides the age in a continous variable.</li>
+<li>Improve on axis title and value labels.</li>
+<li>Group population size data by planning areas, and label outliers for further exploration and investigations.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 1: Find the Maximum Age ===</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>max_age <span class="ot">&lt;-</span> <span class="fu">max</span>(df<span class="sc">$</span>Age_Num, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 2: Aggregate Population by Planning Area and Age Group ===</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>boxplot_df_pa <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">AgeGroup =</span> <span class="fu">cut</span>(</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>      Age_Num,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="cf">if</span> (max_age <span class="sc">&gt;</span> <span class="dv">90</span>) {</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">85</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="dv">90</span>, max_age <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">85</span>, <span class="at">by =</span> <span class="dv">5</span>), max_age <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>      },</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">right =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="cf">if</span> (max_age <span class="sc">&gt;</span> <span class="dv">90</span>) {</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="st">"-"</span>, <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">84</span>, <span class="at">by =</span> <span class="dv">5</span>)), <span class="st">"90+"</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="st">"-"</span>, <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">84</span>, <span class="at">by =</span> <span class="dv">5</span>)), <span class="st">"90+"</span>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PA, AgeGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Population =</span> <span class="fu">sum</span>(Population), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Population <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># === Ensure ordered AgeGroup factor ===</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>boxplot_df_pa<span class="sc">$</span>AgeGroup <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  boxplot_df_pa<span class="sc">$</span>AgeGroup,</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"0-4"</span>, <span class="st">"5-9"</span>, <span class="st">"10-14"</span>, <span class="st">"15-19"</span>, <span class="st">"20-24"</span>, <span class="st">"25-29"</span>, <span class="st">"30-34"</span>,</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"35-39"</span>, <span class="st">"40-44"</span>, <span class="st">"45-49"</span>, <span class="st">"50-54"</span>, <span class="st">"55-59"</span>, <span class="st">"60-64"</span>, <span class="st">"65-69"</span>,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"70-74"</span>, <span class="st">"75-79"</span>, <span class="st">"80-84"</span>, <span class="st">"90+"</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 3: Summary Stats ===</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>top_group <span class="ot">&lt;-</span> boxplot_df_pa <span class="sc">%&gt;%</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AgeGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MeanPop =</span> <span class="fu">mean</span>(Population), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">1</span>, MeanPop)</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>median_labels <span class="ot">&lt;-</span> boxplot_df_pa <span class="sc">%&gt;%</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AgeGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Median =</span> <span class="fu">median</span>(Population), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Q2: "</span>, <span class="fu">comma</span>(Median)))</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>overall_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(boxplot_df_pa<span class="sc">$</span>Population)</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 4: Identify Outliers by AgeGroup ===</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>outliers_pa <span class="ot">&lt;-</span> boxplot_df_pa <span class="sc">%&gt;%</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AgeGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">Q1 =</span> <span class="fu">quantile</span>(Population, <span class="fl">0.25</span>),</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">Q3 =</span> <span class="fu">quantile</span>(Population, <span class="fl">0.75</span>),</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR =</span> Q3 <span class="sc">-</span> Q1,</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_outlier =</span> Population <span class="sc">&gt;</span> Q3 <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR</span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is_outlier) <span class="sc">%&gt;%</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 5: Custom Blue Gradient (light → #0072ce) ===</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>age_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#e3f2fd"</span>, <span class="st">"#d3e8fb"</span>, <span class="st">"#c6defa"</span>, <span class="st">"#aad0f7"</span>, <span class="st">"#8ec2f4"</span>, <span class="st">"#72b4f1"</span>,</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#56a6ee"</span>, <span class="st">"#449be8"</span>, <span class="st">"#3491e2"</span>, <span class="st">"#2487dc"</span>, <span class="st">"#147cd6"</span>, <span class="st">"#0c78d2"</span>,</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#0a75ce"</span>, <span class="st">"#0873cb"</span>, <span class="st">"#0672c8"</span>, <span class="st">"#0472c6"</span>, <span class="st">"#0272d1"</span>, <span class="st">"#0072ce"</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(age_colors) <span class="ot">&lt;-</span> <span class="fu">levels</span>(boxplot_df_pa<span class="sc">$</span>AgeGroup)</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="co"># === STEP 6: Plot ===</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boxplot_df_pa, <span class="fu">aes</span>(<span class="at">x =</span> AgeGroup, <span class="at">y =</span> Population, <span class="at">fill =</span> AgeGroup)) <span class="sc">+</span></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">outlier.alpha =</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.7</span></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"point"</span>,</span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"red"</span>,</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.8</span>,</span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">18</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> median_labels,</span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> AgeGroup, <span class="at">y =</span> Median, <span class="at">label =</span> label),</span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">alpha</span>(<span class="st">"white"</span>, <span class="fl">0.7</span>),</span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.r =</span> <span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"lines"</span>)</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> overall_mean, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">AgeGroup =</span> <span class="st">"5-9"</span>, <span class="at">Population =</span> overall_mean, <span class="at">label =</span> <span class="st">"Overall Mean"</span>),</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> AgeGroup, <span class="at">y =</span> Population, <span class="at">label =</span> label),</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"grey30"</span>,</span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">alpha</span>(<span class="st">"white"</span>, <span class="fl">0.7</span>),</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.r =</span> <span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"lines"</span>),</span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">2.2</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(</span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> top_group,</span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> AgeGroup, <span class="at">y =</span> MeanPop, <span class="at">label =</span> <span class="st">"Highest mean"</span>),</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"darkred"</span>,</span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">alpha</span>(<span class="st">"white"</span>, <span class="fl">0.7</span>),</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.r =</span> <span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"lines"</span>),</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">2.2</span></span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> outliers_pa,</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> AgeGroup, <span class="at">y =</span> Population, <span class="at">label =</span> PA),</span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.8</span>,</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>    <span class="at">box.padding =</span> <span class="fl">0.25</span>,</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>    <span class="at">point.padding =</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>    <span class="at">segment.size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>    <span class="at">max.overlaps =</span> <span class="dv">10</span></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">label_comma</span>(),</span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">30000</span>, <span class="at">by =</span> <span class="dv">5000</span>)</span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> age_colors, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Planning Area Population by 5-Year Age Group (June 2024)"</span>,</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Each dot = 1 planning area (non-zero). Red dot = mean. Box = IQR. Dashed line = overall mean.</span><span class="sc">\n</span><span class="st">Outliers are labeled with Planning Area names."</span>,</span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Population per Planning Area"</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">size =</span> <span class="fl">0.3</span>)</span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex01a_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="1248"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The improved chart transforms raw data into an insightful and reader-friendly demographic visualization, enabling planners and analysts to easily spot population peaks, dominant age groups, and anomalous planning areas. The original FA-based plot, by contrast, offers limited clarity and analytical value due to coarse banding, absent labeling, and flat styling.</p>
+<section id="top-level-insights" class="level2">
+<h2 class="anchored" data-anchor-id="top-level-insights">🔍 <strong>Top-Level Insights</strong></h2>
+<section id="young-adults-2534-have-the-highest-concentration" class="level3">
+<h3 class="anchored" data-anchor-id="young-adults-2534-have-the-highest-concentration">1. 📊 <strong>Young Adults (25–34) Have the Highest Concentration</strong></h3>
+<ul>
+<li><p>The <strong>30–34</strong> age group has the <strong>highest mean population</strong> among all 5-year bands, marked by the “Highest mean” label.</p></li>
+<li><p>This suggests a demographic bulge of working-age adults settling in certain planning areas—likely due to employment opportunities, housing preferences, or family formation phase.</p></li>
+</ul>
+</section>
+<section id="children-and-teen-groups-019-have-lower-populations" class="level3">
+<h3 class="anchored" data-anchor-id="children-and-teen-groups-019-have-lower-populations">2. 🧒 <strong>Children and Teen Groups (0–19) Have Lower Populations</strong></h3>
+<ul>
+<li><p>Age groups from <strong>0–4</strong> to <strong>15–19</strong> have <strong>lower medians (Q2)</strong> and are <strong>below the overall mean</strong>.</p></li>
+<li><p>This may reflect Singapore’s low birth rate or population aging dynamics.</p></li>
+</ul>
+</section>
+<section id="elderly-population-75-shows-sparse-but-notable-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="elderly-population-75-shows-sparse-but-notable-outliers">3. 👵 <strong>Elderly Population (75+) Shows Sparse but Notable Outliers</strong></h3>
+<ul>
+<li><p>Median values drop sharply after <strong>70–74</strong>, showing a decreasing elderly concentration per PA.</p></li>
+<li><p>However, <strong>Bedok</strong> is labeled as an outlier in multiple senior age groups (75–79, 80–84, 90+), indicating a <strong>high concentration of elderly residents</strong> in that area.</p></li>
+</ul>
+</section>
+</section>
+<section id="outlier-insights" class="level2">
+<h2 class="anchored" data-anchor-id="outlier-insights">📌 <strong>Outlier Insights</strong></h2>
+<section id="sengkang-age-group-59" class="level3">
+<h3 class="anchored" data-anchor-id="sengkang-age-group-59">🔺 <strong>Sengkang</strong> (Age Group: 5–9)</h3>
+<ul>
+<li>Marked as an outlier in the <strong>5–9</strong> age group, suggesting a <strong>relatively younger, family-oriented population cluster</strong> in Sengkang.</li>
+</ul>
+</section>
+<section id="bedok-ages-7590" class="level3">
+<h3 class="anchored" data-anchor-id="bedok-ages-7590">🔺 <strong>Bedok</strong> (Ages: 75–90+)</h3>
+<ul>
+<li><p>Appears multiple times as an outlier across <strong>three senior age brackets</strong>, highlighting it as a <strong>key aging community</strong>.</p></li>
+<li><p>Urban planners and eldercare service providers may need to prioritize resource allocation here.</p></li>
+</ul>
+</section>
+</section>
+<section id="decline-in-population-beyond-age-70" class="level2">
+<h2 class="anchored" data-anchor-id="decline-in-population-beyond-age-70">📉 <strong>Decline in Population Beyond Age 70</strong></h2>
+<ul>
+<li><p>Population medians drop consistently after the <strong>65–69</strong> age group.</p></li>
+<li><p>This pattern aligns with natural mortality trends and indicates a potential <strong>transition point</strong> in population dependency dynamics.</p></li>
+</ul>
+</section>
+<section id="statistical-markers-aid-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-markers-aid-interpretation">📎 <strong>Statistical Markers Aid Interpretation</strong></h2>
+<ul>
+<li><p>The <strong>overall mean</strong> (~6,000–7,000) acts as a baseline for comparison across age groups.</p></li>
+<li><p><strong>Median (Q2)</strong> labels reinforce central tendency per age group and show where distributions are skewed.</p></li>
+</ul>
+</section>
+<section id="planning-policy-implications" class="level2">
+<h2 class="anchored" data-anchor-id="planning-policy-implications">🧠 <strong>Planning &amp; Policy Implications</strong></h2>
+<ul>
+<li><p><strong>Infrastructure needs</strong> for the 30–44 age group (e.g., housing, childcare, transport) should remain a priority.</p></li>
+<li><p><strong>Targeted support</strong> for elderly PAs like Bedok is critical (e.g., healthcare, accessibility upgrades).</p></li>
+<li><p><strong>Youth support</strong> policies could be reviewed in PAs with persistently low young population levels.</p></li>
+</ul>
+</section>
 </div>
 </div>
 
