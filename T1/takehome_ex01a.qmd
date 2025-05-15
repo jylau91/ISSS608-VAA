@@ -54,7 +54,7 @@ The dataset here is noted to be wrong, but we will only correct this in section 
 The differences in datasets are mainly:
 
 | Aspect | Incorrect Dataset (respopagesexfa2024.csv) | Correct Dataset (respopagesex2024.csv) |
-|-------------------|---------------------------|---------------------------|
+|----|----|----|
 | Age Variable | AG (Age Group) | Age |
 | Age Format | Categorical (e.g., '0_to_4', '5_to_9') | Continuous (e.g., '0', '1', ..., '90+') |
 | Granularity | Grouped in 5-year bins | Single-year until 90+ |
@@ -261,27 +261,27 @@ The improved population pyramid corrects visual errors from the previous version
 
 -   The most populous bands are:
 
-    -    **Males**: 30–34 (155,630) and 35–39 (149,340)
+    -   **Males**: 30–34 (155,630) and 35–39 (149,340)
 
-    -    **Females**: 35–39 (166,150), 40–44 (164,120), and 45–49 (158,690)
+    -   **Females**: 35–39 (166,150), 40–44 (164,120), and 45–49 (158,690)
 
--    This reflects Singapore’s **core working-age population**, critical to economic productivity and tax base.
+-   This reflects Singapore’s **core working-age population**, critical to economic productivity and tax base.
 
 ### 2. **Declining Birth Trends**
 
--    The **0–4** group is one of the **smallest**, with 87,850 males and 83,550 females.
+-   The **0–4** group is one of the **smallest**, with 87,850 males and 83,550 females.
 
 -   Indicates **low fertility**, consistent with long-term demographic trends and policy concern.
 
 ### 3. **Female Dominance in Older Ages**
 
--    In age groups **65+**, **females consistently outnumber males** (e.g., 90+: 44,740 females vs 24,750 males).
+-   In age groups **65+**, **females consistently outnumber males** (e.g., 90+: 44,740 females vs 24,750 males).
 
--    Reflects **higher female life expectancy**, important for healthcare and eldercare planning.
+-   Reflects **higher female life expectancy**, important for healthcare and eldercare planning.
 
 ### 4. **Gradual Inversion Begins at Age 55+**
 
--    The pyramid narrows beyond 55, showing **population aging**.
+-   The pyramid narrows beyond 55, showing **population aging**.
 
 -   Singapore's demographic is transitioning into an **inverted pyramid**, signaling increased dependency ratios.
 :::
@@ -454,51 +454,51 @@ The improved chart transforms raw data into an insightful and reader-friendly de
 
 1\. **Young Adults (25–34) Have the Highest Concentration**
 
--    The **30–34** age group has the **highest mean population** among all 5-year bands, marked by the "Highest mean" label.
+-   The **30–34** age group has the **highest mean population** among all 5-year bands, marked by the "Highest mean" label.
 
--    This suggests a demographic bulge of working-age adults settling in certain planning areas—likely due to employment opportunities, housing preferences, or family formation phase.
+-   This suggests a demographic bulge of working-age adults settling in certain planning areas—likely due to employment opportunities, housing preferences, or family formation phase.
 
 2\. **Children and Teen Groups (0–19) Have Lower Populations**
 
--    Age groups from **0–4** to **15–19** have **lower medians (Q2)** and are **below the overall mean**.
+-   Age groups from **0–4** to **15–19** have **lower medians (Q2)** and are **below the overall mean**.
 
 -   This may reflect Singapore’s low birth rate or population aging dynamics.
 
 3\. **Elderly Population (75+) Shows Sparse but Notable Outliers**
 
--    Median values drop sharply after **70–74**, showing a decreasing elderly concentration per PA.
+-   Median values drop sharply after **70–74**, showing a decreasing elderly concentration per PA.
 
--    However, **Bedok** is labeled as an outlier in multiple senior age groups (75–79, 80–84, 90+), indicating a **high concentration of elderly residents** in that area.
+-   However, **Bedok** is labeled as an outlier in multiple senior age groups (75–79, 80–84, 90+), indicating a **high concentration of elderly residents** in that area.
 
 📌 **Outlier Insights**
 
 **Sengkang** (Age Group: 5–9)
 
--    Marked as an outlier in the **5–9** age group, suggesting a **relatively younger, family-oriented population cluster** in Sengkang.
+-   Marked as an outlier in the **5–9** age group, suggesting a **relatively younger, family-oriented population cluster** in Sengkang.
 
 **Bedok** (Ages: 75–90+)
 
--    Appears multiple times as an outlier across **three senior age brackets**, highlighting it as a **key aging community**.
+-   Appears multiple times as an outlier across **three senior age brackets**, highlighting it as a **key aging community**.
 
--    Urban planners and eldercare service providers may need to prioritize resource allocation here.
+-   Urban planners and eldercare service providers may need to prioritize resource allocation here.
 
 **Decline in Population Beyond Age 70**
 
--    Population medians drop consistently after the **65–69** age group.
+-   Population medians drop consistently after the **65–69** age group.
 
 -   This pattern aligns with natural mortality trends and indicates a potential **transition point** in population dependency dynamics.
 
 **Statistical Markers Aid Interpretation**
 
--    The **overall mean** (\~6,000–7,000) acts as a baseline for comparison across age groups.
+-   The **overall mean** (\~6,000–7,000) acts as a baseline for comparison across age groups.
 
--    **Median (Q2)** labels reinforce central tendency per age group and show where distributions are skewed.
+-   **Median (Q2)** labels reinforce central tendency per age group and show where distributions are skewed.
 
 **Planning & Policy Implications**
 
--    **Infrastructure needs** for the 30–44 age group (e.g., housing, childcare, transport) should remain a priority.
+-   **Infrastructure needs** for the 30–44 age group (e.g., housing, childcare, transport) should remain a priority.
 
--    **Targeted support** for elderly PAs like Bedok is critical (e.g., healthcare, accessibility upgrades).
+-   **Targeted support** for elderly PAs like Bedok is critical (e.g., healthcare, accessibility upgrades).
 
--    **Youth support** policies could be reviewed in PAs with persistently low young population levels.
+-   **Youth support** policies could be reviewed in PAs with persistently low young population levels.
 :::
