@@ -776,3 +776,53 @@ visNetwork(nodes, edges) %>%
   visLayout(randomSeed = 123)
 
 ```
+
+```{r fig.height = 20, fig.width = 20}
+# Load packages
+pacman::p_load(tidyverse, visNetwork)
+
+# === 1. Read data ===
+edges_raw <- read_csv("data/recursive_site_reference_matrix_14052025_2025.csv")
+nodes_raw <- read_csv("data/site_names.csv", col_names = c("name", "label"))
+
+# === 2. Count incoming references (target) ===
+incoming_counts <- edges_raw %>%
+  rename(source = 1) %>%
+  pivot_longer(-source, names_to = "target", values_to = "value") %>%
+  filter(value == 1 & source != target) %>%
+  count(target, name = "ref_count")
+
+# === 3. Prepare nodes: show student name, assign color group and size by popularity ===
+nodes <- nodes_raw %>%
+  mutate(id = str_remove(label, "https://"),
+         label = name) %>%
+  left_join(incoming_counts, by = c("id" = "target")) %>%
+  mutate(
+    ref_count = replace_na(ref_count, 0),
+    group = as.character(ref_count),
+    value = ref_count  # Node size
+  ) %>%
+  select(id, label, group, value)
+
+# === 4. Prepare edges: only links with value = 1 ===
+edges <- edges_raw %>%
+  rename(source = 1) %>%
+  pivot_longer(-source, names_to = "target", values_to = "value") %>%
+  filter(value == 1 & source != target) %>%
+  transmute(from = source, to = target, weight = 1)
+
+# === 5. Draw interactive graph with node size ===
+visNetwork(nodes, edges) %>%
+  visGroups(groupname = "0", color = "green") %>%
+  visGroups(groupname = "1", color = "lightskyblue") %>%
+  visGroups(groupname = "2", color = "orange") %>%
+  visGroups(groupname = "3", color = "violet") %>%
+  visGroups(groupname = "4", color = "purple") %>%
+  visGroups(groupname = "5", color = "red") %>%
+  visIgraphLayout(layout = "layout_with_fr") %>%
+  visEdges(arrows = "to", smooth = list(enabled = TRUE, type = "curvedCW")) %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLegend(useGroups = TRUE, position = "right") %>%
+  visLayout(randomSeed = 123)
+
+```
