@@ -1,0 +1,192 @@
+---
+title: "Take-Home Exercise 02"
+author: "Lau Jia Yi"
+date: 17 May 2025
+date-modified: "last-modified"
+format: html
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+```{r}
+# Load packages
+pacman::p_load(tidyverse, jsonlite, tidygraph, ggraph, igraph, SmartEDA, knitr)
+```
+
+```{r}
+# Read JSON data
+filah_raw <- fromJSON("data/FILAH.json")
+trout_raw <- fromJSON("data/TROUT.json")
+journalist_raw <- fromJSON("data/journalist.json")
+
+# Optional: glimpse at structure
+glimpse(filah_raw)
+glimpse(trout_raw)
+glimpse(journalist_raw)
+```
+
+```{r}
+load_graph_from_json <- function(path) {
+  raw <- fromJSON(path)
+  # Minimal clean-up: Only keep essential fields, ensure no NA ids
+  nodes <- as_tibble(raw$nodes) %>%
+    select(id, label, type) %>%
+    filter(!is.na(id))
+  
+  edges <- as_tibble(raw$links) %>%
+    rename(from = source, to = target) %>%
+    select(from, to) %>%
+    filter(!is.na(from), !is.na(to)) %>%
+    filter(from %in% nodes$id, to %in% nodes$id)
+  
+  tbl_graph(nodes = nodes, edges = edges, directed = TRUE)
+}
+
+# Usage:
+filah_graph <- load_graph_from_json("data/FILAH.json")
+trout_graph <- load_graph_from_json("data/TROUT.json")
+journalist_graph <- load_graph_from_json("data/journalist.json")
+
+# Now these are all tidygraph objects:
+class(filah_graph)
+vcount(filah_graph)  # Number of nodes
+ecount(filah_graph)  # Number of edges
+```
+
+```{r}
+net_stats <- tibble(
+  Network = c("FILAH", "TROUT", "JOURNALIST"),
+  Nodes = c(vcount(filah_graph), vcount(trout_graph), vcount(journalist_graph)),
+  Edges = c(ecount(filah_graph), ecount(trout_graph), ecount(journalist_graph))
+)
+print(net_stats)
+```
+
+```{r}
+library(ggraph)
+
+plot_network <- function(g, title) {
+  ggraph(g, layout = "fr") +
+    geom_edge_link(alpha = 0.1) +
+    geom_node_point(aes(color = type), size = 3) +
+    geom_node_text(aes(label = label), repel = TRUE, size = 2) +
+    theme_void() +
+    labs(title = title)
+}
+
+plot_network(filah_graph, "FILAH Network")
+plot_network(trout_graph, "TROUT Network")
+plot_network(journalist_graph, "JOURNALIST Network")
+
+```
+
+```{r}
+# For journalist_graph (repeat for others if needed)
+centrality_stats <- journalist_graph %>%
+  activate(nodes) %>%
+  mutate(degree = centrality_degree(),
+         betweenness = centrality_betweenness()) %>%
+  as_tibble() %>%
+  filter(type == "board") %>%
+  arrange(desc(degree))
+
+print(centrality_stats)
+
+```
+
+```{r}
+nodes_filah <- as_tibble(filah_graph)$id
+nodes_trout <- as_tibble(trout_graph)$id
+nodes_journalist <- as_tibble(journalist_graph)$id
+
+unique_to_journalist <- setdiff(nodes_journalist, union(nodes_filah, nodes_trout))
+cat("Nodes only in journalist (missing from groups):", length(unique_to_journalist), "\n")
+print(unique_to_journalist)
+
+```
+
+```{r}
+ig_journalist <- as.igraph(journalist_graph)
+
+
+head(V(ig_journalist)$name, 10)
+
+```
+
+```{r}
+# 1. Get topic node IDs
+topic_ids <- as_tibble(filah_graph) %>%
+  filter(type == "topic") %>%
+  pull(id)
+
+# 2. Convert to igraph
+ig_filah <- as.igraph(filah_graph)
+
+# 3. Induce subgraph on topic IDs (use 'id' attribute)
+topic_sub <- induced_subgraph(ig_filah, vids = V(ig_filah)[id %in% topic_ids])
+
+# 4. Convert back to tidygraph for easy plotting
+tg_topic_sub <- as_tbl_graph(topic_sub)
+
+# 5. Plot
+ggraph(tg_topic_sub, layout = "fr") +
+  geom_edge_link(alpha = 0.3) +
+  geom_node_point(color = "tomato", size = 4) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3) +
+  theme_void() +
+  labs(title = "Subgraph of Topic Nodes (FILAH)")
+
+```
+
+```{r}
+# 1. Get node IDs for all three types
+relevant_ids <- as_tibble(filah_graph) %>%
+  filter(type %in% c("discussion", "role", "topic")) %>%
+  pull(id)
+
+# 2. Convert to igraph
+ig_filah <- as.igraph(filah_graph)
+
+# 3. Induce subgraph using 'id' attribute
+subgraph_dpt <- induced_subgraph(ig_filah, vids = V(ig_filah)[id %in% relevant_ids])
+
+# 4. Convert back to tidygraph for plotting
+tg_subgraph_dpt <- as_tbl_graph(subgraph_dpt)
+
+# 5. Plot, color by type
+ggraph(tg_subgraph_dpt, layout = "fr") +
+  geom_edge_link(alpha = 0.3) +
+  geom_node_point(aes(color = type), size = 4) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3) +
+  theme_void() +
+  labs(title = "Subgraph of Discussion, Plan, and Topic Nodes (FILAH)")
+```
+
+```{r}
+# 1. Get node IDs for all three types
+relevant_ids <- as_tibble(filah_graph) %>%
+  filter(type %in% c("trip", "role", "topic")) %>%
+  pull(id)
+
+# 2. Convert to igraph
+ig_filah <- as.igraph(filah_graph)
+
+# 3. Induce subgraph using 'id' attribute
+subgraph_dpt <- induced_subgraph(ig_filah, vids = V(ig_filah)[id %in% relevant_ids])
+
+# 4. Convert back to tidygraph for plotting
+tg_subgraph_dpt <- as_tbl_graph(subgraph_dpt)
+
+# 5. Plot, color by type
+ggraph(tg_subgraph_dpt, layout = "fr") +
+  geom_edge_link(alpha = 0.3) +
+  geom_node_point(aes(color = type), size = 4) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3) +
+  theme_void() +
+  labs(title = "Subgraph of Discussion, Plan, and Topic Nodes (FILAH)")
+
+```

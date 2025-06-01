@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lau Jia Yi">
+<meta name="dcterms.date" content="2025-05-17">
+
+<title>Take-Home Exercise 02 – ISSS608-VAA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ISSS608-VAA</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Hands-on Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercises">    
+        <li>
+    <a class="dropdown-item" href="../L1/handson_ex01.html">
+ <span class="dropdown-text">Hands-on Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L2/handson_ex02.html">
+ <span class="dropdown-text">Hands-on Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L3/handson_ex03.html">
+ <span class="dropdown-text">Hands-on Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L4/handson_ex04.html">
+ <span class="dropdown-text">Hands-on Exercise 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L5/handson_ex05.html">
+ <span class="dropdown-text">Hands-on Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L6/handson_ex06.html">
+ <span class="dropdown-text">Hands-on Exercise 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L7/handson_ex07.html">
+ <span class="dropdown-text">Hands-on Exercise 7</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L8/handson_ex08.html">
+ <span class="dropdown-text">Hands-on Exercise 8</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L9/handson_ex09.html">
+ <span class="dropdown-text">Hands-on Exercise 9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L10/handson_ex10.html">
+ <span class="dropdown-text">Hands-on Exercise 10</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-class Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercises">    
+        <li>
+    <a class="dropdown-item" href="https://public.tableau.com/app/profile/jia.yi.lau/viz/In-ClassEx2/SuperStoreSalesandProfitReport">
+ <span class="dropdown-text">In-class Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://public.tableau.com/app/profile/jia.yi.lau/viz/In-Class_Ex03_17462578872460/SalesversusProfitDB">
+ <span class="dropdown-text">In-class Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L4/inclass_ex04.html">
+ <span class="dropdown-text">In-class Exercise 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L5/inclass_ex05.html">
+ <span class="dropdown-text">In-class Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L6/inclass_ex06.html">
+ <span class="dropdown-text">In-class Exercise 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L7/inclass_ex07.html">
+ <span class="dropdown-text">In-class Exercise 7</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L8/inclass_ex08.html">
+ <span class="dropdown-text">In-class Exercise 8</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L9/inclass_ex09.html">
+ <span class="dropdown-text">In-class Exercise 9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../L10/inclass_ex10.html">
+ <span class="dropdown-text">In-class Exercise 10</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Take-home Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercises">    
+        <li>
+    <a class="dropdown-item" href="../T1/takehome_ex01.html">
+ <span class="dropdown-text">Take-home Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../T1/takehome_ex01a.html">
+ <span class="dropdown-text">Take-home Exercise 1A</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../T2/takehome_ex02.html">
+ <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../T3/takehome_ex03.html">
+ <span class="dropdown-text">Take-home Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Take-Home Exercise 02</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lau Jia Yi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 17, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">May 29, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, jsonlite, tidygraph, ggraph, igraph, SmartEDA, knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read JSON data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>filah_raw <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/FILAH.json"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>trout_raw <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/TROUT.json"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>journalist_raw <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/journalist.json"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: glimpse at structure</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(filah_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 5
+ $ directed  : logi TRUE
+ $ multigraph: logi TRUE
+ $ graph     : Named list()
+ $ nodes     :'data.frame': 396 obs. of  17 variables:
+  ..$ type       : chr [1:396] "meeting" "meeting" "meeting" "meeting" ...
+  ..$ date       : chr [1:396] "Meeting 1" "Meeting 2" "Meeting 3" "Meeting 4" ...
+  ..$ label      : chr [1:396] "Meeting 1" "Meeting 2" "Meeting 3" "Meeting 4" ...
+  ..$ id         : chr [1:396] "Meeting_1" "Meeting_2" "Meeting_3" "Meeting_4" ...
+  ..$ name       : chr [1:396] NA NA NA NA ...
+  ..$ role       : chr [1:396] NA NA NA NA ...
+  ..$ short_topic: chr [1:396] NA NA NA NA ...
+  ..$ long_topic : chr [1:396] NA NA NA NA ...
+  ..$ short_title: chr [1:396] NA NA NA NA ...
+  ..$ long_title : chr [1:396] NA NA NA NA ...
+  ..$ plan_type  : chr [1:396] NA NA NA NA ...
+  ..$ lat        : num [1:396] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ lon        : num [1:396] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ zone       : chr [1:396] NA NA NA NA ...
+  ..$ zone_detail: chr [1:396] NA NA NA NA ...
+  ..$ start      : chr [1:396] NA NA NA NA ...
+  ..$ end        : chr [1:396] NA NA NA NA ...
+ $ links     :'data.frame': 765 obs. of  9 variables:
+  ..$ role     : chr [1:765] "part_of" "part_of" "part_of" "part_of" ...
+  ..$ source   : chr [1:765] "Meeting_1" "Meeting_1" "Meeting_1" "Meeting_1" ...
+  ..$ target   : chr [1:765] "fish_vacuum_Meeting_1_Introduction_Discussion" "fish_vacuum_Meeting_1_Introduction" "seafood_festival_Meeting_1_Discussion" "seafood_festival_Meeting_1_Feasibility" ...
+  ..$ key      : int [1:765] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ sentiment: num [1:765] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ reason   : chr [1:765] NA NA NA NA ...
+  ..$ industry :List of 765
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. .. [list output truncated]
+  ..$ status   : chr [1:765] NA NA NA NA ...
+  ..$ time     : chr [1:765] NA NA NA NA ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(trout_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 5
+ $ directed  : logi TRUE
+ $ multigraph: logi TRUE
+ $ graph     : Named list()
+ $ nodes     :'data.frame': 164 obs. of  17 variables:
+  ..$ type       : chr [1:164] "plan" "plan" "plan" "meeting" ...
+  ..$ short_title: chr [1:164] "marine_life_deck_Meeting_12_Environmental_Impact_Report" "low_volume_crane_Meeting_8_Report" "deep_fishing_dock_Meeting_3_Maintenance_Plan" NA ...
+  ..$ long_title : chr [1:164] "Present findings from the environmental impact study" "Report on travel and submit letter of support for low-volume unload crane" "Discuss maintenance plan and designate travel representatives" NA ...
+  ..$ plan_type  : chr [1:164] "Report" "report" "proposal" NA ...
+  ..$ label      : chr [1:164] "marine_life_deck_Meeting_12_Environmental_Impact_Report" "low_volume_crane_Meeting_8_Report" "deep_fishing_dock_Meeting_3_Maintenance_Plan" "Meeting 16" ...
+  ..$ id         : chr [1:164] "marine_life_deck_Meeting_12_Environmental_Impact_Report" "low_volume_crane_Meeting_8_Report" "deep_fishing_dock_Meeting_3_Maintenance_Plan" "Meeting_16" ...
+  ..$ date       : chr [1:164] NA NA NA "Meeting 16" ...
+  ..$ short_topic: chr [1:164] NA NA NA NA ...
+  ..$ long_topic : chr [1:164] NA NA NA NA ...
+  ..$ lat        : num [1:164] NA NA NA NA NA ...
+  ..$ lon        : num [1:164] NA NA NA NA NA ...
+  ..$ zone       : chr [1:164] NA NA NA NA ...
+  ..$ zone_detail: chr [1:164] NA NA NA NA ...
+  ..$ name       : chr [1:164] NA NA NA NA ...
+  ..$ role       : chr [1:164] NA NA NA NA ...
+  ..$ start      : chr [1:164] NA NA NA NA ...
+  ..$ end        : chr [1:164] NA NA NA NA ...
+ $ links     :'data.frame': 378 obs. of  9 variables:
+  ..$ role     : chr [1:378] "plan" "participant" "plan" "participant" ...
+  ..$ source   : chr [1:378] "marine_life_deck_Meeting_12_Environmental_Impact_Report" "marine_life_deck_Meeting_12_Environmental_Impact_Report" "low_volume_crane_Meeting_8_Report" "low_volume_crane_Meeting_8_Report" ...
+  ..$ target   : chr [1:378] "marine_life_deck" "Teddy Goldstein" "low_volume_crane" "Seal" ...
+  ..$ key      : int [1:378] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ sentiment: num [1:378] NA -0.5 NA 0.1 NA NA NA NA NA NA ...
+  ..$ reason   : chr [1:378] NA "Prefers resources to be allocated toward the fishing industry." NA "Recognizes the crane's benefit to small-scale operations." ...
+  ..$ industry :List of 378
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : chr "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "large vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "small vessel"
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : list()
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : chr "large vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : chr "large vessel"
+  .. ..$ : NULL
+  .. ..$ : chr "tourism"
+  .. ..$ : chr "tourism"
+  .. ..$ : NULL
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : chr [1:2] "large vessel" "small vessel"
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : list()
+  .. .. [list output truncated]
+  ..$ status   : chr [1:378] NA NA NA NA ...
+  ..$ time     : chr [1:378] NA NA NA NA ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(journalist_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 5
+ $ directed  : logi TRUE
+ $ multigraph: logi TRUE
+ $ graph     : Named list()
+ $ nodes     :'data.frame': 740 obs. of  17 variables:
+  ..$ type       : chr [1:740] "meeting" "meeting" "meeting" "meeting" ...
+  ..$ date       : chr [1:740] "Meeting 1" "Meeting 2" "Meeting 3" "Meeting 4" ...
+  ..$ label      : chr [1:740] "Meeting 1" "Meeting 2" "Meeting 3" "Meeting 4" ...
+  ..$ id         : chr [1:740] "Meeting_1" "Meeting_2" "Meeting_3" "Meeting_4" ...
+  ..$ name       : chr [1:740] NA NA NA NA ...
+  ..$ role       : chr [1:740] NA NA NA NA ...
+  ..$ short_topic: chr [1:740] NA NA NA NA ...
+  ..$ long_topic : chr [1:740] NA NA NA NA ...
+  ..$ short_title: chr [1:740] NA NA NA NA ...
+  ..$ long_title : chr [1:740] NA NA NA NA ...
+  ..$ plan_type  : chr [1:740] NA NA NA NA ...
+  ..$ lat        : num [1:740] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ lon        : num [1:740] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ zone       : chr [1:740] NA NA NA NA ...
+  ..$ zone_detail: chr [1:740] NA NA NA NA ...
+  ..$ start      : chr [1:740] NA NA NA NA ...
+  ..$ end        : chr [1:740] NA NA NA NA ...
+ $ links     :'data.frame': 2436 obs. of  9 variables:
+  ..$ role     : chr [1:2436] "part_of" "part_of" "part_of" "part_of" ...
+  ..$ source   : chr [1:2436] "Meeting_1" "Meeting_1" "Meeting_1" "Meeting_1" ...
+  ..$ target   : chr [1:2436] "fish_vacuum_Meeting_1_Introduction_Discussion" "fish_vacuum_Meeting_1_Introduction" "seafood_festival_Meeting_1_Discussion" "seafood_festival_Meeting_1_Feasibility" ...
+  ..$ key      : int [1:2436] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ sentiment: num [1:2436] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ reason   : chr [1:2436] NA NA NA NA ...
+  ..$ industry :List of 2436
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. ..$ : NULL
+  .. .. [list output truncated]
+  ..$ status   : chr [1:2436] NA NA NA NA ...
+  ..$ time     : chr [1:2436] NA NA NA NA ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>load_graph_from_json <span class="ot">&lt;-</span> <span class="cf">function</span>(path) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  raw <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(path)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Minimal clean-up: Only keep essential fields, ensure no NA ids</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  nodes <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(raw<span class="sc">$</span>nodes) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, label, type) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(id))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  edges <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(raw<span class="sc">$</span>links) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">from =</span> source, <span class="at">to =</span> target) <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(from, to) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(from), <span class="sc">!</span><span class="fu">is.na</span>(to)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(from <span class="sc">%in%</span> nodes<span class="sc">$</span>id, to <span class="sc">%in%</span> nodes<span class="sc">$</span>id)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> nodes, <span class="at">edges =</span> edges, <span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage:</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>filah_graph <span class="ot">&lt;-</span> <span class="fu">load_graph_from_json</span>(<span class="st">"data/FILAH.json"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>trout_graph <span class="ot">&lt;-</span> <span class="fu">load_graph_from_json</span>(<span class="st">"data/TROUT.json"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>journalist_graph <span class="ot">&lt;-</span> <span class="fu">load_graph_from_json</span>(<span class="st">"data/journalist.json"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Now these are all tidygraph objects:</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(filah_graph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_graph" "igraph"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcount</span>(filah_graph)  <span class="co"># Number of nodes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 396</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ecount</span>(filah_graph)  <span class="co"># Number of edges</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 765</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>net_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Network =</span> <span class="fu">c</span>(<span class="st">"FILAH"</span>, <span class="st">"TROUT"</span>, <span class="st">"JOURNALIST"</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Nodes =</span> <span class="fu">c</span>(<span class="fu">vcount</span>(filah_graph), <span class="fu">vcount</span>(trout_graph), <span class="fu">vcount</span>(journalist_graph)),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Edges =</span> <span class="fu">c</span>(<span class="fu">ecount</span>(filah_graph), <span class="fu">ecount</span>(trout_graph), <span class="fu">ecount</span>(journalist_graph))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(net_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  Network    Nodes Edges
+  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+1 FILAH        396   765
+2 TROUT        164   378
+3 JOURNALIST   740  2436</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plot_network <span class="ot">&lt;-</span> <span class="cf">function</span>(g, title) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> title)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_network</span>(filah_graph, <span class="st">"FILAH Network"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex02_draft_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_network</span>(trout_graph, <span class="st">"TROUT Network"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex02_draft_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_network</span>(journalist_graph, <span class="st">"JOURNALIST Network"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex02_draft_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For journalist_graph (repeat for others if needed)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>centrality_stats <span class="ot">&lt;-</span> journalist_graph <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">activate</span>(nodes) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">degree =</span> <span class="fu">centrality_degree</span>(),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">betweenness =</span> <span class="fu">centrality_betweenness</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"board"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(degree))</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(centrality_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: id &lt;chr&gt;, label &lt;chr&gt;, type &lt;chr&gt;, degree &lt;dbl&gt;,
+#   betweenness &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>nodes_filah <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(filah_graph)<span class="sc">$</span>id</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>nodes_trout <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(trout_graph)<span class="sc">$</span>id</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>nodes_journalist <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(journalist_graph)<span class="sc">$</span>id</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>unique_to_journalist <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(nodes_journalist, <span class="fu">union</span>(nodes_filah, nodes_trout))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Nodes only in journalist (missing from groups):"</span>, <span class="fu">length</span>(unique_to_journalist), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Nodes only in journalist (missing from groups): 281 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unique_to_journalist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "Meeting_13"                                                          
+  [2] "Meeting_14"                                                          
+  [3] "Meeting_15"                                                          
+  [4] "statue_john_smoth_Meeting_9_Gather_Feedback_Discussion"              
+  [5] "statue_john_smoth_Meeting_9_Feedback"                                
+  [6] "statue_john_smoth_Travel_The_Bait_Stich_Completed_Discussion"        
+  [7] "statue_john_smoth_Meeting_10_Presentation_Discussion"                
+  [8] "statue_john_smoth_Meeting_10_Presentation"                           
+  [9] "Bay Harvest Corporation"                                             
+ [10] "renaming_park_himark_Travel_Anchor_Way_Grill_Discussion"             
+ [11] "renaming_park_himark_Travel_Anchor_Way_Grill"                        
+ [12] "renaming_park_himark_Travel_Sailors_Perch_Light_Discussion"          
+ [13] "renaming_park_himark_Travel_Sailors_Perch_Light"                     
+ [14] "5849775342"                                                          
+ [15] "renaming_park_himark_Travel_Anchor_Way_Grill_Completed_Discussion"   
+ [16] "renaming_park_himark_Travel_Sailors_Perch_Light_Completed_Discussion"
+ [17] "renaming_park_himark_Meeting_8_Compile_Nominations_Discussion"       
+ [18] "renaming_park_himark_Meeting_8_Compile_Nominations"                  
+ [19] "renaming_park_himark_Meeting_7_Announce_Name_Discussion"             
+ [20] "renaming_park_himark_Meeting_7_Announce_Name"                        
+ [21] "renaming_park_himark_Meeting_7_Unveiling_Event_Discussion"           
+ [22] "renaming_park_himark_Meeting_7_Unveiling_Event"                      
+ [23] "name_harbor_area_Travel_The_Bait_Stich_Discussion"                   
+ [24] "name_harbor_area_Travel_The_Bait_Stich"                              
+ [25] "name_harbor_area_Meeting_11_Harbor_Odyssey_Tours_Discussion"         
+ [26] "name_harbor_area_Meeting_11_Harbor_Odyssey_Tours"                    
+ [27] "Harbor Odyssey Tours"                                                
+ [28] "name_harbor_area_Meeting_11_Draft_Names_Discussion"                  
+ [29] "name_harbor_area_Meeting_11_Draft_Names"                             
+ [30] "name_harbor_area_Travel_Harbor_Odyssey_Tours"                        
+ [31] "10803677425"                                                         
+ [32] "name_harbor_area_Travel_The_Bait_Stich_Completed_Discussion"         
+ [33] "name_harbor_area_Travel_Harbor_Odyssey_Tours_Completed_Discussion"   
+ [34] "name_harbor_area_Meeting_14_Finalize_Name_Discussion"                
+ [35] "name_harbor_area_Meeting_14_Finalize_Name"                           
+ [36] "Sean"                                                                
+ [37] "name_inspection_office_Meeting_8_Proposal"                           
+ [38] "name_inspection_office_Travel_Lomark_Civic_Plaza_Discussion"         
+ [39] "name_inspection_office_Meeting_14_Announcement_Discussion"           
+ [40] "name_inspection_office_Meeting_14_Announcement"                      
+ [41] "seafood_festival_Meeting_3_Report_Discussion"                        
+ [42] "seafood_festival_Meeting_3_Report"                                   
+ [43] "waterfront_market_Travel_Harborfront_Market_Discussion"              
+ [44] "waterfront_market_Travel_Harborfront_Market"                         
+ [45] "35913119"                                                            
+ [46] "waterfront_market_Meeting_8_Gather_Feedback_Discussion"              
+ [47] "waterfront_market_Meeting_8_Gather_Feedback"                         
+ [48] "waterfront_market_Travel_Harborfront_Market_Completed_Discussion"    
+ [49] "37831107"                                                            
+ [50] "concert_Travel_Packland_Elementary_Discussion"                       
+ [51] "concert_Travel_Harborfront_Market"                                   
+ [52] "concert_Travel_Paakland_Elementary"                                  
+ [53] "concert_Travel_Paakland_Elementary_Completed_Discussion"             
+ [54] "concert_Meeting_16_Feedback_Discussion"                              
+ [55] "concert_Meeting_16_Feedback"                                         
+ [56] "concert_Meeting_16_Communication_Complaints_Discussion"              
+ [57] "concert_Meeting_16_Communication_Complaints"                         
+ [58] "37892464"                                                            
+ [59] "trip_2"                                                              
+ [60] "950773347"                                                           
+ [61] "trip_3"                                                              
+ [62] "35868389"                                                            
+ [63] "37831223"                                                            
+ [64] "2564318352"                                                          
+ [65] "trip_6"                                                              
+ [66] "12674442354"                                                         
+ [67] "trip_7"                                                              
+ [68] "trip_9"                                                              
+ [69] "trip_10"                                                             
+ [70] "9839219428"                                                          
+ [71] "trip_13"                                                             
+ [72] "30187146"                                                            
+ [73] "37864373"                                                            
+ [74] "2564179411"                                                          
+ [75] "37799737"                                                            
+ [76] "trip_17"                                                             
+ [77] "8774871637"                                                          
+ [78] "trip_18"                                                             
+ [79] "36979025"                                                            
+ [80] "trip_21"                                                             
+ [81] "37872598"                                                            
+ [82] "trip_25"                                                             
+ [83] "trip_26"                                                             
+ [84] "37852571"                                                            
+ [85] "2912844717"                                                          
+ [86] "trip_29"                                                             
+ [87] "37834631"                                                            
+ [88] "trip_31"                                                             
+ [89] "trip_32"                                                             
+ [90] "48568668"                                                            
+ [91] "trip_34"                                                             
+ [92] "trip_35"                                                             
+ [93] "trip_36"                                                             
+ [94] "trip_37"                                                             
+ [95] "trip_39"                                                             
+ [96] "trip_42"                                                             
+ [97] "582199729"                                                           
+ [98] "trip_45"                                                             
+ [99] "37833911"                                                            
+[100] "trip_46"                                                             
+[101] "trip_49"                                                             
+[102] "48557904"                                                            
+[103] "trip_51"                                                             
+[104] "37810347"                                                            
+[105] "trip_53"                                                             
+[106] "trip_54"                                                             
+[107] "48499016"                                                            
+[108] "trip_55"                                                             
+[109] "trip_58"                                                             
+[110] "trip_60"                                                             
+[111] "trip_62"                                                             
+[112] "37882709"                                                            
+[113] "trip_66"                                                             
+[114] "trip_68"                                                             
+[115] "37810348"                                                            
+[116] "trip_69"                                                             
+[117] "trip_75"                                                             
+[118] "trip_80"                                                             
+[119] "trip_82"                                                             
+[120] "48549608"                                                            
+[121] "trip_84"                                                             
+[122] "trip_86"                                                             
+[123] "trip_87"                                                             
+[124] "trip_88"                                                             
+[125] "trip_89"                                                             
+[126] "37857689"                                                            
+[127] "trip_90"                                                             
+[128] "trip_91"                                                             
+[129] "30188922"                                                            
+[130] "trip_93"                                                             
+[131] "trip_95"                                                             
+[132] "48512198"                                                            
+[133] "trip_96"                                                             
+[134] "trip_98"                                                             
+[135] "trip_103"                                                            
+[136] "48531040"                                                            
+[137] "trip_104"                                                            
+[138] "trip_107"                                                            
+[139] "trip_108"                                                            
+[140] "37831236"                                                            
+[141] "7557795052"                                                          
+[142] "trip_113"                                                            
+[143] "trip_117"                                                            
+[144] "7557795055"                                                          
+[145] "48510772"                                                            
+[146] "trip_124"                                                            
+[147] "491470184"                                                           
+[148] "trip_126"                                                            
+[149] "trip_127"                                                            
+[150] "trip_128"                                                            
+[151] "trip_129"                                                            
+[152] "trip_133"                                                            
+[153] "582382094"                                                           
+[154] "trip_140"                                                            
+[155] "trip_141"                                                            
+[156] "48389218"                                                            
+[157] "trip_142"                                                            
+[158] "48516745"                                                            
+[159] "1332340938"                                                          
+[160] "trip_147"                                                            
+[161] "trip_148"                                                            
+[162] "trip_150"                                                            
+[163] "trip_151"                                                            
+[164] "trip_152"                                                            
+[165] "trip_156"                                                            
+[166] "30185051"                                                            
+[167] "trip_159"                                                            
+[168] "37883680"                                                            
+[169] "trip_160"                                                            
+[170] "trip_161"                                                            
+[171] "2858406995"                                                          
+[172] "trip_162"                                                            
+[173] "trip_164"                                                            
+[174] "trip_165"                                                            
+[175] "trip_167"                                                            
+[176] "trip_168"                                                            
+[177] "trip_171"                                                            
+[178] "trip_172"                                                            
+[179] "trip_174"                                                            
+[180] "48476691"                                                            
+[181] "trip_176"                                                            
+[182] "trip_181"                                                            
+[183] "trip_182"                                                            
+[184] "48531694"                                                            
+[185] "trip_185"                                                            
+[186] "trip_189"                                                            
+[187] "trip_191"                                                            
+[188] "582184632"                                                           
+[189] "trip_194"                                                            
+[190] "2564179398"                                                          
+[191] "trip_198"                                                            
+[192] "trip_199"                                                            
+[193] "trip_202"                                                            
+[194] "691146642"                                                           
+[195] "trip_206"                                                            
+[196] "trip_208"                                                            
+[197] "36959793"                                                            
+[198] "trip_209"                                                            
+[199] "2919456351"                                                          
+[200] "trip_212"                                                            
+[201] "48488713"                                                            
+[202] "trip_213"                                                            
+[203] "37881322"                                                            
+[204] "trip_214"                                                            
+[205] "37840381"                                                            
+[206] "trip_216"                                                            
+[207] "trip_220"                                                            
+[208] "trip_222"                                                            
+[209] "trip_223"                                                            
+[210] "trip_225"                                                            
+[211] "trip_226"                                                            
+[212] "9839219423"                                                          
+[213] "trip_232"                                                            
+[214] "12698974244"                                                         
+[215] "trip_234"                                                            
+[216] "8742962146"                                                          
+[217] "trip_236"                                                            
+[218] "581588620"                                                           
+[219] "581725347"                                                           
+[220] "trip_237"                                                            
+[221] "trip_239"                                                            
+[222] "trip_245"                                                            
+[223] "trip_253"                                                            
+[224] "48503211"                                                            
+[225] "trip_254"                                                            
+[226] "trip_255"                                                            
+[227] "trip_260"                                                            
+[228] "581862761"                                                           
+[229] "trip_261"                                                            
+[230] "6005475082"                                                          
+[231] "trip_265"                                                            
+[232] "trip_269"                                                            
+[233] "trip_272"                                                            
+[234] "2133919891"                                                          
+[235] "48534420"                                                            
+[236] "trip_278"                                                            
+[237] "12687824227"                                                         
+[238] "trip_279"                                                            
+[239] "trip_280"                                                            
+[240] "48508501"                                                            
+[241] "trip_281"                                                            
+[242] "trip_284"                                                            
+[243] "trip_287"                                                            
+[244] "trip_288"                                                            
+[245] "trip_289"                                                            
+[246] "48552137"                                                            
+[247] "36955939"                                                            
+[248] "trip_293"                                                            
+[249] "trip_295"                                                            
+[250] "trip_297"                                                            
+[251] "trip_298"                                                            
+[252] "trip_299"                                                            
+[253] "48510013"                                                            
+[254] "trip_301"                                                            
+[255] "48462883"                                                            
+[256] "trip_304"                                                            
+[257] "trip_305"                                                            
+[258] "7557795048"                                                          
+[259] "trip_310"                                                            
+[260] "trip_313"                                                            
+[261] "trip_316"                                                            
+[262] "trip_318"                                                            
+[263] "trip_321"                                                            
+[264] "48554034"                                                            
+[265] "trip_324"                                                            
+[266] "9839219434"                                                          
+[267] "trip_325"                                                            
+[268] "trip_326"                                                            
+[269] "trip_329"                                                            
+[270] "2091409677"                                                          
+[271] "trip_330"                                                            
+[272] "582327013"                                                           
+[273] "trip_331"                                                            
+[274] "trip_332"                                                            
+[275] "48498977"                                                            
+[276] "trip_333"                                                            
+[277] "48543659"                                                            
+[278] "trip_336"                                                            
+[279] "48513116"                                                            
+[280] "trip_339"                                                            
+[281] "trip_340"                                                            </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ig_journalist <span class="ot">&lt;-</span> <span class="fu">as.igraph</span>(journalist_graph)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">V</span>(ig_journalist)<span class="sc">$</span>name, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Get topic node IDs</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>topic_ids <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(filah_graph) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"topic"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(id)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Convert to igraph</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>ig_filah <span class="ot">&lt;-</span> <span class="fu">as.igraph</span>(filah_graph)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Induce subgraph on topic IDs (use 'id' attribute)</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>topic_sub <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(ig_filah, <span class="at">vids =</span> <span class="fu">V</span>(ig_filah)[id <span class="sc">%in%</span> topic_ids])</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Convert back to tidygraph for easy plotting</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>tg_topic_sub <span class="ot">&lt;-</span> <span class="fu">as_tbl_graph</span>(topic_sub)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Plot</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(tg_topic_sub, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"tomato"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Subgraph of Topic Nodes (FILAH)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex02_draft_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Get node IDs for all three types</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>relevant_ids <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(filah_graph) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"discussion"</span>, <span class="st">"role"</span>, <span class="st">"topic"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(id)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Convert to igraph</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>ig_filah <span class="ot">&lt;-</span> <span class="fu">as.igraph</span>(filah_graph)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Induce subgraph using 'id' attribute</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>subgraph_dpt <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(ig_filah, <span class="at">vids =</span> <span class="fu">V</span>(ig_filah)[id <span class="sc">%in%</span> relevant_ids])</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Convert back to tidygraph for plotting</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>tg_subgraph_dpt <span class="ot">&lt;-</span> <span class="fu">as_tbl_graph</span>(subgraph_dpt)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Plot, color by type</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(tg_subgraph_dpt, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Subgraph of Discussion, Plan, and Topic Nodes (FILAH)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex02_draft_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Get node IDs for all three types</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>relevant_ids <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(filah_graph) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"trip"</span>, <span class="st">"role"</span>, <span class="st">"topic"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(id)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Convert to igraph</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>ig_filah <span class="ot">&lt;-</span> <span class="fu">as.igraph</span>(filah_graph)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Induce subgraph using 'id' attribute</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>subgraph_dpt <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(ig_filah, <span class="at">vids =</span> <span class="fu">V</span>(ig_filah)[id <span class="sc">%in%</span> relevant_ids])</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Convert back to tidygraph for plotting</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>tg_subgraph_dpt <span class="ot">&lt;-</span> <span class="fu">as_tbl_graph</span>(subgraph_dpt)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Plot, color by type</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(tg_subgraph_dpt, <span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Subgraph of Discussion, Plan, and Topic Nodes (FILAH)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="takehome_ex02_draft_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
