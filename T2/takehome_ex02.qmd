@@ -53,7 +53,7 @@ journalist_graph <- load_and_prepare_graph("data/journalist.json")
 
 # Q1
 
-## **2. Node Filtering and Sector Classification**
+## **Node Filtering and Sector Classification**
 
 ```{r}
 #| echo: true
@@ -95,7 +95,7 @@ filah_classified <- classify_sectors(filah_graph, "FILAH")
 
 *We filter out nodes of types plan, place, trip, and entity.organization to focus on the core actors and events. Each node is then classified as Fishin or Tourism based on its label.*
 
-## **3. Network Visualization**
+## **Network Visualization**
 
 ```{r}
 #| echo: false
@@ -200,7 +200,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 1)
 The real bias lies not in committee member actions, but in how TROUT and FILAH systematically manipulate documentation to create false impressions of sectoral favoritism.
 :::
 
-## **4. Sector and Sentiment Summary Statistics**
+## **Sector and Sentiment Summary Statistics**
 
 ```{r}
 #| echo: false
@@ -238,7 +238,7 @@ The identical topic counts combined with dramatically different discussion count
 This sophisticated manipulation technique allows each organization to claim victim status while maintaining apparent objectivity through balanced topic coverage.
 :::
 
-## **5. Sentiment Distribution Analysis**
+## **Sentiment Distribution Analysis**
 
 ```{r}
 #| echo: false
@@ -300,7 +300,7 @@ library(jsonlite)
 
 ```
 
-#### Question 2: Combined Knowledge Graph Analysis
+#### Combined Knowledge Graph Analysis
 
 ```{r}
 # ————— Fixed R Code Chunk for Q2: Committee Time Allocation & Bias Analysis —————
@@ -512,9 +512,9 @@ if (nrow(member_sentiment_summary) > 0) {
 
 -   Apart from Members,” the leadership (Chair, Treasurer, Vice Chair) each spoke in both sectors at roughly similar volumes.
 
--    Members (50 Tourism vs. 17 Fishing) does show a personal tilt toward Tourism.
+-   Members (50 Tourism vs. 17 Fishing) does show a personal tilt toward Tourism.
 
--    Because most roles (Chair/Treasurer/Vice‐Chair) remain near parity, there is **no systematic bias** at the leadership level.
+-   Because most roles (Chair/Treasurer/Vice‐Chair) remain near parity, there is **no systematic bias** at the leadership level.
 
 **Member Sentiment Bias by Economic Sector**
 
@@ -528,11 +528,11 @@ if (nrow(member_sentiment_summary) > 0) {
 
 -   **Government outings** (e.g., ferry terminals, port offices) dominate travel time, meaning that most trips serve administrative or regulatory purposes rather than strictly sectoral field tours.
 
--    When isolating “Tourism” vs. “Business/Industrial,” no member shows an overwhelming tilt to either. The counts are relatively small (\< 50 visits) and comparable cross‐member.
+-   When isolating “Tourism” vs. “Business/Industrial,” no member shows an overwhelming tilt to either. The counts are relatively small (\< 50 visits) and comparable cross‐member.
 
 <!-- -->
 
--    Hence, there is **no conspicuous travel bias** favoring Fishing or Tourism.
+-   Hence, there is **no conspicuous travel bias** favoring Fishing or Tourism.
 :::
 
 ::: callout-note
@@ -540,25 +540,27 @@ if (nrow(member_sentiment_summary) > 0) {
 
 1.  **Participation Counts**
 
-    -    Except for Members (50 Tourism vs. 17 Fishing), **leadership roles** (Chair, Treasurer, Vice Chair) split their discussion participations nearly evenly between sectors.
+    -   Except for Members (50 Tourism vs. 17 Fishing), **leadership roles** (Chair, Treasurer, Vice Chair) split their discussion participations nearly evenly between sectors.
 
-    -    Those leaders do not systematically prioritize one sector’s topics over the other when it comes to showing up in discussions.
+    -   Those leaders do not systematically prioritize one sector’s topics over the other when it comes to showing up in discussions.
 
 2.  **Sentiment**
 
-    -    Although Chair, Treasurer, and Vice Chair each express slightly stronger *positive* sentiment toward Fishing, their counts in both sectors remain balanced.
+    -   Although Chair, Treasurer, and Vice Chair each express slightly stronger *positive* sentiment toward Fishing, their counts in both sectors remain balanced.
 
-    -    Members are decidedly pro-Tourism in both quantity and sentiment, offsetting any slight pro-Fishing tilt by the leadership.
+    -   Members are decidedly pro-Tourism in both quantity and sentiment, offsetting any slight pro-Fishing tilt by the leadership.
 
-    -    Aggregating all members, the **average sentiment per sector is nearly neutral** (i.e., no overwhelming positive or negative slope for Fishing vs. Tourism).
+    -   Aggregating all members, the **average sentiment per sector is nearly neutral** (i.e., no overwhelming positive or negative slope for Fishing vs. Tourism).
 
-3.   **Travel Patterns**
+3.  **Travel Patterns**
 
-    -    Nearly all travel is toward “Government” zones, not directly categorized as Fishing or Tourism.
+```         
+-    Nearly all travel is toward “Government” zones, not directly categorized as Fishing or Tourism.
 
-    -    When isolating true sectoral travel (Fishing sites vs. Tourism sites), each member’s counts are modest and roughly comparable.
+-    When isolating true sectoral travel (Fishing sites vs. Tourism sites), each member’s counts are modest and roughly comparable.
 
-    -    No member spends dramatically more time physically touring one sector compared to the other.
+-    No member spends dramatically more time physically touring one sector compared to the other.
+```
 
 Taken together, the **combined journalist.json data show a strongly balanced committee**. Leadership attends and speaks about both Fishing and Tourism equally, while travel is predominantly government‐oriented rather than sector‐biased. Individual outliers (one “Member” leaning Tourism; Treasurer leaning Fishing in sentiment) offset each other, yielding overall neutrality.
 :::
@@ -690,8 +692,7 @@ The force‐directed layout, edge‐color distribution, and node clustering all 
 
 # Q3
 
-3. Contextualizing TROUT/FILAH Bias Against the Full Dataset
-Below we extend the same sector‐ and sentiment‐based summaries from Section 1 (which focused on TROUT vs. FILAH) to include the combined “journalist.json” graph. By comparing node counts and sentiment distributions in all three datasets side‐by‐side, we can see whether TROUT’s claim of a “pro‐Fishing committee” holds up once the full committee data is considered.
+Contextualizing TROUT/FILAH Bias Against the Full Dataset Below we extend the same sector‐ and sentiment‐based summaries from Section 1 (which focused on TROUT vs. FILAH) to include the combined “journalist.json” graph. By comparing node counts and sentiment distributions in all three datasets side‐by‐side, we can see whether TROUT’s claim of a “pro‐Fishing committee” holds up once the full committee data is considered.
 
 ```{r}
 # Load packages (if not already loaded)
@@ -852,8 +853,7 @@ ggplot(all_sentiment, aes(x = dataset, y = n, fill = sentiment_category)) +
 ```
 
 ::: callout-note
-Node‐Count View
-TROUT alone: 24 Fishing vs 15 Tourism discussions → “pro‐Fishing bias.”
+Node‐Count View TROUT alone: 24 Fishing vs 15 Tourism discussions → “pro‐Fishing bias.”
 
 FILAH alone: 28 Fishing vs 32 Tourism discussions → “pro‐Tourism bias.”
 
@@ -863,29 +863,35 @@ Because in the full data Fishing ≈ 39 and Tourism ≈ 62 (and topics 6 vs 8), 
 
 Conclusion (Node Counts): Once you look at all the meetings/discussions together, neither sector “wins” by the extreme margins suggested when you look only at TROUT. This weakens TROUT’s assertion of “committee favoritism toward Fishing.”
 
-Sentiment View
-TROUT alone: “Fishing” → +15 positive, “Tourism” almost no positives.
+Sentiment View TROUT alone: “Fishing” → +15 positive, “Tourism” almost no positives.
 
 FILAH alone: “Tourism” → +30 positive, “Fishing” almost no positives.
 
-Full dataset: +70 positive in total, split ~evenly between Fishing and Tourism.
+Full dataset: +70 positive in total, split \~evenly between Fishing and Tourism.
 
 Conclusion (Sentiment): TROUT’s message (“committee only positively endorses Fishing”) falls apart in the full graph. In reality, both sectors receive strong positive sentiment in the journalist data. This again weakens TROUT’s accusation of a “pro‐Fishing emotional bias.”
 
 TROUT’s accusations are significantly weakened when you view them side‐by‐side with the entire dataset. The committee does not, in fact, favor Fishing overall; it actually treats both Fishing and Tourism in a balanced fashion.
 :::
 
+# Q4
 
 ```{r}
 # ─────────────────────────────────────────────────────────────────────────────
-# (1) LOAD LIBRARIES
+# 1) Load libraries
 # ─────────────────────────────────────────────────────────────────────────────
 library(tidyverse)
-library(plotly)
+library(visNetwork)
 library(jsonlite)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# (2) HELPER: classify_discussion_sector()
+# 2) Choose which member to visualize
+#    (Must exactly match one of the entity.person labels in your JSON)
+# ─────────────────────────────────────────────────────────────────────────────
+selected_member <- "Seal"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3) classify_discussion_sector() helper
 # ─────────────────────────────────────────────────────────────────────────────
 fishing_labels <- c(
   "deep_fishing_dock", "new_crane_lomark", "fish_vacuum",
@@ -896,7 +902,182 @@ tourism_labels <- c(
   "name_harbor_area", "marine_life_deck", "seafood_festival",
   "heritage_walking_tour", "waterfront_market", "concert"
 )
+classify_discussion_sector <- function(lbl) {
+  if (any(lbl %in% fishing_labels) || str_detect(lbl, paste(fishing_labels, collapse = "|"))) {
+    return("Fishing")
+  } else if (any(lbl %in% tourism_labels) || str_detect(lbl, paste(tourism_labels, collapse = "|"))) {
+    return("Tourism")
+  } else {
+    return("Other")
+  }
+}
 
+# ─────────────────────────────────────────────────────────────────────────────
+# 4) summarize_participation_from_json(): read ONE JSON and return all
+#    “member_name → discussion_id” rows where role == "participant"
+#    plus the discussion_label, sector, sentiment, and dataset name.
+# ─────────────────────────────────────────────────────────────────────────────
+summarize_participation_from_json <- function(json_path, dataset_name) {
+  raw <- fromJSON(json_path)
+  
+  # --- Build nodes tibble ---
+  nodes <- as_tibble(raw$nodes) %>%
+    mutate(label = coalesce(label, name))
+  if (!("role" %in% names(nodes))) {
+    nodes <- nodes %>% mutate(role = NA_character_)
+  }
+  nodes <- nodes %>%
+    select(id, type, label, role) %>%
+    mutate(id = as.character(id)) %>%
+    filter(!is.na(id) & id != "") %>%
+    distinct(id, .keep_all = TRUE)
+  
+  # --- Build edges tibble ---
+  edges <- as_tibble(raw$links) %>%
+    rename(from = source, to = target)
+  if (!("sentiment" %in% names(edges))) {
+    edges <- edges %>% mutate(sentiment = NA_real_)
+  }
+  if (!("role" %in% names(edges))) {
+    edges <- edges %>% mutate(role = NA_character_)
+  }
+  edges <- edges %>%
+    mutate(across(c(from, to), as.character)) %>%
+    filter(from %in% nodes$id, to %in% nodes$id)
+  
+  # --- Extract “entity.person” nodes ---
+  persons <- nodes %>%
+    filter(type == "entity.person") %>%
+    select(member_id = id, member_name = label, member_role = role) %>%
+    mutate(member_id = as.character(member_id))
+  
+  # --- Extract “discussion” nodes and classify sector ---
+  discussions <- nodes %>%
+    filter(type == "discussion") %>%
+    select(discussion_id    = id,
+           discussion_label = label) %>%
+    mutate(
+      discussion_id = as.character(discussion_id),
+      sector        = map_chr(discussion_label, classify_discussion_sector)
+    ) %>%
+    filter(sector %in% c("Fishing", "Tourism"))
+  
+  # --- Filter edges to role == "participant", then join person/discussion ---
+  part <- edges %>%
+    filter(role == "participant") %>%
+    rename(discussion_id = from, member_id = to) %>%
+    mutate(
+      discussion_id = as.character(discussion_id),
+      member_id     = as.character(member_id)
+    ) %>%
+    inner_join(discussions, by = "discussion_id") %>%
+    inner_join(persons,     by = "member_id") %>%
+    select(member_name, member_role, discussion_id, discussion_label, sector, sentiment) %>%
+    mutate(dataset = dataset_name)
+  
+  return(part)
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5) Read & summarize TROUT, FILAH, and JOURNALIST data
+# ─────────────────────────────────────────────────────────────────────────────
+trout_df      <- summarize_participation_from_json("data/TROUT.json",      "TROUT")
+filah_df      <- summarize_participation_from_json("data/FILAH.json",      "FILAH")
+journalist_df <- summarize_participation_from_json("data/journalist.json", "JOURNALIST")
+
+# Combine all three, then filter to our selected_member
+all_df <- bind_rows(trout_df, filah_df, journalist_df) %>%
+  filter(member_name == selected_member)
+
+# If no participations found for this member, stop with a message
+if (nrow(all_df) == 0) {
+  stop(paste0("No participation records found for member “", selected_member, "”."))
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6) Build visNetwork nodes & edges
+#    • One node for the Person
+#    • One node per distinct discussion this member appears in
+#    • Edges linking Person → each discussion, colored by dataset
+# ─────────────────────────────────────────────────────────────────────────────
+# 6a) Member node
+member_node <- tibble(
+  id    = selected_member,
+  label = selected_member,
+  color = "#CCCCCC",   # light gray for person
+  shape = "star",
+  title = paste0("<b>", selected_member, "</b><br>Role: ", unique(all_df$member_role))
+)
+
+# 6b) Discussion nodes (distinct)
+discussion_nodes <- all_df %>%
+  distinct(discussion_id, discussion_label, sector) %>%
+  transmute(
+    id    = discussion_id,
+    label = discussion_label,
+    # color by sector:
+    color = ifelse(sector == "Fishing", "#1f77b4", "#ff7f0e"),
+    shape = "dot",
+    title = paste0("<b>", discussion_label, "</b><br>Sector: ", sector)
+  )
+
+# Combine into one nodes_vis table
+nodes_vis <- bind_rows(member_node, discussion_nodes)
+
+# 6c) Edges table
+edges_vis <- all_df %>%
+  transmute(
+    from = selected_member,
+    to   = discussion_id,
+    # color by dataset:
+    color = case_when(
+      dataset == "TROUT"      ~ "#1f77b4",
+      dataset == "FILAH"      ~ "#ff7f0e",
+      dataset == "JOURNALIST" ~ "#7f7f7f",
+      TRUE                    ~ "#000000"
+    ),
+    width = 2,
+    # tooltip (hover) for each edge shows dataset & sentiment
+    title = paste0(
+      "<b>Dataset:</b> ", dataset, "<br>",
+      "<b>Sentiment:</b> ", ifelse(is.na(sentiment), "NA", sprintf("%1.2f", sentiment))
+    )
+  )
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7) Render visNetwork
+# ─────────────────────────────────────────────────────────────────────────────
+visNetwork(nodes_vis, edges_vis, width = "100%", height = "600px") %>%
+  visNodes(font = list(size = 18, color = "black")) %>%
+  visEdges(smooth = FALSE) %>%
+  visOptions(
+    highlightNearest = list(enabled = TRUE, degree = 1, hover = TRUE),
+    nodesIdSelection = TRUE
+  ) %>%
+  visLayout(randomSeed = 42)  # for reproducible layout
+
+```
+
+```{r}
+# ─────────────────────────────────────────────────────────────────────────────
+# FULL CHUNK: Summarize + Render Plotly Widget
+# ─────────────────────────────────────────────────────────────────────────────
+
+# 1) Load Libraries
+library(tidyverse)
+library(plotly)
+library(jsonlite)
+
+# 2) Sector classifier
+fishing_labels <- c(
+  "deep_fishing_dock", "new_crane_lomark", "fish_vacuum",
+  "low_volume_crane", "affordable_housing", "name_inspection_office"
+)
+tourism_labels <- c(
+  "expanding_tourist_wharf", "statue_john_smoth", "renaming_park_himark",
+  "name_harbor_area", "marine_life_deck", "seafood_festival",
+  "heritage_walking_tour", "waterfront_market", "concert"
+)
 classify_discussion_sector <- function(label) {
   if (any(label %in% fishing_labels) ||
       str_detect(label, paste(fishing_labels, collapse = "|"))) {
@@ -909,43 +1090,32 @@ classify_discussion_sector <- function(label) {
   }
 }
 
-# ─────────────────────────────────────────────────────────────────────────────
-# (3) HELPER: summarize_member_behavior_from_json()
-#
-#    Reads the JSON at 'path', extracts nodes & links, then:
-#      • Finds all edges where role == "participant"
-#      • Joins to get discussion labels/types and member names/roles
-#      • Classifies each discussion as Fishing/Tourism
-#      • Summarises: count of participations and average sentiment per (member × sector)
-# ─────────────────────────────────────────────────────────────────────────────
+# 3) Summarization helper
 summarize_member_behavior_from_json <- function(path, dataset_name) {
-  # (a) Read raw JSON:
+  # (a) Read JSON
   raw_data <- fromJSON(path)
   
-  # (b) Build nodes tibble:
-  #     JSON nodes may have columns: id, label (or name), type, role (for people), etc.
+  # (b) Build nodes table
   nodes <- as_tibble(raw_data$nodes) %>%
-    # Ensure 'label' column exists (some JSON use 'name' instead):
     mutate(label = coalesce(label, name)) %>%
-    # Keep only id/type/label/role if present:
-    { if ("role" %in% names(.)) select(., id, type, label, role) else mutate(select(., id, type, label), role = NA_character_) } %>%
-    # Force id to character, drop missing/empty, remove duplicates:
+    { if ("role" %in% names(.)) 
+        select(., id, type, label, role) 
+      else 
+        mutate(select(., id, type, label), role = NA_character_) } %>%
     mutate(id = as.character(id)) %>%
     filter(!is.na(id) & id != "") %>%
     distinct(id, .keep_all = TRUE)
   
-  # (c) Build edges tibble:
+  # (c) Build edges table
   edges <- as_tibble(raw_data$links) %>%
     rename(from = source, to = target) %>%
-    # Ensure sentiment & role exist (create NA if missing):
     { if (!("sentiment" %in% names(.))) mutate(., sentiment = NA_real_) else . } %>%
-    { if (!("role" %in% names(.))) mutate(., role = NA_character_) else . } %>%
-    # Force endpoints to character, drop any edges that reference missing nodes:
+    { if (!("role"      %in% names(.))) mutate(., role      = NA_character_) else . } %>%
     mutate(across(c(from, to), as.character)) %>%
     filter(from %in% nodes$id & to %in% nodes$id) %>%
     select(from, to, role, sentiment)
   
-  # (d) Extract only the "entity.person" nodes (the committee members):
+  # (d) Persons = entity.person
   persons_tbl <- nodes %>%
     filter(type == "entity.person") %>%
     select(member_id   = id,
@@ -953,16 +1123,16 @@ summarize_member_behavior_from_json <- function(path, dataset_name) {
            member_role = role) %>%
     mutate(member_id = as.character(member_id))
   
-  # (e) Extract only the "discussion" nodes:
+  # (e) Discussions = type == "discussion"
   discussions_tbl <- nodes %>%
     filter(type == "discussion") %>%
     select(discussion_id    = id,
            discussion_label = label) %>%
     mutate(discussion_id = as.character(discussion_id),
-           sector = map_chr(discussion_label, classify_discussion_sector)) %>%
+           sector        = map_chr(discussion_label, classify_discussion_sector)) %>%
     filter(sector %in% c("Fishing", "Tourism"))
   
-  # (f) Filter edges to participant edges → join with persons & discussions:
+  # (f) Participant edges
   member_participation <- edges %>%
     filter(role == "participant") %>%
     rename(discussion_id = from,
@@ -970,7 +1140,7 @@ summarize_member_behavior_from_json <- function(path, dataset_name) {
     mutate(discussion_id = as.character(discussion_id),
            member_id     = as.character(member_id)) %>%
     inner_join(discussions_tbl, by = "discussion_id") %>%
-    inner_join(persons_tbl,     by = "member_id") %>%
+    inner_join(persons_tbl,      by = "member_id") %>%
     select(member_name,
            member_role,
            discussion_id,
@@ -978,12 +1148,12 @@ summarize_member_behavior_from_json <- function(path, dataset_name) {
            sector,
            sentiment)
   
-  # If no participation edges, return empty tibble
+  # If no participations, return empty
   if (nrow(member_participation) == 0) {
     return(tibble())
   }
   
-  # (g) Summarise per member × sector:
+  # (g) Summarize by (member × sector)
   summary_df <- member_participation %>%
     group_by(member_name, member_role, sector) %>%
     summarise(
@@ -996,30 +1166,24 @@ summarize_member_behavior_from_json <- function(path, dataset_name) {
   return(summary_df)
 }
 
-# ─────────────────────────────────────────────────────────────────────────────
-# (4) LOAD & SUMMARISE TROUT, FILAH, JOURNALIST (full) DATA
-# ─────────────────────────────────────────────────────────────────────────────
+# 4) Load & summarize each JSON
 trout_summary      <- summarize_member_behavior_from_json("data/TROUT.json",      "TROUT")
 filah_summary      <- summarize_member_behavior_from_json("data/FILAH.json",      "FILAH")
 journalist_summary <- summarize_member_behavior_from_json("data/journalist.json", "JOURNALIST")
 
-# Combine into one long table
+# Combine into one table
 all_summaries <- bind_rows(trout_summary, filah_summary, journalist_summary)
 
-# ─────────────────────────────────────────────────────────────────────────────
-# (5) IF there is no participation data at all, we simply stop here:
-# ─────────────────────────────────────────────────────────────────────────────
+# 5) If no data at all, print message; otherwise, build full skeleton
 if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
-  cat("No committee‐member “participant” data found in TROUT, FILAH, or the full dataset.")
+  cat("No committee‐member participation data found in TROUT, FILAH, or JOURNALIST.\n")
+  
 } else {
-  # ────────────────────────────────────────────────────────────────────────────
-  # (6) Build a complete skeleton of (member_name, member_role, dataset, sector)
-  # ────────────────────────────────────────────────────────────────────────────
   persons_roles <- all_summaries %>%
     distinct(member_name, member_role)
   
-  datasets <- c("TROUT","FILAH","JOURNALIST")
-  sectors  <- c("Fishing","Tourism")
+  datasets <- c("TROUT", "FILAH", "JOURNALIST")
+  sectors  <- c("Fishing", "Tourism")
   
   skeleton <- expand_grid(
     persons_roles,
@@ -1027,7 +1191,6 @@ if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
     sector  = sectors
   )
   
-  # Join with the actual summaries, filling missing (count/sent) with zero:
   all_summaries_full <- skeleton %>%
     left_join(all_summaries, by = c("member_name","member_role","dataset","sector")) %>%
     replace_na(list(participation_count = 0, avg_sentiment = 0)) %>%
@@ -1037,68 +1200,89 @@ if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
     )
   
   # ────────────────────────────────────────────────────────────────────────────
-  # (7) Build the Plotly dropdown widget
+  # 6) DEFINE THE PLOTLY WIDGET FUNCTION
   # ────────────────────────────────────────────────────────────────────────────
   plotly_member_widget <- function(df) {
-    members   <- unique(df$member_name)
-    n_members <- length(members)
+    members  <- unique(df$member_name)
+    datasets <- c("TROUT", "FILAH", "JOURNALIST")
+    
+    traces_per_member <- length(datasets) * 2
+    total_members     <- length(members)
+    total_traces      <- total_members * traces_per_member
+    
+    dataset_colors_count <- c(
+      TROUT      = "#1f77b4",
+      FILAH      = "#ff7f0e",
+      JOURNALIST = "#7f7f7f"
+    )
+    dataset_colors_sent <- c(
+      TROUT      = "#2ca02c",
+      FILAH      = "#d62728",
+      JOURNALIST = "#9467bd"
+    )
     
     all_traces       <- list()
-    visibility_flags <- vector("list", n_members * 2)
+    visibility_flags <- vector("list", total_members)
     
     for (i in seq_along(members)) {
-      m   <- members[i]
-      sub <- df %>% filter(member_name == m)
+      m <- members[i]
+      vis_vec <- rep(FALSE, total_traces)
+      start_idx <- (i - 1) * traces_per_member + 1
+      end_idx   <- i * traces_per_member
+      vis_vec[start_idx:end_idx] <- TRUE
+      visibility_flags[[i]] <- vis_vec
       
-      # Participation‐count trace (Fishing vs Tourism)
-      trace_count <- list(
-        x = sub$sector,
-        y = sub$participation_count,
-        text = sub$label_count,
-        textposition = "auto",
-        name = paste0(m, " – Count"),
-        type = "bar",
-        marker = list(
-          color = ifelse(sub$sector == "Fishing", "#1f77b4", "#ff7f0e")
-        ),
-        xaxis = "x1", yaxis = "y1"
-      )
-      all_traces[[ length(all_traces) + 1 ]] <- trace_count
-      
-      # Avg‐sentiment trace (Fishing vs Tourism)
-      trace_sent <- list(
-        x = sub$sector,
-        y = sub$avg_sentiment,
-        text = sub$label_sent,
-        textposition = ifelse(sub$avg_sentiment >= 0, "outside", "inside"),
-        name = paste0(m, " – Avg Sent"),
-        type = "bar",
-        marker = list(
-          color = ifelse(sub$sector == "Fishing", "#2ca02c", "#d62728")
-        ),
-        xaxis = "x2", yaxis = "y2"
-      )
-      all_traces[[ length(all_traces) + 1 ]] <- trace_sent
-      
-      # Visibility flags: each pair of traces visible only for this member
-      for (j in seq_len(n_members * 2)) {
-        visibility_flags[[j]] <- (j == (2*i - 1)) || (j == (2*i))
+      member_traces <- list()
+      for (ds in datasets) {
+        sub_df <- df %>%
+          filter(member_name == m, dataset == ds) %>%
+          arrange(sector)
+        
+        if (nrow(sub_df) == 0) {
+          sub_df <- tibble(
+            sector              = c("Fishing", "Tourism"),
+            participation_count = c(0, 0),
+            avg_sentiment       = c(0, 0),
+            label_count         = c("Fishing\n(n=0)", "Tourism\n(n=0)"),
+            label_sent          = c("0.00","0.00")
+          )
+        }
+        
+        # Count trace
+        trace_count <- list(
+          x            = sub_df$sector,
+          y            = sub_df$participation_count,
+          text         = sub_df$label_count,
+          textposition = "auto",
+          name         = paste0(ds, " – Count"),
+          type         = "bar",
+          marker       = list(color = dataset_colors_count[ds]),
+          xaxis        = "x1",
+          yaxis        = "y1",
+          visible      = FALSE
+        )
+        member_traces[[ length(member_traces) + 1 ]] <- trace_count
+        
+        # Sentiment trace
+        trace_sent <- list(
+          x            = sub_df$sector,
+          y            = sub_df$avg_sentiment,
+          text         = sub_df$label_sent,
+          textposition = ifelse(sub_df$avg_sentiment >= 0, "outside", "inside"),
+          name         = paste0(ds, " – Avg Sent"),
+          type         = "bar",
+          marker       = list(color = dataset_colors_sent[ds]),
+          xaxis        = "x2",
+          yaxis        = "y2",
+          visible      = FALSE
+        )
+        member_traces[[ length(member_traces) + 1 ]] <- trace_sent
       }
+      
+      all_traces <- c(all_traces, member_traces)
     }
     
-    # Build dropdown buttons
-    buttons <- lapply(seq_along(members), function(i) {
-      list(
-        method = "restyle",
-        args = list(
-          list(visible = visibility_flags[[i]]),
-          list(seq_len(n_members * 2) - 1)
-        ),
-        label = members[i]
-      )
-    })
-    
-    # Assemble Plotly figure
+    # Add all traces to the figure
     fig <- plot_ly()
     for (tr in all_traces) {
       fig <- add_trace(
@@ -1116,11 +1300,25 @@ if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
       )
     }
     
-    # By default, show the first member’s two traces
-    if (n_members > 0) {
-      fig <- style(fig, visible = TRUE, traces = c(0, 1))
+    # By default, show first member's 6 traces
+    if (total_members > 0) {
+      fig <- style(
+        fig,
+        visible = TRUE,
+        traces  = seq_len(traces_per_member) - 1
+      )
     }
     
+    # Dropdown buttons
+    buttons <- lapply(seq_along(members), function(i) {
+      list(
+        method = "restyle",
+        args   = list(list(visible = visibility_flags[[i]])),
+        label  = members[i]
+      )
+    })
+    
+    # Layout with two subplots and dropdown
     fig <- layout(
       fig,
       updatemenus = list(
@@ -1135,16 +1333,16 @@ if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
       ),
       annotations = list(
         list(
-          text     = "<b>Select Member:</b>",
-          x        = 0.20,
-          y        = 1.18,
-          yref     = "paper",
-          xref     = "paper",
+          text      = "<b>Select Member:</b>",
+          x         = 0.20,
+          y         = 1.18,
+          yref      = "paper",
+          xref      = "paper",
           showarrow = FALSE,
-          font     = list(size = 14)
+          font      = list(size = 14)
         )
       ),
-      grid = list(rows = 1, columns = 2, pattern = "independent"),
+      grid   = list(rows = 1, columns = 2, pattern = "independent"),
       xaxis1 = list(title = "Sector", domain = c(0, 0.45)),
       yaxis1 = list(title = "Participation Count"),
       xaxis2 = list(title = "Sector", domain = c(0.55, 1)),
@@ -1154,200 +1352,50 @@ if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
     return(fig)
   }
   
-  # ────────────────────────────────────────────────────────────────────────────
-  # (8) Render the widget
-  # ────────────────────────────────────────────────────────────────────────────
+  # 7) Render the widget (still inside else)
   interactive_widget <- plotly_member_widget(all_summaries_full)
   interactive_widget
 }
 
-
 ```
 
 
-```{r}
-# ─────────────────────────────────────────────────────────────────────────────
-# 1) Load libraries
-# ─────────────────────────────────────────────────────────────────────────────
-library(tidyverse)
-library(visNetwork)
-library(jsonlite)
+::: callout-note
+## Overall Patterns and Takeaways
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 2) Define which member to visualize
-#    (Change this string to another member exactly as it appears in the data)
-# ─────────────────────────────────────────────────────────────────────────────
-selected_member <- "Seal"
+1.   **“Fishing‐Only” Members:**
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 3) A small helper to classify a discussion label as Fishing, Tourism, or Other
-# ─────────────────────────────────────────────────────────────────────────────
-fishing_labels <- c(
-  "deep_fishing_dock", "new_crane_lomark", "fish_vacuum",
-  "low_volume_crane", "affordable_housing", "name_inspection_office"
-)
-tourism_labels <- c(
-  "expanding_tourist_wharf", "statue_john_smoth", "renaming_park_himark",
-  "name_harbor_area", "marine_life_deck", "seafood_festival",
-  "heritage_walking_tour", "waterfront_market", "concert"
-)
-classify_discussion_sector <- function(lbl) {
-  if (any(lbl %in% fishing_labels) || str_detect(lbl, paste(fishing_labels, collapse = "|"))) {
-    "Fishing"
-  } else if (any(lbl %in% tourism_labels) || str_detect(lbl, paste(tourism_labels, collapse = "|"))) {
-    "Tourism"
-  } else {
-    "Other"
-  }
-}
+    -    Ed Helpsford, Seal, and Teddy Goldstein all register zero “Tourism” counts but carry distinct Fishing sentiments: Ed and Teddy are very positive (≈ +0.83), Seal is mildly positive (+0.10).
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 4) A function to read one JSON and return a data.frame of all "participant" edges
-#    with columns: member_name, discussion_id, discussion_label, sector, sentiment, dataset
-# ─────────────────────────────────────────────────────────────────────────────
-summarize_participation <- function(json_path, dataset_name) {
-  raw <- fromJSON(json_path)
-  nodes <- as_tibble(raw$nodes) %>%
-    mutate(label = coalesce(label, name)) %>%
-    { if ("role" %in% names(.)) select(., id, type, label, role) else mutate(select(., id, type, label), role = NA_character_) } %>%
-    mutate(id = as.character(id)) %>%
-    filter(!is.na(id), id != "") %>%
-    distinct(id, .keep_all = TRUE)
-  
-  edges <- as_tibble(raw$links) %>%
-    rename(from = source, to = target) %>%
-    { if (!("sentiment" %in% names(.))) mutate(., sentiment = NA_real_) else . } %>%
-    { if (!("role" %in% names(.))) mutate(., role = NA_character_) else . } %>%
-    mutate(across(c(from, to), as.character)) %>%
-    filter(from %in% nodes$id, to %in% nodes$id)
-  
-  persons <- nodes %>%
-    filter(type == "entity.person") %>%
-    select(member_id = id, member_name = label, member_role = role) %>%
-    mutate(member_id = as.character(member_id))
-  
-  discussions <- nodes %>%
-    filter(type == "discussion") %>%
-    select(discussion_id = id, discussion_label = label) %>%
-    mutate(
-      discussion_id = as.character(discussion_id),
-      sector = map_chr(discussion_label, classify_discussion_sector)
-    ) %>%
-    filter(sector %in% c("Fishing", "Tourism"))
-  
-  part <- edges %>%
-    filter(role == "participant") %>%
-    rename(discussion_id = from, member_id = to) %>%
-    mutate(
-      discussion_id = as.character(discussion_id),
-      member_id     = as.character(member_id)
-    ) %>%
-    inner_join(discussions, by = "discussion_id") %>%
-    inner_join(persons,     by = "member_id") %>%
-    select(member_name, member_role, discussion_id, discussion_label, sector, sentiment) %>%
-    mutate(dataset = dataset_name)
-  
-  return(part)
-}
+    -    The code’s “Tourism” bars for them are artifacts (either inherited average sentiment or simply plotted as zero participation) but can generally be ignored.
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 5) Read and summarize TROUT, FILAH, and JOURNALIST
-# ─────────────────────────────────────────────────────────────────────────────
-trout_df      <- summarize_participation("data/TROUT.json",      "TROUT")
-filah_df      <- summarize_participation("data/FILAH.json",      "FILAH")
-journalist_df <- summarize_participation("data/journalist.json", "JOURNALIST")
+2.  **“Tourism‐Only” Member:**
 
-# Combine all three; filter to only those rows where member_name == selected_member
-all_df <- bind_rows(trout_df, filah_df, journalist_df) %>%
-  filter(member_name == selected_member)
+3.  Carol Limpet participates only in Tourism, exclusively in FILAH & JOURNALIST (14 each) with a positive angular tone (+0.68).
 
-# If there is no data for this member, print a message and stop
-if (nrow(all_df) == 0) {
-  stop(paste0("No participation records found for member “", selected_member, "”."))
-}
+4.   **“Mixed‐Tone” Members:**
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 6) Build a visNetwork graph for exactly this member
-#    • We need one “member” node, plus one node per distinct discussion they are in
-#    • Edges from member → discussion, colored by dataset
-#    • Discussion nodes colored by their “sector”
-# ─────────────────────────────────────────────────────────────────────────────
-# Create a single node entry for the selected member
-member_node <- tibble(
-  id    = selected_member,
-  label = selected_member,
-  group = "Person",           # used for coloring/shape
-  title = paste0("<b>", selected_member, "</b><br>Role: ", unique(all_df$member_role)),
-  color.background = "#CCCCCC",
-  color.border     = "#444444"
-)
+    -    Teddy Goldstein is very positive about Fishing yet strongly negative about Tourism in the same datasets (TROUT & JOURNALIST). He is therefore polarized: loves Fishing, dislikes Tourism.
 
-# Create nodes for each distinct discussion where this member participates
-discussion_nodes <- all_df %>%
-  distinct(discussion_id, discussion_label, sector) %>%
-  transmute(
-    id             = discussion_id,
-    label          = discussion_label,
-    group          = sector,  # either "Fishing" or "Tourism"
-    title          = paste0("<b>", discussion_label, "</b><br>Sector: ", sector),
-    color.background = ifelse(sector == "Fishing", "#1f77b4", "#ff7f0e"),
-    color.border     = "#333333"
-  )
+    -    Simone Kat is very positive about Fishing, but her attitude toward Tourism flips depending on dataset: slightly negative in FILAH (–0.02) versus strongly positive in JOURNALIST (+0.87). That suggests her tone varies by audience/context.
 
-# Combine member_node + discussion_nodes
-nodes_vis <- bind_rows(member_node, discussion_nodes)
+5.   **“Occasional” Participant:**
 
-# Build edges: one per row in all_df
-edges_vis <- all_df %>%
-  transmute(
-    from = selected_member,
-    to   = discussion_id,
-    # color by dataset
-    color = case_when(
-      dataset == "TROUT"     ~ "#1f77b4",  # blue
-      dataset == "FILAH"     ~ "#ff7f0e",  # orange
-      dataset == "JOURNALIST"~ "#7f7f7f",  # gray
-      TRUE                   ~ "#000000"
-    ),
-    width = 2,
-    title = paste0(
-      "<b>Dataset:</b> ", dataset, "<br>",
-      "<b>Sentiment:</b> ", ifelse(is.na(sentiment), "NA", sprintf("%1.2f", sentiment))
-    )
-  )
+    -    Tante Titan only appears twice in Journalism’s Fishing threads (perfectly positive at +1.00) and also shows a high positive sentiment (+0.81) assigned to Tourism—despite no recorded “Tourism” posts. That likely reflects a brief comment that straddled the boundary between Fishing and Tourism.
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 7) Render with visNetwork()
-# ─────────────────────────────────────────────────────────────────────────────
-visNetwork(nodes_vis, edges_vis, width = "100%", height = "600px") %>%
-  visNodes(
-    shape = "dot",
-    size = 25,
-    font = list(size = 20, color = "white")
-  ) %>%
-  visEdges(smooth = FALSE, shadow = FALSE) %>%
-  visOptions(
-    highlightNearest = list(enabled = TRUE, degree = 1, hover = TRUE),
-    nodesIdSelection = TRUE
-  ) %>%
-  visLegend(
-    position = "right", width = 0.2,
-    useGroups = TRUE,
-    addNodes = list(
-      list(label = "Person",                    color = "#CCCCCC"),
-      list(label = "Fishing Discussion",        color = "#1f77b4"),
-      list(label = "Tourism Discussion",        color = "#ff7f0e")
-    ),
-    addEdges = list(
-      list(label = "TROUT Participation",      color = "#1f77b4"),
-      list(label = "FILAH Participation",      color = "#ff7f0e"),
-      list(label = "JOURNALIST Participation", color = "#7f7f7f")
-    )
-  ) %>%
-  visLayout(
-    randomSeed = 42  # for reproducible layout
-  )
+6.   **Dataset‐Level Observations:**
 
+    -    Many members show **identical counts** across TROUT/FILAH/JOURNALIST for Fishing or Tourism. That suggests that, when a member is active in a given sector, they post roughly the same number of times in each data source.
 
-```
+    -    Sentiment often differs between datasets—for example, Simone Kat’s tourism tone (–0.02 vs. +0.87), or Carol Limpet’s exclusively positive Tourism in FILAH & JOURNALIST.
 
+### Conclusion
+
+These interactive bar charts highlight both:
+
+-    **How often** each member participates in Fishing vs. Tourism discussions (left);
+
+-    **How positive or negative** their average tone is, per sector and per dataset (right).
+
+-   By cycling through members, you can quickly identify who is “Fishing‐only,” who is “Tourism‐only,” who has **polarized** views (e.g. Teddy strongly favors Fishing but hates Tourism), and who shifts tone depending on dataset (e.g. Simone’s mixed signals). This kind of visualization helps reveal not only raw participation patterns but also the sentiment dynamics underlying each member’s contributions in TROUT, FILAH, and JOURNALIST.
+:::
