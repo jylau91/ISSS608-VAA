@@ -1,0 +1,57 @@
+---
+title: "R-Shiny"
+format: html
+---
+
+```{r eval=FALSE}
+install.packages(c(
+  "gapminder", "ggforce", "gh", "globals", "openintro", "profvis", 
+  "RSQLite", "shiny", "shinycssloaders", "shinyFeedback", 
+  "shinythemes", "testthat", "thematic", "tidyverse", "vroom", 
+  "waiter", "xml2", "zeallot" 
+))
+```
+
+```{r}
+library(shiny)
+```
+
+```{r}
+library(tidyverse)
+
+exam <- read_csv("data/Exam_data.csv")
+
+ui <- fluidPage(
+  titlePanel("Pupil Exam Results Dashboard"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(inputId = "variable",
+                 label = "Subject:",
+                 choices = c("English" = "ENGLISH",
+                             "Maths" = "MATHS",
+                             "Science" = "SCIENCE"),
+                 selected = "ENGLISH"),
+    sliderInput(inputId = "bins",
+                label = "Number of Bins",
+                min = 5,
+                max = 20,
+                value = 10)
+    ),
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+
+server <- function(input, output) {
+  output$distPlot <- renderPlot({
+    ggplot(exam, 
+           aes_string(x =input$variable)) +
+      geom_histogram(bins = 20,
+                     color="black",
+                     fill="light blue")
+  })
+}
+shinyApp (ui=ui, server=server)
+```
