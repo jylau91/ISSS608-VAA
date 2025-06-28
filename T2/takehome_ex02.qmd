@@ -1359,43 +1359,50 @@ if (!("member_name" %in% names(all_summaries)) || nrow(all_summaries) == 0) {
 
 ```
 
-
 ::: callout-note
 ## Overall Patterns and Takeaways
 
-1.   **“Fishing‐Only” Members:**
+1.  **“Fishing‐Only” Members:**
 
-    -    Ed Helpsford, Seal, and Teddy Goldstein all register zero “Tourism” counts but carry distinct Fishing sentiments: Ed and Teddy are very positive (≈ +0.83), Seal is mildly positive (+0.10).
+```         
+-    Ed Helpsford, Seal, and Teddy Goldstein all register zero “Tourism” counts but carry distinct Fishing sentiments: Ed and Teddy are very positive (≈ +0.83), Seal is mildly positive (+0.10).
 
-    -    The code’s “Tourism” bars for them are artifacts (either inherited average sentiment or simply plotted as zero participation) but can generally be ignored.
+-    The code’s “Tourism” bars for them are artifacts (either inherited average sentiment or simply plotted as zero participation) but can generally be ignored.
+```
 
 2.  **“Tourism‐Only” Member:**
 
 3.  Carol Limpet participates only in Tourism, exclusively in FILAH & JOURNALIST (14 each) with a positive angular tone (+0.68).
 
-4.   **“Mixed‐Tone” Members:**
+4.  **“Mixed‐Tone” Members:**
 
-    -    Teddy Goldstein is very positive about Fishing yet strongly negative about Tourism in the same datasets (TROUT & JOURNALIST). He is therefore polarized: loves Fishing, dislikes Tourism.
+```         
+-    Teddy Goldstein is very positive about Fishing yet strongly negative about Tourism in the same datasets (TROUT & JOURNALIST). He is therefore polarized: loves Fishing, dislikes Tourism.
 
-    -    Simone Kat is very positive about Fishing, but her attitude toward Tourism flips depending on dataset: slightly negative in FILAH (–0.02) versus strongly positive in JOURNALIST (+0.87). That suggests her tone varies by audience/context.
+-    Simone Kat is very positive about Fishing, but her attitude toward Tourism flips depending on dataset: slightly negative in FILAH (–0.02) versus strongly positive in JOURNALIST (+0.87). That suggests her tone varies by audience/context.
+```
 
-5.   **“Occasional” Participant:**
+5.  **“Occasional” Participant:**
 
-    -    Tante Titan only appears twice in Journalism’s Fishing threads (perfectly positive at +1.00) and also shows a high positive sentiment (+0.81) assigned to Tourism—despite no recorded “Tourism” posts. That likely reflects a brief comment that straddled the boundary between Fishing and Tourism.
+```         
+-    Tante Titan only appears twice in Journalism’s Fishing threads (perfectly positive at +1.00) and also shows a high positive sentiment (+0.81) assigned to Tourism—despite no recorded “Tourism” posts. That likely reflects a brief comment that straddled the boundary between Fishing and Tourism.
+```
 
-6.   **Dataset‐Level Observations:**
+6.  **Dataset‐Level Observations:**
 
-    -    Many members show **identical counts** across TROUT/FILAH/JOURNALIST for Fishing or Tourism. That suggests that, when a member is active in a given sector, they post roughly the same number of times in each data source.
+```         
+-    Many members show **identical counts** across TROUT/FILAH/JOURNALIST for Fishing or Tourism. That suggests that, when a member is active in a given sector, they post roughly the same number of times in each data source.
 
-    -    Sentiment often differs between datasets—for example, Simone Kat’s tourism tone (–0.02 vs. +0.87), or Carol Limpet’s exclusively positive Tourism in FILAH & JOURNALIST.
+-    Sentiment often differs between datasets—for example, Simone Kat’s tourism tone (–0.02 vs. +0.87), or Carol Limpet’s exclusively positive Tourism in FILAH & JOURNALIST.
+```
 
 ### Conclusion
 
 These interactive bar charts highlight both:
 
--    **How often** each member participates in Fishing vs. Tourism discussions (left);
+-   **How often** each member participates in Fishing vs. Tourism discussions (left);
 
--    **How positive or negative** their average tone is, per sector and per dataset (right).
+-   **How positive or negative** their average tone is, per sector and per dataset (right).
 
 -   By cycling through members, you can quickly identify who is “Fishing‐only,” who is “Tourism‐only,” who has **polarized** views (e.g. Teddy strongly favors Fishing but hates Tourism), and who shifts tone depending on dataset (e.g. Simone’s mixed signals). This kind of visualization helps reveal not only raw participation patterns but also the sentiment dynamics underlying each member’s contributions in TROUT, FILAH, and JOURNALIST.
 :::
