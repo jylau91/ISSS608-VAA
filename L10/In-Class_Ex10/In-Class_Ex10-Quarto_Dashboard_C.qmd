@@ -1,0 +1,43 @@
+---
+title: "Investment Vis"
+author: "Lau Jia Yi"
+format: dashboard
+theme:
+  - darkly
+execute:
+  echo: false
+editor: visual
+---
+
+```{r}
+pacman::p_load(tidyverse, tidyquant,
+               timetk, plotly, glue)
+```
+
+```{r}
+SGStock <- read_csv("data/SGStock.csv")
+```
+
+```{r}
+daily_prices <- SGStock %>%
+  select(Symbol) %>%
+  tq_get(get = "stock.prices",
+         from = "2025-01-01",
+         to = Sys.Date())
+
+daily_prices <- daily_prices %>%
+  left_join(SGStock)
+  
+```
+
+# DBS
+
+# OCBC
+
+# UOB
+
+# SingTel
+
+# SIA
+
+#S Capitalland Mall
