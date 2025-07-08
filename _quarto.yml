@@ -37,20 +37,20 @@ website:
             text: In-class Exercise 2
           - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/In-Class_Ex03_17462578872460/SalesversusProfitDB
             text: In-class Exercise 3
-          - href: L4/inclass_ex04.html
-            text: In-class Exercise 4
-          - href: L5/inclass_ex05.html
-            text: In-class Exercise 5
-          - href: L6/inclass_ex06.html
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/In-classEx06_17480706149670/VisitorarrivalsbyCountry
             text: In-class Exercise 6
-          - href: L7/inclass_ex07.html
-            text: In-class Exercise 7
-          - href: L8/inclass_ex08.html
-            text: In-class Exercise 8
-          - href: L9/inclass_ex09.html
-            text: In-class Exercise 9
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/InClassEx08/SGPools
+            text: In-class Exercise 8A
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/InClassEx08b/SingaporePropertyPrice
+            text: In-class Exercise 8B
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/InClassEx09_17504906854160/SingaporePopulation
+            text: In-class Exercise 9A
+          - href: Ahttps://public.tableau.com/app/profile/jia.yi.lau/viz/In-ClassEx09C-PropertyWise/BePropertyWiseorOtherwise   
+            text: In-class Exercise 9C
+          - href: https://public.tableau.com/app/profile/jia.yi.lau/viz/In-ClassEx10_17510911920130/Dashboard1
+            text: In-class Exercise 10A
           - href: L10/In-Class_Ex10/In-Class_Ex10-Quarto_Dashboard.html
-            text: In-class Exercise 10
+            text: In-class Exercise 10B
       - text: Take-home Exercises
         menu:
           - href: T1/takehome_ex01.html
@@ -59,7 +59,7 @@ website:
             text: Take-home Exercise 1A
           - href: T2/takehome_ex02.html
             text: Take-home Exercise 2
-          - href: T3/takehome_ex03.html
+          - href: https://isss608-ay2024-25apr-g7.netlify.app/take-home_ex03
             text: Take-home Exercise 3
 
 format:
