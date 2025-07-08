@@ -1,0 +1,13 @@
+---
+title: "Hands-on-Exercise-08"
+author: "Lau Jia Yi"
+date: 14 Jun 2025
+date-modified: "last-modified"
+format: html
+editor: visual
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---

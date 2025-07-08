@@ -1,5 +1,0 @@
----
-title: "TH02 Ex"
-format: html
----
-

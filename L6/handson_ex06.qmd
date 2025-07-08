@@ -371,6 +371,5 @@ rice %>%
 ```
 
 ::: callout-tip
-
 For effective data visualisation design, `factor()` is used convert the value type of *Year* field from numeric to factor.
 :::
